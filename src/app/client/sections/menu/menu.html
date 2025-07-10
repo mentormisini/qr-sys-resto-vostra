@@ -1,0 +1,43 @@
+<section class="py-16 px-6 min-h-screen bg-white">
+  <div class="max-w-5xl mx-auto text-center">
+    <h2
+      class="text-4xl md:text-5xl font-serif font-normal mb-12 tracking-wide"
+      style="color:#006442"
+    >
+      Il Nostro Menu
+    </h2>
+
+    <!-- Tabs -->
+    <div class="flex justify-center flex-wrap gap-6 mb-14">
+      @for (cat of categories; track cat) {
+        <button
+          (click)="setCategory(cat)"
+          class="px-6 py-2 rounded-full hover:border-emerald-700  font-normal border-2 text-lg cursor-pointer
+            transition-colors  duration-300 uppercase tracking-wide"
+          [class.border-[#006442]]="cat === selectedCategory"
+          [class.text-[#006442]]="cat === selectedCategory"
+          [class.border-gray-300]="cat !== selectedCategory"
+          [class.text-gray-700]="cat !== selectedCategory"
+
+        >
+          {{ cat }}
+        </button>
+      }
+    </div>
+
+    <!-- Menu Items -->
+    <div class="grid sm:grid-cols-2 gap-8 text-left">
+      @for (item of filteredMenu; track item.name) {
+        <div
+          class="rounded-2xl p-6 border border-gray-300 cursor-pointer transition-colors duration-300 hover:border-emerald-700"
+        >
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="text-xl font-normal" style="color:#006442">{{ item.name }}</h3>
+            <span class="font-normal text-lg" style="color:#EF4135">{{ item.price }}</span>
+          </div>
+          <p class="text-gray-700 text-sm leading-relaxed">{{ item.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
