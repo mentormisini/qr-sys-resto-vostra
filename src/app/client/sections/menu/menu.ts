@@ -1,16 +1,59 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-menu',
   imports: [],
   templateUrl: './menu.html',
-  styleUrl: './menu.scss'
+  styleUrl: './menu.scss',
+  standalone:true,
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(10px)' }),
+        animate('400ms ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
+      ]),
+      transition(':leave', [
+        animate('400ms ease-in', style({ opacity: 0, transform: 'translateY(10px)' })),
+      ]),
+    ]),
+  ],
+
+
 })
 export class Menu {
-  categories = ['Starters', 'Main Courses', 'Desserts', 'Drinks'];
+  categories = ['Starters', 'Main Courses', 'Desserts', 'Drinks','Starters', 'Main Courses', 'Desserts', 'Drinks'];
   selectedCategory = 'Starters';
+  @ViewChild('tabsSection') tabsSection!: ElementRef;
 
-  menuItems = [
+  showHint = false;
+  private hintShown = false;
+  ngAfterViewInit() {
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !this.hintShown) {
+            this.showSwipeHint();
+          }
+        },
+        { root: null, threshold: 0.5 }
+      );
+      observer.observe(this.tabsSection.nativeElement);
+    } else {
+      this.showSwipeHint();
+    }
+  }
+
+  showSwipeHint() {
+    this.showHint = true;
+    this.hintShown = true;
+
+    setTimeout(() => {
+      this.showHint = false;
+    }, 5000);
+  }
+
+      menuItems = [
     {
       category: 'Starters',
       name: 'Burrata & Heirloom Tomatoes',

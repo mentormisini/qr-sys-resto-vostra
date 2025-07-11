@@ -1,0 +1,29 @@
+/* Webkit browsers */
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #006442;
+  border-radius: 3px;
+  border: 1px solid transparent;
+}
+
+::-webkit-scrollbar-button {
+  display: none; /* hides scrollbar arrows */
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: none;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #006442 transparent;
+}

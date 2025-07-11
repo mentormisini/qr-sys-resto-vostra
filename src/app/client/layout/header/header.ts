@@ -8,5 +8,16 @@ import { Component } from '@angular/core';
   standalone:true
 })
 export class Header {
+  selectedLanguage = 'English';
+  dropdownOpen = false;
 
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
+
+  selectLanguage(lang: string) {
+    this.selectedLanguage = lang;
+    this.dropdownOpen = false;
+    // TODO: add your language switch logic here
+  }
 }

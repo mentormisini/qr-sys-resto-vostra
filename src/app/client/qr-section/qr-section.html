@@ -1,0 +1,30 @@
+<div
+  class="max-w-md mx-auto p-5 m-10 bg-gradient-to-tr from-green-50 via-white to-green-50 shadow-2xl rounded-3xl p-12 mt-16 text-center relative overflow-hidden"
+>
+  <!-- Header -->
+  <img src="logo.svg" class="w-40 flex justify-center m-auto">
+  <h2 class="text-2xl  mb-4 text-green-900 tracking-tight drop-shadow-lg">
+     Congratulations!
+  </h2>
+
+  <!-- Subheading -->
+  <p class="mb-10 text-gray-800 text-lg leading-relaxed max-w-[90%] mx-auto">
+    You’ve unlocked an <span class="font-semibold text-green-700">exclusive 20% discount code</span> just for you!
+  </p>
+
+  <!-- QR Code Container -->
+  <div
+    class="inline-block p-6 bg-white rounded-2xl shadow-lg ring-2 ring-green-400 ring-opacity-30 hover:ring-opacity-60 transition duration-400 ease-in-out"
+    style="box-shadow: 0 0 20px 3px rgba(72, 187, 120, 0.25);"
+  >
+    <qrcode [qrdata]="qrData" [width]="180" [errorCorrectionLevel]="'M'"></qrcode>
+  </div>
+
+  <!-- Info Text -->
+  <p class="mt-8 text-sm text-green-800 italic tracking-wide">
+    This QR code can be used only <span class="font-semibold">once</span>.
+  </p>
+  <p class="text-sm text-gray-600 mt-3 max-w-xs mx-auto">
+    Simply show this QR code at the restaurant entrance to redeem your discount.
+  </p>
+</div>

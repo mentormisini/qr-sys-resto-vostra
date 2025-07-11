@@ -1,68 +1,76 @@
-<section class="bg-white py-12 px-4">
-  <div class="max-w-5xl mx-auto text-center">
-    <h2
-      class="text-3xl md:text-4xl font-serif font-normal text-[#006442] mb-6 tracking-wide"
-    >
+<section class="bg-white py-16 px-4">
+  <div class="max-w-6xl mx-auto text-center">
+    <!-- Section Header -->
+    <h2 class="text-4xl md:text-5xl font-serif text-emerald-700 mb-4 tracking-tight">
       Chef's Daily Specials
     </h2>
-    <p class="text-gray-600 mb-10 font-normal">
-      A curated selection of dishes, freshly prepared for each day of the week.
+    <p class="text-gray-600 mb-12 text-lg md:text-xl font-light">
+      Curated dishes made fresh every day — discover what’s on the menu today.
     </p>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Dish Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
       @for (dish of dishes; track dish.day) {
         @if (dish.day === today) {
           <div
-            class="relative border-2 border-emerald-700 rounded-3xl overflow-hidden cursor-pointer transition-transform transform scale-105 hover:scale-110 shadow-md"
+            class="relative rounded-3xl overflow-hidden shadow-2xl bg-white group transform transition-transform duration-300 hover:scale-[1.02]"
           >
-            <!-- Image with subtle emerald gradient overlay -->
-            <div class="relative overflow-hidden">
+            <!-- Shimmer Glow Effect -->
+            <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-radial from-emerald-500/30 to-transparent blur-3xl opacity-30 group-hover:opacity-50 pointer-events-none z-0"></div>
+
+            <!-- Image -->
+            <div class="relative z-10">
               <img
                 [src]="dish.image"
                 alt="{{dish.dish}}"
-                class="w-full h-48 object-cover transition-transform duration-500 ease-in-out hover:scale-105"
+                class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-transparent via-emerald-700/20 to-transparent pointer-events-none"
-              ></div>
+              <div class="absolute inset-0 bg-black/40"></div>
+
+              <!-- Floating Badge -->
+              <span
+                class="absolute top-4 right-4 bg-white/20 backdrop-blur-md text-white text-xs font-semibold uppercase tracking-wider px-4 py-1 rounded-full shadow-lg"
+              >
+        Today’s Special
+      </span>
             </div>
 
-            <!-- Badge -->
-            <span
-              class="absolute top-4 left-4 bg-emerald-700 text-emerald-100 font-semibold text-xs uppercase px-3 py-1 rounded-full shadow-sm tracking-widest select-none"
-            >
-      Today's Special
-    </span>
-
             <!-- Dish Info -->
-            <div class="p-6">
-              <h3 class="text-xl text-[#006442] font-normal mb-1">{{dish.day}}</h3>
-              <p class="mt-2 text-gray-800 font-normal">{{dish.dish}}</p>
-              <p class="text-sm mt-1 text-gray-500 font-normal">{{dish.description}}</p>
-              <p class="text-right mt-4 text-lg text-[#EF4135] font-normal">{{dish.price}}</p>
+            <div class="p-6 relative z-20">
+              <h3 class="text-lg text-emerald-600 font-semibold tracking-wide">{{ dish.day }}</h3>
+              <p class="text-2xl font-serif text-gray-900 mt-1">{{ dish.dish }}</p>
+              <p class="text-sm text-gray-500 mt-2 leading-relaxed">{{ dish.description }}</p>
+              <p class="text-right mt-5 text-xl font-bold text-red-500">{{ dish.price }}</p>
+            </div>
+
+            <!-- Bottom Italian Flag Glow -->
+            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-2 bg-gradient-to-r from-green-600 via-white to-red-600 rounded-full blur-sm opacity-70"></div>
+          </div>
+        }
+
+
+        @else {
+          <!-- Other Days -->
+          <div
+            class="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-emerald-600 hover:shadow-md transition group"
+          >
+            <div class="relative">
+              <img
+                [src]="dish.image"
+                alt="{{dish.dish}}"
+                class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-20 transition"></div>
+            </div>
+
+            <div class="p-6 text-left">
+              <h3 class="text-xl text-emerald-700 font-medium">{{dish.day}}</h3>
+              <p class="text-lg text-gray-800 mt-1">{{dish.dish}}</p>
+              <p class="text-sm text-gray-500 mt-1">{{dish.description}}</p>
+              <p class="text-lg text-red-500 font-medium text-right mt-4">{{dish.price}}</p>
             </div>
           </div>
         }
-        @else {
-        <div
-          class="border border-gray-200 rounded-2xl overflow-hidden hover:border-emerald-700 hover:shadow-md cursor-pointer transition"
-        >
-
-          <img
-            [src]=dish.image
-          alt={dish.dish}
-          class="w-full h-48 object-cover"
-        />
-
-        <!-- Dish Info -->
-        <div class="p-6">
-          <h3 class="text-xl text-[#006442] font-normal mb-1">{{dish.day}}</h3>
-              <p class="mt-2 text-gray-800 font-normal">{{dish.dish}}</p>
-              <p class="text-sm mt-1 text-gray-500 font-normal">{{dish.description}}</p>
-              <p class="text-right mt-4 text-lg text-[#EF4135] font-normal">{{dish.price}}</p>
-            </div>
-          </div>
-          }
       }
     </div>
   </div>

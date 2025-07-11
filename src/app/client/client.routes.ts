@@ -1,6 +1,9 @@
 import {Route} from '@angular/router';
 
-export default [{
+export default [
+  {
   path:'',
   loadComponent: ()=> import('./sections/carousel/carousel').then(c=>c.Carousel),
-}] as Route[]
+  },
+
+] as Route[]

@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import {DailyDishes} from '../daily-dishes/daily-dishes';
 import {Menu} from '../menu/menu';
 import {animate, style, transition, trigger} from '@angular/animations';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-carousel',
   imports: [
     DailyDishes,
-    Menu
+    Menu,
+    NgClass
   ],
   templateUrl: './carousel.html',
   styleUrl: './carousel.scss',
@@ -38,25 +40,18 @@ import {animate, style, transition, trigger} from '@angular/animations';
 export class Carousel {
   slides = [
     {
-      day: 'Monday',
+      day: 'Text1',
       dish: 'Truffle Mushroom Risotto',
       description: 'Creamy arborio rice with wild mushrooms and white truffle oil.',
-      price: '€18',
-      image: 'https://placehold.co/1600x700?text=Monday+Special',
+      price: '23434',
+      image: 'https://www.foodiesfeed.com/wp-content/uploads/ff-images/2025/01/colorful-bowl-of-deliciousness-with-fried-egg.png',
     },
     {
-      day: 'Tuesday',
+      day: 'Text 2',
       dish: 'Lobster Ravioli',
       description: 'Fresh pasta filled with lobster and mascarpone, saffron cream.',
-      price: '€24',
-      image: 'https://placehold.co/1600x700?text=Tuesday+Special',
-    },
-    {
-      day: 'Wednesday',
-      dish: 'Beef Wellington',
-      description: 'Tenderloin wrapped in puff pastry, foie gras and mushroom duxelles.',
-      price: '€32',
-      image: 'https://placehold.co/1600x700?text=Wednesday+Special',
+      price: '23442',
+      image: 'https://www.foodiesfeed.com/wp-content/uploads/2023/04/perfect-grilled-steak-close-up.jpg',
     },
   ];
 
@@ -74,7 +69,7 @@ export class Carousel {
   startAutoSlide() {
     this.intervalId = setInterval(() => {
       this.next();
-    }, 5000); // slide every 5 seconds
+    }, 8000); // slide every 5 seconds
   }
 
   stopAutoSlide() {
