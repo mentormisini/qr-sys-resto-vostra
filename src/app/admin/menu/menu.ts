@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { NgClass } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -24,7 +24,8 @@ export class Menu implements OnInit {
   editingProduct: any = null; // keeps track of product being edited
   toastService = inject(ToastService);
   translate = inject(TranslateService);
-
+  changeRef = inject(ChangeDetectorRef);
+  categorySelected: any;
   showEditCategory: boolean = false;
   editingCategoryId: string | null = null;
   editedCategoryName: string = '';
@@ -39,12 +40,23 @@ export class Menu implements OnInit {
   ngOnInit() {
     this.loadCategories();
   }
-
   loadCategories() {
     this.adminService.getCategories().subscribe({
       next: (data) => {
-        this.productOfCategory = null;
         this.categories = data;
+
+        if (this.categorySelected) {
+          // find the updated category from the new list by ID
+          const updated = this.categories.find(
+            (c: { id: any; }) => c.id === this.categorySelected.id
+          );
+          if (updated) {
+            this.categorySelected = updated;
+            this.productOfCategory = updated;
+          }
+        }
+
+        this.changeRef.detectChanges();
       },
       error: (error) => {
         console.error('Error fetching categories:', error);
@@ -54,20 +66,20 @@ export class Menu implements OnInit {
 
   selectCategory(category: any) {
     this.productOfCategory = null;
+    this.categorySelected = category;
     this.productOfCategory = category;
   }
+
 
   createOrUpdateCategory() {
     if (!this.newCategoryName.trim()) return;
 
     if (this.editingCategoryId) {
-      // Update existing category
       this.adminService.editCategory(this.editingCategoryId, { name: this.newCategoryName }).subscribe({
         next: () => {
-          this.loadCategories();
+          this.loadCategories(); // reload list only
           const message = this.translate.instant('toast.success.category_updated');
           this.toastService.show(message, 'success');
-          this.resetCategoryForm();
         },
         error: () => {
           const message = this.translate.instant('toast.error.operation_failed');
@@ -75,13 +87,12 @@ export class Menu implements OnInit {
         }
       });
     } else {
-      // Create new category
       this.adminService.createCategory({ name: this.newCategoryName }).subscribe({
         next: () => {
           this.loadCategories();
           const message = this.translate.instant('toast.success.category_created');
           this.toastService.show(message, 'success');
-          this.resetCategoryForm();
+
         },
         error: () => {
           const message = this.translate.instant('toast.error.operation_failed');
@@ -198,8 +209,6 @@ export class Menu implements OnInit {
   }
 
 
-  show() {
 
-  }
 
 }
