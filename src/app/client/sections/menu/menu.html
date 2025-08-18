@@ -22,17 +22,14 @@
     <div #tabsSection class="overflow-x-auto mt-4 mb-5 sm:mx-0 ">
       <div class="flex gap-3 min-w-max px-4 sm:px-0 mb-3 whitespace-nowrap">
 
-        @for (cat of categories; track cat) {
+        @for (cat of categories$; track cat) {
           <button
             (click)="setCategory(cat)"
-            class="px-4 py-2 rounded-full hover:border-emerald-700 font-normal border-2 text-base sm:text-lg cursor-pointer
+            class="px-4 py-2 rounded-full hover:border-emerald-700 font-normal  border border-gray-300 text-base sm:text-lg cursor-pointer
               transition-colors duration-300 uppercase tracking-wide"
-            [class.border-[#006442]]="cat === selectedCategory"
-            [class.text-[#006442]]="cat === selectedCategory"
-            [class.border-gray-300]="cat !== selectedCategory"
-            [class.text-gray-700]="cat !== selectedCategory"
+            [class.bg-emerald-100]="cat.name === selectedCategory?.name"
           >
-            {{ cat }}
+            {{ cat?.name }}
           </button>
         }
       </div>
@@ -40,7 +37,7 @@
 
     <!-- Menu Items -->
     <div class="grid sm:grid-cols-2 gap-8 text-left">
-      @for (item of filteredMenu; track item.name) {
+      @for (item of selectedCategory?.products; track item.name) {
         <div
           class="rounded-2xl p-6 border border-gray-300 cursor-pointer transition-colors duration-300 hover:border-emerald-700"
         >

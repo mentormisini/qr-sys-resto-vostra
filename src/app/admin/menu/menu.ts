@@ -43,6 +43,7 @@ export class Menu implements OnInit {
   loadCategories() {
     this.adminService.getCategories().subscribe({
       next: (data) => {
+        this.productOfCategory = null;
         this.categories = data;
       },
       error: (error) => {
@@ -128,7 +129,7 @@ export class Menu implements OnInit {
 
   onSubmitProduct() {
     if (this.productForm.invalid) return;
-
+    this.productOfCategory?.name // here need to click
     const formValue = this.productForm.value;
 
     if (this.editingProduct) {
@@ -138,6 +139,7 @@ export class Menu implements OnInit {
           // Reload categories/products from server to reflect changes
           this.loadCategories();
           // Reset form & state
+
           this.productForm.reset();
           this.showCreateProduct = false;
           this.editingProduct = null;

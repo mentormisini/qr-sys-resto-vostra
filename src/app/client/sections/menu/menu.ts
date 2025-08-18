@@ -1,9 +1,14 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, inject, ViewChild} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {AdminService} from '../../../services/admin.service';
+import {take} from 'rxjs';
 
 @Component({
   selector: 'app-menu',
-  imports: [],
+  imports: [
+
+
+  ],
   templateUrl: './menu.html',
   styleUrl: './menu.scss',
   standalone:true,
@@ -22,10 +27,17 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 
 })
 export class Menu {
-  categories = ['Starters', 'Main Courses', 'Desserts', 'Drinks','Starters', 'Main Courses', 'Desserts', 'Drinks'];
-  selectedCategory = 'Starters';
+  adminService = inject(AdminService);
+  categories$:any;
+  selectedCategory:any;
   @ViewChild('tabsSection') tabsSection!: ElementRef;
 
+  ngOnInit(): void {
+    this.adminService.getCategories().pipe(take(1)).subscribe(resp=> {
+      this.categories$ = resp;
+      this.setCategory(this.categories$[0]);
+    })
+  }
   showHint = false;
   private hintShown = false;
   ngAfterViewInit() {
@@ -53,62 +65,7 @@ export class Menu {
     }, 5000);
   }
 
-      menuItems = [
-    {
-      category: 'Starters',
-      name: 'Burrata & Heirloom Tomatoes',
-      description: 'Creamy burrata with basil oil and cherry tomatoes.',
-      price: '€10'
-    },
-    {
-      category: 'Starters',
-      name: 'Foie Gras Toast',
-      description: 'Duck liver on brioche toast with fig jam.',
-      price: '€14'
-    },
-    {
-      category: 'Main Courses',
-      name: 'Filet Mignon',
-      description: 'Grilled tenderloin with truffle mashed potatoes.',
-      price: '€32'
-    },
-    {
-      category: 'Main Courses',
-      name: 'Black Cod Miso',
-      description: 'Marinated cod with ginger soy glaze and bok choy.',
-      price: '€29'
-    },
-    {
-      category: 'Desserts',
-      name: 'Chocolate Fondant',
-      description: 'Warm molten chocolate cake with vanilla ice cream.',
-      price: '€11'
-    },
-    {
-      category: 'Desserts',
-      name: 'Crème Brûlée',
-      description: 'Classic vanilla custard with caramelized sugar top.',
-      price: '€9'
-    },
-    {
-      category: 'Drinks',
-      name: 'Sparkling Water',
-      description: 'San Pellegrino 750ml',
-      price: '€4'
-    },
-    {
-      category: 'Drinks',
-      name: 'Red Wine (Merlot)',
-      description: 'Glass of fine Merlot red wine.',
-      price: '€6'
-    }
-  ];
-
-  get filteredMenu() {
-    return this.menuItems.filter(item => item.category === this.selectedCategory);
-  }
-
-  setCategory(cat: string) {
+  setCategory(cat: any) {
     this.selectedCategory = cat;
   }
 }

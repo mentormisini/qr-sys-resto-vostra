@@ -8,32 +8,63 @@
         </span>
     </div>
 </nav>
+<!-- Top Navbar -->
 
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
-    @for (plate of dailyPlate; track plate.id) {
-    <div
-        class=" rounded-2xl shadow-xl overflow-hidden border border-emerald-100 backdrop-blur-lg transition hover:scale-[1.03] hover:shadow-2xl duration-200 flex flex-col justify-between">
-        <div>
-            <div class="relative">
-                <img [src]="plate.imagePath" alt="{{ plate.plate }}" class="w-full h-48 object-cover rounded-t-2xl" />
-                <span
-                    class="absolute top-4 left-4 bg-emerald-900 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Day:
-                    {{ plate.day }}</span>
-            </div>
-            <div class="p-6">
-                <h2 class="text-xl font-bold text-emerald-900 mb-2">{{ plate.plate }}</h2>
-                <p class="text-gray-700 mb-4">{{ plate.description }}</p>
-            </div>
-        </div>
-        <div class="flex items-center justify-between px-6 pb-6">
-            <span class="text-lg font-semibold text-emerald-900">€{{ plate.price }}</span>
-            <button (click)="editPlate(plate)"
-                class="bg-gradient-to-r from-emerald-600 to-emerald-900 hover:from-emerald-900 hover:to-emerald-600 text-white px-6 py-2 rounded-xl font-semibold shadow-lg transition-all duration-200 tracking-wide transform hover:scale-105">
-                Edit
-            </button>
-        </div>
+<div class="flex overflow-x-auto space-x-3 border-b border-gray-200 p-2">
+  @for(day of dailyPlate; track day?.id){
+    <button
+      (click)="selectDay(day)"
+      [ngClass]="selectedDay?.name === day?.name ? 'bg-gradient-to-r from-emerald-600 to-emerald-900 hover:from-emerald-900 hover:to-emerald-600 text-white' :''"
+      class="flex-shrink-0 px-4 py-2 rounded-lg font-semibold transition-colors duration-200 hover:bg-gradient-to-r from-emerald-600 to-emerald-900 hover:from-emerald-900 hover:to-emerald-600 hover:text-white"
+    >
+      {{ day?.name }}
+    </button>
+  }
+</div>
+<!-- Daily Menu -->
+<div class="p-4">
+
+  @if (selectedDay){
+
+    <div class="flex items-center justify-between mb-4 p-4 bg-gray-100 rounded-lg">
+      <h2 class="text-2xl font-bold text-gray-800">{{ selectedDay?.name }}'s Menu</h2>
+      <button (click)="createNewPlate(selectedDay)"
+              class="px-4 py-2 rounded-xl font-semibold border-2 border-emerald-600 text-emerald-600
+                   hover:bg-emerald-600 hover:text-white transition-all duration-200 transform hover:scale-105">
+        {{ 'add-plate' | translate }}
+      </button>
     </div>
+  }
+  @if (selectedDay?.plates?.length > 0) {
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    @for(plate of selectedDay.plates; track $index){
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+        <img [src]="plate.imagePath" alt="{{ plate.plate }}" class="w-full h-48 object-cover">
+
+        <div class="p-5">
+          <h3 class="text-xl font-bold text-gray-800">{{ plate.plate }}</h3>
+          <p class="text-gray-500 mt-2">{{ plate.description }}</p>
+          <p class="text-green-600 font-bold mt-3 text-lg">${{ plate.price }}</p>
+        </div>
+
+        <div class="p-2  bg-gray-50 rounded-lg">
+
+
+          <button (click)="deletePlate(plate)"
+                  class="flex-1 ml-2 px-3 py-1.5 rounded-lg font-semibold border-2 border-red-600 text-red-600
+                 hover:bg-red-600 hover:text-white transition-all duration-200 transform hover:scale-105 text-sm">
+            {{ 'delete' | translate }}
+          </button>
+        </div>
+
+      </div>
+
     }
+  </div>
+  }
+
 </div>
 
 @if (showModal) {

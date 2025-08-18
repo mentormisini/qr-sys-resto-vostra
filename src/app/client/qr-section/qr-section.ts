@@ -8,7 +8,6 @@ import confetti from 'canvas-confetti';
 @Component({
   selector: 'app-qr-section',
   imports: [
-    QRCodeComponent
   ],
   templateUrl: './qr-section.html',
   styleUrl: './qr-section.scss'

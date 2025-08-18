@@ -9,12 +9,21 @@ export class AdminService {
     readonly httpClient = inject(HttpClient);
 
     getDailyPlate() {
-        return this.httpClient.get(`${environment.apiUrl}/daily-plate`);
+        return this.httpClient.get(`${environment.apiUrl}/daily-plate/today`);
     }
+  getPlates() {
+    return this.httpClient.get(`${environment.apiUrl}/daily-plate/days`);
+  }
 
     updateDailyPlate(plate: any) {
         return this.httpClient.put(`${environment.apiUrl}/daily-plate`, plate);
     }
+  createDailyPlate(plate: any) {
+    return this.httpClient.post(`${environment.apiUrl}/daily-plate`, plate);
+  }
+  deleteDailyPlate(plateID: any) {
+    return this.httpClient.delete(`${environment.apiUrl}/daily-plate/${plateID}`);
+  }
     getCategories() {
         return this.httpClient.get(`${environment.apiUrl}/category`);
     }
