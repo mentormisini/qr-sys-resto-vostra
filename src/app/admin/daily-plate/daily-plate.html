@@ -1,0 +1,83 @@
+<nav
+    class="w-full flex items-center justify-between bg-white/80 rounded-2xl shadow-md border border-emerald-100 px-8 py-4 mb-8 backdrop-blur-lg">
+    <h1 class="text-2xl sm:text-3xl  text-emerald-900 tracking-tight">🍽️ {{'hello' |translate}}</h1>
+    <div class="flex items-center gap-2 text-lg font-semibold text-emerald-600">
+        <span class="hidden sm:inline-block">Today:</span>
+        <span class="bg-emerald-100 text-emerald-900 px-3 py-1 rounded-full font-bold shadow-sm">
+            {{ today | date:'EEEE' }}
+        </span>
+    </div>
+</nav>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
+    @for (plate of dailyPlate; track plate.id) {
+    <div
+        class=" rounded-2xl shadow-xl overflow-hidden border border-emerald-100 backdrop-blur-lg transition hover:scale-[1.03] hover:shadow-2xl duration-200 flex flex-col justify-between">
+        <div>
+            <div class="relative">
+                <img [src]="plate.imagePath" alt="{{ plate.plate }}" class="w-full h-48 object-cover rounded-t-2xl" />
+                <span
+                    class="absolute top-4 left-4 bg-emerald-900 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Day:
+                    {{ plate.day }}</span>
+            </div>
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-emerald-900 mb-2">{{ plate.plate }}</h2>
+                <p class="text-gray-700 mb-4">{{ plate.description }}</p>
+            </div>
+        </div>
+        <div class="flex items-center justify-between px-6 pb-6">
+            <span class="text-lg font-semibold text-emerald-900">€{{ plate.price }}</span>
+            <button (click)="editPlate(plate)"
+                class="bg-gradient-to-r from-emerald-600 to-emerald-900 hover:from-emerald-900 hover:to-emerald-600 text-white px-6 py-2 rounded-xl font-semibold shadow-lg transition-all duration-200 tracking-wide transform hover:scale-105">
+                Edit
+            </button>
+        </div>
+    </div>
+    }
+</div>
+
+@if (showModal) {
+<div class="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md relative flex flex-col justify-center items-center">
+        <button (click)="closeModal()"
+            class="absolute top-4 right-4 text-emerald-900 hover:text-emerald-600 text-xl font-bold">&times;</button>
+        <h2 class="text-2xl font-bold mb-4 text-emerald-900">Edit Plate</h2>
+        <!-- Plate Image Preview -->
+        <div class="mb-4 w-full flex flex-col items-center">
+            <img [src]="selectedPlate?.imagePath" alt="Plate Image"
+                class="w-32 h-32 object-cover rounded-xl border border-emerald-100 shadow mb-2" />
+            <label class="block font-semibold mb-1">Change Image</label>
+            <input type="file" (change)="onImageChange($event)" accept="image/*" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4
+                 file:rounded-full file:border-0 file:text-sm file:font-semibold
+                 file:bg-emerald-100 file:text-emerald-900 hover:file:bg-emerald-200" />
+        </div>
+        <form [formGroup]="plateForm" (ngSubmit)="savePlate()" class="space-y-4 w-full">
+            <div>
+                <label class="block font-semibold mb-1">Plate Name</label>
+                <input formControlName="plate" class="w-full border rounded-lg px-4 py-2" />
+                @if (plateForm.get('plate')?.invalid && plateForm.get('plate')?.touched) {
+                <div class="text-red-600 text-sm mt-1">Plate name is required.</div>
+                }
+            </div>
+            <div>
+                <label class="block font-semibold mb-1">Description</label>
+                <textarea formControlName="description" class="w-full border rounded-lg px-4 py-2"></textarea>
+                @if (plateForm.get('description')?.invalid && plateForm.get('description')?.touched) {
+                <div class="text-red-600 text-sm mt-1">Description is required.</div>
+                }
+            </div>
+            <div>
+                <label class="block font-semibold mb-1">Price</label>
+                <input formControlName="price" type="number" class="w-full border rounded-lg px-4 py-2" />
+                @if (plateForm.get('price')?.invalid && plateForm.get('price')?.touched) {
+                <div class="text-red-600 text-sm mt-1">Price must be positive.</div>
+                }
+            </div>
+            <button type="submit" [disabled]="plateForm.invalid"
+                class="bg-gradient-to-r from-emerald-600 to-emerald-900 hover:from-emerald-900 hover:to-emerald-600 text-white px-6 py-2 rounded-xl font-semibold shadow-lg transition-all duration-200 tracking-wide transform hover:scale-105">
+                Save
+            </button>
+        </form>
+    </div>
+</div>
+}

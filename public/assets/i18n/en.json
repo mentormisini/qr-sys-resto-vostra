@@ -1,0 +1,16 @@
+{
+    "toast": {
+        "success": {
+            "operation_successful": "Operation successful!"
+        },
+        "info": {
+            "some_info": "Here is some information."
+        },
+        "error": {
+            "operation_failed": "Operation failed!"
+        },
+        "warning": {
+            "check_input": "Please check your input."
+        }
+    }
+}

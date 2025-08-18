@@ -8,5 +8,14 @@ export const routes: Routes = [{
   {
     path:'qr',
     loadComponent: ()=> import('./client/qr-section/qr-section').then(c=>c.QrSection),
-  }
+  },
+  {
+    path:'auth',
+    loadComponent: ()=> import('./admin/login/login').then(c=>c.Login),
+  },
+  {
+    path:'auth/admin',
+    loadComponent: () => import('./admin/layout-admin/admin-layout/admin-layout').then(c => c.AdminLayout),
+    loadChildren: ()=> import('./admin/admin.routes')
+  },
   ];
