@@ -1,0 +1,44 @@
+<div class="p-6 overflow-x-auto">
+  <table class="min-w-full divide-y divide-gray-200 rounded-xl shadow-sm">
+    <thead class="bg-gray-50">
+    <tr>
+      <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Code</th>
+      <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">ID</th>
+      <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Used</th>
+      <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Created At</th>
+      <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Updated At</th>
+      <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Device Info</th>
+      <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">IP</th>
+      <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Location</th>
+    </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-100 text-sm text-gray-700">
+      @for (item of allQR | async; track $index) {
+        <tr class="hover:bg-gray-50 transition">
+          <td class="px-4 py-3 font-medium text-gray-800">{{ item.code }}</td>
+          <td class="px-4 py-3">{{ item.id }}</td>
+          <td class="px-4 py-3">
+            <span class="px-2 py-1 rounded-full text-xs font-semibold
+              {{ item.used ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' }}">
+              {{ item.used ? 'Yes' : 'No' }}
+            </span>
+          </td>
+          <td class="px-4 py-3">{{ item.createdAt | date:'medium' }}</td>
+          <td class="px-4 py-3">{{ item.updatedAt | date:'medium' }}</td>
+          <td class="px-4 py-3">
+            <div class="space-y-1">
+
+              <p><span class="font-semibold">OS:</span> {{ item.os?.name }} {{ item.os?.version }}</p>
+              <p><span class="font-semibold">Browser:</span> {{ item.browser?.name }} {{ item.browser?.version }}</p>
+            </div>
+          </td>
+          <td class="px-4 py-3">{{ item.ip }}</td>
+          <td class="px-4 py-3">
+            {{ item.latitude ? item.latitude : 'N/A' }},
+            {{ item.longitude ? item.longitude : 'N/A' }}
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

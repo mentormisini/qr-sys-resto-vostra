@@ -9,7 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './daily-plate.html',
   styleUrl: './daily-plate.scss',
   standalone: true,
-  imports: [ReactiveFormsModule, DatePipe, TranslateModule, NgClass]
+  imports: [ReactiveFormsModule, TranslateModule, NgClass]
 })
 export class DailyPlate {
   adminService = inject(AdminService);

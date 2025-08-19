@@ -1,0 +1,41 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
+  <div *ngFor="let image of images; let i = index" class="group relative cursor-pointer overflow-hidden rounded-xl shadow-md">
+    <img
+      [src]="image?.imagePath"
+      class="w-full h-60 object-cover rounded-xl transition-transform duration-300 ease-in-out group-hover:scale-105"
+      (click)="openModal(i)"
+    />
+    <!-- Optional overlay on hover -->
+    <div  (click)="openModal(i)" class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white text-lg font-semibold">
+      View
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+  *ngIf="selectedImage"
+  (click)="closeModal()"
+>
+  <!-- Previous Button -->
+  <button
+    class="absolute left-4 text-white text-3xl font-bold p-2 bg-black/50 rounded hover:bg-opacity-70"
+    (click)="prevImage($event)"
+  >‹
+  </button>
+
+  <img
+    [src]="selectedImage"
+    class="max-w-full max-h-full rounded shadow-lg"
+    (click)="$event.stopPropagation()"
+  />
+
+
+  <!-- Next Button -->
+  <button
+    class="absolute right-4 text-white text-3xl font-bold p-2 bg-black/50 rounded hover:bg-opacity-70"
+    (click)="nextImage($event)"
+  >›
+  </button>
+</div>

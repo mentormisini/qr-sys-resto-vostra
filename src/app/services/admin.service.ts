@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { environment } from "../../environments/environment.development";
+import {Observable} from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -46,4 +47,58 @@ export class AdminService {
     editCategory(categoryId: string, category: any) {
         return this.httpClient.put(`${environment.apiUrl}/category/${categoryId}`, category);
     }
+
+    getNews():Observable<any>{
+      return this.httpClient.get(`${environment.apiUrl}/news`);
+    }
+  addNews(payload:any):Observable<any>{
+    return this.httpClient.post(`${environment.apiUrl}/news`,payload);
+  }
+  deleteNews(id:any):Observable<any>{
+    return this.httpClient.delete(`${environment.apiUrl}/news/${id}`);
+  }
+  allImages():Observable<any>{
+      return this.httpClient.get(`${environment.apiUrl}/images`);
+  }
+
+  addImages(files: File[]): Observable<any> {
+    const formData = new FormData();
+    files.forEach(file => formData.append('files', file)); // must match 'files' in NestJS
+
+    return this.httpClient.post(`${environment.apiUrl}/images/upload`, formData, {
+      reportProgress: true,
+      observe: 'events', // needed for upload progress
+    });
+  }
+
+  deleteImage(id:any):Observable<any>{
+    return this.httpClient.delete(`${environment.apiUrl}/images/${id}`);
+  }
+
+  getSliders():Observable<any>{
+      return this.httpClient.get(`${environment.apiUrl}/sliders`);
+  }
+
+  uploadSlide(formData: FormData): Observable<any> {
+    return this.httpClient.post(`${environment.apiUrl}/sliders`, formData);
+  }
+
+  deleteSlider(id:any):Observable<any>{
+    return this.httpClient.delete(`${environment.apiUrl}/sliders/${id}`);
+  }
+
+  getContacts():Observable<any>{
+      return this.httpClient.get(`${environment.apiUrl}/contact`);
+  }
+  patchContacts(payload:any):Observable<any>{
+    return this.httpClient.patch(`${environment.apiUrl}/contact`,payload);
+  }
+
+  getAllQr():Observable<any>{
+      return this.httpClient.get(`${environment.apiUrl}/discount-qrcode`);
+  }
+  readQR(qrCode:any):Observable<any>{
+      return this.httpClient.get(`${environment.apiUrl}/discount-qrcode/redeem/${qrCode}`);
+  }
+
 }

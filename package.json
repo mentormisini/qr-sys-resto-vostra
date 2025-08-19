@@ -30,6 +30,7 @@
     "@ngx-translate/core": "^17.0.0",
     "@ngx-translate/http-loader": "^17.0.0",
     "@tailwindcss/postcss": "^4.1.11",
+    "@zxing/ngx-scanner": "^20.0.0",
     "angularx-qrcode": "^20.0.0",
     "canvas-confetti": "^1.9.3",
     "html2canvas": "^1.4.1",
