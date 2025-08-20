@@ -2,6 +2,7 @@ import {Component, inject} from '@angular/core';
 import {AsyncPipe, NgForOf} from "@angular/common";
 import {AdminService} from '../../services/admin.service';
 import { HttpEventType } from '@angular/common/http';
+import {TranslatePipe} from '@ngx-translate/core';
 
 
 
@@ -10,7 +11,8 @@ import { HttpEventType } from '@angular/common/http';
   selector: 'app-gallery-admin',
   imports: [
 
-    AsyncPipe
+    AsyncPipe,
+    TranslatePipe
   ],
   templateUrl: './gallery-admin.html',
   styleUrl: './gallery-admin.scss'
@@ -36,6 +38,7 @@ adminService = inject(AdminService);
             this.uploadProgress = fileArray.map(() => percentDone);
           } else if (event.type === HttpEventType.Response) {
             console.log('Upload complete:', event.body);
+            this.uploadProgress = null;
 
             this.uploadProgress = fileArray.map(() => 100);
             this.images = this.adminService.allImages();

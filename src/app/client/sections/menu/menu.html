@@ -1,33 +1,28 @@
-<section class="py-16 px-6 min-h-screen bg-white">
-  <div class="max-w-5xl mx-auto text-center">
-    <h2
-      class="text-4xl md:text-5xl font-serif font-normal  tracking-wide"
-      style="color:#006442"
-    >
+<section class="py-20 px-6 min-h-screen bg-gradient-to-b from-white via-emerald-50 to-white">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-5xl md:text-6xl font-extralight tracking-tight text-emerald-700 mb-8">
       Il Nostro Menu
     </h2>
+
     @if (showHint) {
-      <div [@fadeInOut] class="text-center mb-8 sm:hidden">
-        <p class="text-sm text-gray-600 tracking-wide font-semibold">
+      <div [@fadeInOut] class="text-center mb-10 sm:hidden">
+        <p class="text-sm text-gray-500 font-semibold tracking-wide mb-2">
           Swipe to see other categories
         </p>
-        <img
-          src="swipe-left.gif"
-          alt="Swipe to scroll"
-          class="w-10 mx-auto mb-2 pointer-events-none"
-        />
+        <img src="swipe-left.gif" alt="Swipe to scroll" class="w-12 mx-auto pointer-events-none animate-bounce" />
       </div>
     }
-    <!-- Tabs -->
-    <div #tabsSection class="overflow-x-auto mt-4 mb-5 sm:mx-0 ">
-      <div class="flex gap-3 min-w-max px-4 sm:px-0 mb-3 whitespace-nowrap">
 
+    <!-- Tabs -->
+    <div #tabsSection class="overflow-x-auto mb-10 py-2">
+      <div class="flex gap-4 min-w-max px-4 sm:px-0">
         @for (cat of categories$; track cat) {
           <button
             (click)="setCategory(cat)"
-            class="px-4 py-2 rounded-full hover:border-emerald-700 font-normal  border border-gray-300 text-base sm:text-lg cursor-pointer
-              transition-colors duration-300 uppercase tracking-wide"
+            class="px-5 py-3 rounded-full text-base sm:text-lg font-medium uppercase tracking-wider transition-all duration-300 transform hover:scale-105 border-2
+              border-transparent hover:border-emerald-500 shadow-md hover:shadow-lg"
             [class.bg-emerald-100]="cat.name === selectedCategory?.name"
+            [class.text-emerald-700]="cat.name === selectedCategory?.name"
           >
             {{ cat?.name }}
           </button>
@@ -36,16 +31,16 @@
     </div>
 
     <!-- Menu Items -->
-    <div class="grid sm:grid-cols-2 gap-8 text-left">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 text-left">
       @for (item of selectedCategory?.products; track item.name) {
         <div
-          class="rounded-2xl p-6 border border-gray-300 cursor-pointer transition-colors duration-300 hover:border-emerald-700"
+          class="bg-white/60 backdrop-blur-md rounded-3xl p-6 shadow-lg hover:shadow-2xl border border-gray-200 transition-all duration-500 cursor-pointer"
         >
-          <div class="flex justify-between items-center mb-3">
-            <h3 class="text-xl font-normal" style="color:#006442">{{ item.name }}</h3>
-            <span class="font-normal text-lg" style="color:#EF4135">{{ item.price }}</span>
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-2xl font-semibold text-emerald-700">{{ item.name }}</h3>
+            <span class="font-semibold text-lg text-red-500">{{ item.price }}</span>
           </div>
-          <p class="text-gray-700 text-sm leading-relaxed">{{ item.description }}</p>
+          <p class="text-gray-600 text-sm leading-relaxed">{{ item.description }}</p>
         </div>
       }
     </div>

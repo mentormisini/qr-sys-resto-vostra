@@ -38,7 +38,9 @@ export class QrReader {
       next: (res: any) => {
         this.successMessage = res.success;
         this.serverMessage = res.message;
+        if(res?.success){
           this.triggerConfetti();
+        }
         this.stopCamera();
       },
       error: (err) => {

@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {DailyDishes} from '../daily-dishes/daily-dishes';
 import {Menu} from '../menu/menu';
 import {animate, style, transition, trigger} from '@angular/animations';
-import {NgClass} from '@angular/common';
+import {AsyncPipe, NgClass} from '@angular/common';
+import {AdminService} from '../../../services/admin.service';
+import {take} from 'rxjs';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-carousel',
   imports: [
     DailyDishes,
     Menu,
-    NgClass
+    NgClass,
+    TranslatePipe,
+
   ],
   templateUrl: './carousel.html',
   styleUrl: './carousel.scss',
@@ -38,22 +43,12 @@ import {NgClass} from '@angular/common';
 
 })
 export class Carousel {
-  slides = [
-    {
-      day: 'Text1',
-      dish: 'Truffle Mushroom Risotto',
-      description: 'Creamy arborio rice with wild mushrooms and white truffle oil.',
-      price: '23434',
-      image: 'https://www.foodiesfeed.com/wp-content/uploads/ff-images/2025/01/colorful-bowl-of-deliciousness-with-fried-egg.png',
-    },
-    {
-      day: 'Text 2',
-      dish: 'Lobster Ravioli',
-      description: 'Fresh pasta filled with lobster and mascarpone, saffron cream.',
-      price: '23442',
-      image: 'https://www.foodiesfeed.com/wp-content/uploads/2023/04/perfect-grilled-steak-close-up.jpg',
-    },
-  ];
+  adminService = inject(AdminService);
+  slides:any;
+
+  constructor() {
+    this.adminService.getSliders().pipe(take(1)).subscribe(resp=> this.slides = resp);
+  }
 
   currentIndex = 0;
   intervalId: any;

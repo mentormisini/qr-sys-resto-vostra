@@ -1,118 +1,108 @@
-
-<div class="flex flex-col lg:flex-row gap-6 p-6  ">
+<div class="flex flex-col lg:flex-row gap-6 p-4 lg:p-6">
 
   <!-- Left side: Scan QR Code -->
-  <div class="lg:w-1/2 bg-gray-50 shadow-lg rounded-2xl p-6 flex flex-col items-center justify-center transition-transform transform hover:-translate-y-1 hover:shadow-2xl">
+  <div class="w-full lg:w-1/2 bg-gray-50 shadow-lg rounded-2xl p-4 lg:p-6 flex flex-col items-center justify-center transition-transform transform hover:-translate-y-1 hover:shadow-2xl">
     <div class="bg-white rounded-xl p-4 mb-4 flex items-center justify-center">
-
       <!-- Camera icon -->
-      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2"/>
         <path d="M9 13a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/>
       </svg>
     </div>
-    <h2 class="text-xl font-semibold mb-2 text-gray-800">Scan QR Code</h2>
-    <p class="text-sm text-gray-500 text-center mb-4">Use your camera to quickly scan QR codes</p>
-    <button [routerLink]="'../qr-reader'" class="bg-gray-800 text-white px-5 py-2 rounded-xl hover:bg-gray-900 transition">Scan Now</button>
+    <h2 class="text-lg lg:text-xl font-semibold mb-2 text-gray-800">
+      {{ 'scan_qr.title' | translate }}
+    </h2>
+
+    <p class="text-sm text-gray-500 text-center mb-4">
+      {{ 'scan_qr.description' | translate }}
+    </p>
+
+    <button [routerLink]="'../qr-reader'"
+            class="bg-gray-800 text-white px-4 py-2 rounded-xl hover:bg-gray-900 transition">
+      {{ 'scan_qr.button' | translate }}
+    </button>
+
   </div>
 
   <!-- Right side: Cards as grid -->
-  <div class="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-    <div class="bg-gray-50 shadow-lg rounded-2xl p-4 text-center">
-      <h2 class="text-lg font-semibold mb-1 text-gray-800 mb-3">{{'choose-language'|translate}}</h2>
-    <div class="w-full flex justify-center gap-4 mb-4">
+  <div class="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <!-- Language card -->
+    <div class="bg-white/80 backdrop-blur-md shadow-xl rounded-3xl p-6 sm:p-8 text-center col-span-1 sm:col-span-2 border border-gray-200">
+      <div class="flex flex-wrap justify-center gap-4">
+        <!-- Modern Logout Button -->
+        <button (click)="logOut()"
+          class="mt-4 flex items-center justify-center gap-3 w-full bg-gradient-to-r from-red-500 to-rose-500 text-white font-semibold py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
 
-      <!-- English -->
-      <label class="flex items-center gap-2 cursor-pointer bg-white border border-gray-300 rounded-xl px-4 py-2 hover:bg-gray-100">
-        <input type="radio" name="language" value="en" class="form-radio text-gray-800" checked>
-        <span>English</span>
-      </label>
-
-      <!-- French -->
-      <label class="flex items-center gap-2 cursor-pointer bg-white border border-gray-300 rounded-xl px-4 py-2 hover:bg-gray-100">
-        <input type="radio" name="language" value="fr" class="form-radio text-gray-800">
-        <span>French</span>
-      </label>
-
-      <!-- German -->
-      <label class="flex items-center gap-2 cursor-pointer bg-white border border-gray-300 rounded-xl px-4 py-2 hover:bg-gray-100">
-        <input type="radio" name="language" value="de" class="form-radio text-gray-800">
-        <span>German</span>
-      </label>
-    </div>
-    </div>
-    <!-- Card 1 -->
-    <div class="bg-gray-50 shadow-lg rounded-2xl p-4 text-center">
-
-      <h2 class="text-lg font-semibold mb-1 text-gray-800">List of QR Codes</h2>
-      <p class="text-sm text-gray-500 mb-3">View all QR codes in your system</p>
-      <button class="bg-gray-800 text-white px-5 py-2 rounded-xl hover:bg-gray-900 transition">View List</button>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 transition-transform duration-300 group-hover:rotate-12">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+          </svg>
+   {{'logout'|translate}}
+        </button>
+      </div>
     </div>
 
-    <!-- Card 2 -->
-    <div class="bg-gray-50 shadow-lg rounded-2xl p-4 text-center">
-      <h2 class="text-lg font-semibold mb-1 text-gray-800">{{ 'slider' |translate }}</h2>
-      <p class="text-sm text-gray-500 mb-3">View all QR codes in your system</p>
-      <button class="bg-gray-800 text-white px-5 py-2 rounded-xl hover:bg-gray-900 transition">View List</button>
+
+    <div class="bg-white/80 backdrop-blur-md shadow-lg rounded-3xl p-6 sm:p-8 text-center col-span-1 sm:col-span-2 border border-gray-200">
+      <h2 class="text-lg font-semibold  mb-3 text-gray-800">{{'choose-language'|translate}}</h2>
+      <div class="flex flex-wrap justify-center gap-2 sm:gap-4">
+        <!-- Languages -->
+        <label class="flex items-center gap-2 cursor-pointer bg-white border border-gray-300 rounded-xl px-3 py-2 hover:bg-gray-100">
+          <input type="radio" (click)="switchLanguage('en')" name="language" value="en" class="form-radio text-gray-800" [checked]="language=='en'">
+          <span>English</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer bg-white border border-gray-300 rounded-xl px-3 py-2 hover:bg-gray-100" >
+          <input type="radio" (click)="switchLanguage('fr')"  name="language" value="fr" class="form-radio text-gray-800" [checked]="language=='fr'">
+          <span>French</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer bg-white border border-gray-300 rounded-xl px-3 py-2 hover:bg-gray-100" >
+          <input type="radio" (click)="switchLanguage('it')"  name="language" value="it" class="form-radio text-gray-800" [checked]="language=='it'">
+          <span>Italian</span>
+        </label>
+      </div>
     </div>
 
-    <!-- Card 3 -->
-    <div class="bg-gray-50 shadow-lg rounded-2xl p-4 text-center">
-      <h2 class="text-lg font-semibold mb-1 text-gray-800">{{'daily-plate'|translate}}</h2>
-      <p class="text-sm text-gray-500 mb-3">View all QR codes in your system</p>
-      <button class="bg-gray-800 text-white px-5 py-2 rounded-xl hover:bg-gray-900 transition">View List</button>
-    </div>
 
-    <!-- Card 4 -->
-    <div class="bg-gray-50 shadow-lg rounded-2xl p-4 text-center">
-      <h2 class="text-lg font-semibold mb-1 text-gray-800">{{ 'news'|translate }}</h2>
-      <p class="text-sm text-gray-500 mb-3">View all QR codes in your system</p>
-      <button class="bg-gray-800 text-white px-5 py-2 rounded-xl hover:bg-gray-900 transition">View List</button>
-    </div>
 
-    <!-- Card 5 -->
-    <div class="bg-gray-50 shadow-lg rounded-2xl p-4 text-center">
-      <h2 class="text-lg font-semibold mb-1 text-gray-800">{{ 'gallery' |translate }}</h2>
-      <p class="text-sm text-gray-500 mb-3">View all QR codes in your system</p>
-      <button class="bg-gray-800 text-white px-5 py-2 rounded-xl hover:bg-gray-900 transition">View List</button>
-    </div>
 
-    <!-- Card 6 -->
 
-    <!-- Card 7 (Help) -->
-    <div class="bg-white/80 backdrop-blur-md shadow-lg rounded-3xl p-8 text-center col-span-1 sm:col-span-2 border border-gray-200">
-      <h2 class="text-3xl font-extrabold mb-3 text-gray-900">Need Help?</h2>
-      <p class="text-gray-500 mb-6 text-base">Our support team is ready to assist you with any issue or question:</p>
+    <!-- Help card -->
+    <div class="bg-white/80 backdrop-blur-md shadow-lg rounded-3xl p-6 sm:p-8 text-center col-span-1 sm:col-span-2 border border-gray-200">
+      <h2 class="text-2xl sm:text-3xl font-extrabold mb-3 text-gray-900">
+        {{ 'help.title' | translate }}
+      </h2>
 
-      <div class="grid gap-3 mb-6 sm:grid-cols-2">
-        <a href="mailto:info@mentormisini.com" class="flex justify-center items-center px-4 py-2 rounded-full bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 font-semibold transition transform hover:scale-105 hover:from-indigo-200 hover:to-indigo-300 shadow-sm">
+      <p class="text-gray-500 mb-6 text-base">
+        {{ 'help.description' | translate }}
+      </p>
+
+
+      <div class="grid gap-2 sm:gap-3 mb-6 sm:grid-cols-2">
+        <!-- Contact links -->
+        <a href="mailto:info@mentormisini.com" class="flex justify-center items-center px-4 py-2 rounded-full bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 font-semibold hover:scale-105 hover:from-indigo-200 hover:to-indigo-300 shadow-sm">
           info&#64;mentormisini.com
         </a>
-        <a href="https://www.mentormisini.com" class="flex justify-center items-center px-4 py-2 rounded-full bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 font-semibold transition transform hover:scale-105 hover:from-indigo-200 hover:to-indigo-300 shadow-sm">
+        <a href="https://www.mentormisini.com" class="flex justify-center items-center px-4 py-2 rounded-full bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 font-semibold hover:scale-105 hover:from-indigo-200 hover:to-indigo-300 shadow-sm">
           www.mentormisini.com
         </a>
-        <a href="https://www.lymo.cloud" class="flex justify-center items-center px-4 py-2 rounded-full bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 font-semibold transition transform hover:scale-105 hover:from-indigo-200 hover:to-indigo-300 shadow-sm">
+        <a href="https://www.lymo.cloud" class="flex justify-center items-center px-4 py-2 rounded-full bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 font-semibold hover:scale-105 hover:from-indigo-200 hover:to-indigo-300 shadow-sm">
           www.lymo.cloud
         </a>
-        <a href="mailto:info@lymo.cloud" class="flex justify-center items-center px-4 py-2 rounded-full bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 font-semibold transition transform hover:scale-105 hover:from-indigo-200 hover:to-indigo-300 shadow-sm">
+        <a href="mailto:info@lymo.cloud" class="flex justify-center items-center px-4 py-2 rounded-full bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 font-semibold hover:scale-105 hover:from-indigo-200 hover:to-indigo-300 shadow-sm">
           info&#64;lymo.cloud
         </a>
-        <a href="tel:+38048505880" class="flex justify-center items-center px-4 py-2 rounded-full bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 font-semibold transition transform hover:scale-105 hover:from-indigo-200 hover:to-indigo-300 shadow-sm">
+        <a href="tel:+38048505880" class="flex justify-center items-center px-4 py-2 rounded-full bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 font-semibold hover:scale-105 hover:from-indigo-200 hover:to-indigo-300 shadow-sm">
           0038 48 505 880
         </a>
-        <a href="https://wa.me/38048505880" target="_blank" class="flex justify-center items-center px-4 py-2 rounded-full bg-gradient-to-r from-green-100 to-green-200 text-green-800 font-semibold transition transform hover:scale-105 hover:from-green-200 hover:to-green-300 shadow-sm">
-          Chat on WhatsApp
+        <a href="https://wa.me/38048505880" target="_blank" class="flex justify-center items-center px-4 py-2 rounded-full bg-gradient-to-r from-green-100 to-green-200 text-green-800 font-semibold hover:scale-105 hover:from-green-200 hover:to-green-300 shadow-sm">
+          {{'chat' }} Whatsapp
         </a>
       </div>
 
-      <button class="bg-indigo-600 text-white px-8 py-3 rounded-2xl font-semibold hover:bg-indigo-700 transition shadow-lg hover:shadow-xl">
-        Contact Support
-      </button>
+
 
       <p class="mt-6 text-sm text-gray-400">Powered by <a href="https://www.lymo.cloud" class="text-indigo-500 hover:underline">Lymo Cloud</a></p>
     </div>
-
-
   </div>
 </div>
+<app-toaster/>

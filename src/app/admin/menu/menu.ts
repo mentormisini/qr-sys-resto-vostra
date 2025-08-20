@@ -4,11 +4,11 @@ import { NgClass } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToasterComponent } from "../../shared/notify/notify";
 import { ToastService } from '../../shared/toast.service';
-import { TranslateService } from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-menu',
-  imports: [NgClass, FormsModule, ReactiveFormsModule, ToasterComponent],
+  imports: [NgClass, FormsModule, ReactiveFormsModule, ToasterComponent, TranslatePipe],
   templateUrl: './menu.html',
   styleUrl: './menu.scss',
   standalone: true,
@@ -78,7 +78,7 @@ export class Menu implements OnInit {
       this.adminService.editCategory(this.editingCategoryId, { name: this.newCategoryName }).subscribe({
         next: () => {
           this.loadCategories(); // reload list only
-          const message = this.translate.instant('toast.success.category_updated');
+          const message = this.translate.instant('toast.success.operation_successful');
           this.toastService.show(message, 'success');
         },
         error: () => {
@@ -113,7 +113,7 @@ export class Menu implements OnInit {
     this.adminService.editCategory(this.editingCategoryId, { name: this.editedCategoryName }).subscribe({
       next: () => {
         this.loadCategories();
-        const message = this.translate.instant('toast.success.category_updated');
+        const message = this.translate.instant('toast.success.operation_successful');
         this.toastService.show(message, 'success');
 
       },

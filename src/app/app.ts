@@ -12,14 +12,14 @@ import { firstValueFrom } from 'rxjs';
 })
 export class App {
   protected readonly title = signal('qr-sys-resto');
+  language = localStorage.getItem('language');
   constructor(private translate: TranslateService) {
-    // Set default language
-    firstValueFrom(this.translate.setDefaultLang('en'))
-      .then(() => console.log('Default language set'))
-      .catch(err => console.error('Failed to set default language', err));
-
-    // Optionally, immediately use the default
-    this.translate.use('en').subscribe();
+      if(this.language){
+        this.translate.use(this.language)
+      }else{
+        this.translate.use('en')
+        localStorage.setItem('language', 'en')
+      }
   }
 
   switchLanguage(lang: string) {

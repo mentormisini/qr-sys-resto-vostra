@@ -22,6 +22,7 @@ export class AdminNews {
 
   newsForm!: FormGroup;
   isModalOpen = false;
+   selectedImage: any;
 
   openModal() {
     this.isModalOpen = true;
@@ -58,6 +59,7 @@ export class AdminNews {
       // Send the FormData to the service
       this.adminService.addNews(formData).subscribe(() => {
         this.allNews$ = this.adminService.getNews();
+      this.closeModal();
       });
 
       this.newsForm.reset();
@@ -71,12 +73,16 @@ export class AdminNews {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
-      reader.onload = () => {
+      reader.onload = (e:any) => {
         this.imagePreview = reader.result;
         // Update the form control with the file object
+        this.selectedImage = e.target.result;
         this.newsForm.patchValue({ image: file });
         this.newsForm.get('image')?.updateValueAndValidity();
       };
+      reader.readAsDataURL(file);
+
+      // Preview
       reader.readAsDataURL(file);
     }
   }
@@ -92,5 +98,11 @@ export class AdminNews {
       this.allNews$ = this.adminService.getNews();
     });
   }
+  removeImage(): void {
+    this.selectedImage = undefined;
+    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    if (fileInput) fileInput.value = ''; // reset file input
+  }
+
 
 }

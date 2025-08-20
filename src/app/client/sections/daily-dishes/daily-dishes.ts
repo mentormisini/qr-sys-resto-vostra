@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import {AdminService} from '../../../services/admin.service';
 import {AsyncPipe} from '@angular/common';
 import {take} from 'rxjs';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-daily-dishes',
   imports: [
+    TranslatePipe
 
   ],
   templateUrl: './daily-dishes.html',

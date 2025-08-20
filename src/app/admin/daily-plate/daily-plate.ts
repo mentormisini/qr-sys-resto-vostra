@@ -52,36 +52,25 @@ export class DailyPlate {
 
   savePlate() {
     if (this.plateForm.invalid) return;
-    const updated = { ...this.selectedPlate, ...this.plateForm.value };
-    const previousSelectedDayId = this.selectedDay?.id; // save the id before reload
 
-    this.adminService.createDailyPlate(updated).subscribe({
-      next: () => {
-        this.showModal = false;
+    const formData = new FormData();
 
-        // Reload daily plates
-        this.adminService.getPlates().subscribe({
-          next: (data) => {
-            this.dailyPlate = data;
+    formData.append('plate', this.plateForm.value.plate);
+    formData.append('description', this.plateForm.value.description);
+    formData.append('price', this.plateForm.value.price);
+    formData.append('dayId', this.selectedDay?.id.toString());
 
-            // Restore previously selected day
-            if (previousSelectedDayId) {
-              const matchedDay = this.dailyPlate.find((d: { id: any; }) => d.id === previousSelectedDayId);
-              if (matchedDay) {
-                this.selectDay(matchedDay);
-              }
-            }
-          },
-          error: (error) => {
-            console.error('Error fetching daily plate:', error);
-          }
-        });
-      },
-      error: (error) => {
-        console.error('Error updating plate:', error);
-      },
+    // attach file if new image was chosen
+    if (this.selectedPlate?.newImageFile) {
+      formData.append('image', this.selectedPlate.newImageFile);
+    }
+
+    this.adminService.createDailyPlate(formData).subscribe({
+      next: () => this.showModal = false,
+      error: (error) => console.error('Error updating plate:', error),
     });
   }
+
 
   deletePlate(plate: any) {
     const confirmed = window.confirm('Are you sure you want to delete this plate?');
@@ -124,22 +113,34 @@ export class DailyPlate {
     this.plateForm = this.fb.group({
       plate: [''],
       description: [''],
-      price: ['']
+      price: [''],
+      imagePath:['']
     });
   }
   onImageChange(event: Event) {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
       const file = input.files[0];
+
+      // Preview
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.selectedPlate.imagePath = e.target.result; // Preview
+        if (!this.selectedPlate) this.selectedPlate = {}; // ensure object exists
+        this.selectedPlate.imagePath = e.target.result;
       };
       reader.readAsDataURL(file);
-      this.plateForm.get('imagePath')?.patchValue(file)
-      // Optionally, store file for upload on save
+
+      // Ensure selectedPlate is not null
+      if (!this.selectedPlate) this.selectedPlate = {};
       this.selectedPlate.newImageFile = file;
     }
   }
+  removeImage(): void {
+    this.selectedPlate.imagePath = undefined;
+    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    if (fileInput) fileInput.value = ''; // reset file input
+  }
+
+
 
 }

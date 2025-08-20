@@ -12,5 +12,130 @@
         "warning": {
             "check_input": "Please check your input."
         }
+    },
+  "password": "Password",
+  "choose-language": "Choose Language",
+  "contact": {
+    "contact_": "Contact",
+    "love_to_hear": "We'd love to hear from you",
+    "title": "Contact",
+    "support": "Support",
+    "description": "Questions, feedback, or partnership ideas? Send us a message and we'll get back to you."
+  },
+  "home": "Home",
+
+  "news": "News",
+  "gallery": "Gallery",
+  "dashboard": "Dashboard",
+  "slider": "Slider",
+  "daily-plate": "Daily Plate",
+  "list-qr": "QR List",
+  "read-qr": "Read QR",
+  "logout": "logout",
+  "chat": "Chat",
+  "add-new-slider": "Add New Slider",
+  "scan_qr": {
+    "title": "Scan QR Code",
+    "description": "Use your camera to quickly scan QR codes",
+    "button": "Scan Now"
+  },
+  "help": {
+    "title": "Need Help?",
+    "description": "Our support team is ready to assist you with any issue or question:"
+  },
+  "slider_form": {
+    "title": {
+      "label": "Title",
+      "required": "Title is required"
+    },
+    "description": {
+      "label": "Description",
+      "required": "Description is required"
+    },
+    "submit": "Add Slider"
+  },
+  "add-plate": "Add Plate",
+"click-to-upload": "Click to upload",
+  "Monday": "Monday",
+  "Tuesday": "Tuesday",
+  "Wednesday": "Wednesday",
+  "Thursday": "Thursday",
+  "Friday": "Friday",
+  "Saturday": "Saturday",
+  "Sunday": "Sunday",
+  "plate": {
+    "image_alt": "Plate Image",
+    "remove_image": "Remove Image",
+    "upload": "Click to upload",
+    "name": {
+      "label": "Plate Name",
+      "required": "Plate name is required."
+    },
+    "description": {
+      "label": "Description",
+      "required": "Description is required."
+    },
+    "price": {
+      "label": "Price",
+      "required": "Price must be positive."
+    },
+    "save": "Save"
+  },
+  "no-image": "No Image",
+  "menu": {
+    "categories": {
+      "title": "Categories",
+      "create": "Create Category",
+      "hide": "Hide",
+      "reset": "Reset",
+      "save": "Save",
+      "placeholder": "Enter category name"
+    },
+
+    "products": {
+      "title": "Menu",
+      "create": "Create Product",
+      "hide": "Hide",
+      "reset": "Reset",
+      "placeholder": {
+        "name": "Product Name",
+        "description": "Description",
+        "price": "Price"
+      }
+    },
+    "common": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "create": "Create"
     }
+  },
+  "add-news": "Add News",
+  "title": "Title",
+  "description": "Description",
+  "required": "Required !!!",
+  "uploading": "Uploading...",
+  "phone": "Phone",
+  "address": "Address",
+  "add-phone": "Add Phone",
+  "save": "Save",
+  "update-contact-info": "Update Contact Info",
+  "Code": "Code",
+  "ID": "ID",
+  "Used": "Used",
+  "Created At": "Created At",
+  "Updated At": "Updated At",
+  "Device Info": "Device Info",
+  "IP": "IP",
+  "Location": "Location",
+  "scaning": "Scaning",
+  "qr-used": "Sorry, This QR Code is already used before",
+  "discount-applied": "Discount has been applied",
+  "Congratulations!": "Congratulations!",
+  "Oops!": "Oops!",
+  "Client unlocked a special": "Client unlocked a special",
+  "discount": "discount",
+  "scan-again": "Scan Again",
+  "today-special": "Today's Special",
+  "CHEFS_DAILY_SPECIALS": "Chef's Daily Specials",
+  "MENU_DESCRIPTION": "Curated dishes made fresh every day — discover what’s on the menu today."
 }

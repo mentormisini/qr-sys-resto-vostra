@@ -1,0 +1,138 @@
+{
+  "toast": {
+    "success": {
+      "operation_successful": "Operazione di successo!"
+    },
+    "info": {
+      "some_info": "Ecco alcune informazioni."
+    },
+    "error": {
+      "operation_failed": "L'operazione non è riuscita!"
+    },
+    "warning": {
+      "check_input": "Si prega di controllare il tuo input."
+    }
+  },
+  "password": "Password",
+  "choose-language": "Scegli la lingua",
+  "contact": {
+    "contact_": "Contatto",
+    "love_to_hear": "Ci piacerebbe avere tue notizie",
+    "title": "Contatto",
+    "support": "Supporto",
+    "description": "Domande, feedback o idee di partnership? "
+  },
+  "home": "Casa",
+  "news": "Notizia",
+  "gallery": "Galleria",
+  "dashboard": "Pannello di controllo",
+  "slider": "Slider",
+  "daily-plate": "Piatto giornaliero",
+  "list-qr": "Elenco QR",
+  "read-qr": "Leggi QR",
+  "logout": "Logout",
+  "chat": "Chiacchierata",
+  "add-new-slider": "Aggiungi nuovo cursore",
+  "scan_qr": {
+    "title": "Scansionare il codice QR",
+    "description": "Usa la fotocamera per scansionare rapidamente i codici QR",
+    "button": "Scansionare ora"
+  },
+  "help": {
+    "title": "Hai bisogno di aiuto?",
+    "description": "Il nostro team di supporto è pronto ad aiutarti con qualsiasi problema o domanda:"
+  },
+  "slider_form": {
+    "title": {
+      "label": "Titolo",
+      "required": "Il titolo è richiesto"
+    },
+    "description": {
+      "label": "Descrizione",
+      "required": "È richiesta una descrizione"
+    },
+    "submit": "Aggiungi il cursore"
+  },
+  "add-plate": "Aggiungi piastra",
+  "click-to-upload": "Fare clic per caricare",
+  "Monday": "Lunedi",
+  "Tuesday": "Martedì",
+  "Wednesday": "Mercoledì",
+  "Thursday": "Giovedì",
+  "Friday": "Venerdì",
+  "Saturday": "Sabato",
+  "Sunday": "Domenica",
+  "plate": {
+    "image_alt": "Immagine della piastra",
+    "remove_image": "Rimuovere l'immagine",
+    "upload": "Fare clic per caricare",
+    "name": {
+      "label": "Nome piastra",
+      "required": "È richiesto il nome della targa."
+    },
+    "description": {
+      "label": "Descrizione",
+      "required": "È richiesta una descrizione."
+    },
+    "price": {
+      "label": "Prezzo",
+      "required": "Il prezzo deve essere positivo."
+    },
+    "save": "Salva"
+  },
+  "no-image": "Nessuna immagine",
+  "menu": {
+
+    "categories": {
+      "title": "Categorie",
+      "create": "Crea categoria",
+      "hide": "Nascondere",
+      "reset": "Reset",
+      "save": "Salva",
+      "placeholder": "Immettere il nome della categoria"
+    },
+    "products": {
+      "title": "Menu",
+      "create": "Crea prodotto",
+      "hide": "Nascondere",
+      "reset": "Reset",
+      "placeholder": {
+        "name": "Nome prodotto",
+        "description": "Descrizione",
+        "price": "Prezzo"
+      }
+    },
+    "common": {
+      "edit": "Modificare",
+      "delete": "Eliminare",
+      "create": "Creare"
+    }
+  },
+  "add-news": "Aggiungi notizie",
+  "title": "Titolo",
+  "description": "Descrizione",
+  "required": "Necessario !!!",
+  "uploading": "Caricamento ...",
+  "phone": "Telefono",
+  "address": "Indirizzo",
+  "add-phone": "Aggiungi telefono",
+  "save": "Salva",
+  "update-contact-info": "Aggiorna le informazioni di contatto",
+  "Code": "Codice",
+  "ID": "ID",
+  "Used": "Usato",
+  "Created At": "Creato a",
+  "Updated At": "Aggiornato a",
+  "Device Info": "Informazioni sul dispositivo",
+  "IP": "IP",
+  "Location": "Posizione",
+  "scaning": "Scansione",
+  "qr-used": "Scusa, questo codice QR è già usato prima",
+  "discount-applied": "È stato applicato lo sconto",
+  "Congratulations!": "Congratulazioni!",
+  "Oops!": "Oops!",
+  "Client unlocked a special": "Il cliente ha sbloccato uno speciale",
+  "discount": "sconto",
+  "scan-again": "Scansionare di nuovo",
+  "menuu": "Menu"
+}

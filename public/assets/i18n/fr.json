@@ -1,0 +1,136 @@
+{
+  "toast": {
+    "success": {
+      "operation_successful": "Opération réussie!"
+    },
+    "info": {
+      "some_info": "Voici quelques informations."
+    },
+    "error": {
+      "operation_failed": "L'opération a échoué!"
+    },
+    "warning": {
+      "check_input": "Veuillez vérifier votre contribution."
+    }
+  },
+  "password": "Mot de passe",
+  "choose-language": "Choisir la langue",
+  "contact": {
+    "contact_": "Contact",
+    "love_to_hear": "Nous serions ravis de vous entendre",
+    "title": "Contact",
+    "support": "Soutien",
+    "description": "Questions, commentaires ou idées de partenariat? "
+  },
+  "home": "Maison",
+  "news": "Nouvelles",
+  "gallery": "Galerie",
+  "dashboard": "Tableau de bord",
+  "slider": "Curseur",
+  "daily-plate": "Assiette quotidienne",
+  "list-qr": "Liste QR",
+  "read-qr": "Lire QR",
+  "logout": "déconnexion",
+  "chat": "Chat",
+  "add-new-slider": "Ajouter un nouveau curseur",
+  "scan_qr": {
+    "title": "Scanner le code QR",
+    "description": "Utilisez votre appareil photo pour scanner rapidement les codes QR",
+    "button": "Scanner maintenant"
+  },
+  "help": {
+    "title": "Besoin d'aide?",
+    "description": "Notre équipe d'assistance est prête à vous aider dans tout problème ou question:"
+  },
+  "slider_form": {
+    "title": {
+      "label": "Titre",
+      "required": "Le titre est requis"
+    },
+    "description": {
+      "label": "Description",
+      "required": "Description est requise"
+    },
+    "submit": "Ajouter le curseur"
+  },
+  "add-plate": "Ajouter une assiette",
+  "click-to-upload": "Télécharger",
+  "Monday": "Lundi",
+  "Tuesday": "Mardi",
+  "Wednesday": "Mercredi",
+  "Thursday": "Jeudi",
+  "Friday": "Vendredi",
+  "Saturday": "Samedi",
+  "Sunday": "Dimanche",
+  "plate": {
+    "image_alt": "Image de plaque",
+    "remove_image": "Supprimer l'image",
+    "upload": "Cliquez pour télécharger",
+    "name": {
+      "label": "Nom de Assiete",
+      "required": "Le nom de la plaque est requis."
+    },
+    "description": {
+      "label": "Description",
+      "required": "Description est requise."
+    },
+    "price": {
+      "label": "Prix",
+      "required": "Le prix doit être positif."
+    },
+    "save": "Sauvegarder"
+  },
+  "no-image": "Pas d'image",
+  "menu": {
+    "categories": {
+      "title": "Catégories",
+      "create": "Créer une catégorie",
+      "hide": "Cacher",
+      "reset": "Réinitialiser",
+      "save": "Sauvegarder",
+      "placeholder": "Entrez le nom de la catégorie"
+    },
+    "products": {
+      "title": "Menu",
+      "create": "Créer un produit",
+      "hide": "Cacher",
+      "reset": "Réinitialiser",
+      "placeholder": {
+        "name": "Nom de produit",
+        "description": "Description",
+        "price": "Prix"
+      }
+    },
+    "common": {
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "create": "Créer"
+    }
+  },
+  "add-news": "Ajouter des nouvelles",
+  "title": "Titre",
+  "description": "Description",
+  "required": "Requis !!!",
+  "uploading": "Téléchargement ...",
+  "phone": "Téléphone",
+  "address": "Adresse",
+  "add-phone": "Ajouter le téléphone",
+  "save": "Sauvegarder",
+  "update-contact-info": "Mettre à jour les contactes",
+  "Code": "Code",
+  "ID": "IDENTIFIANT",
+  "Used": "Utilisé",
+  "Created At": "Créé à",
+  "Updated At": "Mis à jour à",
+  "Device Info": "Informations sur l'appareil",
+  "IP": "IP",
+  "Location": "Emplacement",
+  "scaning": "Numérisation",
+  "qr-used": "Désolé, ce code QR est déjà utilisé avant",
+  "discount-applied": "Une remise a été appliquée",
+  "Congratulations!": "Félicitations!",
+  "Oops!": "Oups!",
+  "Client unlocked a special": "Le client a déverrouillé un spécial",
+  "discount": "rabais",
+  "scan-again": "Scanner à nouveau"
+}

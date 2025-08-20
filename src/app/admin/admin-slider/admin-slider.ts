@@ -2,12 +2,14 @@ import {Component, inject} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AdminService} from '../../services/admin.service';
 import {AsyncPipe} from '@angular/common';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-admin-slider',
   imports: [
     ReactiveFormsModule,
-    AsyncPipe
+    AsyncPipe,
+    TranslatePipe
   ],
   templateUrl: './admin-slider.html',
   styleUrl: './admin-slider.scss'
@@ -17,6 +19,7 @@ export class AdminSlider {
   sliderForm!: FormGroup;
   sliders = this.adminService.getSliders();
   selectedFile: File | null = null;
+  selectedImage:any;
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
@@ -29,11 +32,25 @@ export class AdminSlider {
 
 
   onFileSelected(event: Event) {
-    const file = (event.target as HTMLInputElement).files?.[0] || null;
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+
+    if (!file) return; // no file selected
+
     this.selectedFile = file;
+
+    // Update form control
     this.sliderForm.patchValue({ image: file });
     this.sliderForm.get('image')?.updateValueAndValidity();
+
+    // Preview image
+    const reader = new FileReader();
+    reader.onload = (e: ProgressEvent<FileReader>) => {
+      this.selectedImage = e.target?.result as string; // cast as string
+    };
+    reader.readAsDataURL(file);
   }
+
 
   addSlider() {
     if (this.sliderForm.valid && this.selectedFile) {
@@ -64,5 +81,10 @@ export class AdminSlider {
     this.adminService.deleteSlider(id).subscribe(() => {
       this.sliders = this.adminService.getSliders();
     });
+  }
+  removeImage(): void {
+    this.selectedImage = undefined;
+    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    if (fileInput) fileInput.value = ''; // reset file input
   }
 }

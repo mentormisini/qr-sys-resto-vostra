@@ -12,7 +12,7 @@ import {ToasterComponent} from '../../shared/notify/notify';
     ReactiveFormsModule,
     NgIf,
     NgForOf,
-    AsyncPipe,
+
     ToasterComponent,
     TranslatePipe
   ],
@@ -64,7 +64,7 @@ translate = inject(TranslateService);
   }
   onSubmit() {
     this.adminService.patchContacts(this.contactForm.value).subscribe(contacts => {
-      const message = this.translate.instant('toast.success.category_updated');
+      const message = this.translate.instant('toast.success.operation_successful');
       this.toastService.show(message, 'success');
     })
   }

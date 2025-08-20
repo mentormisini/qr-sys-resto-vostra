@@ -1,12 +1,14 @@
 import {Component, inject} from '@angular/core';
 import {AdminService} from '../../services/admin.service';
 import {AsyncPipe, DatePipe} from '@angular/common';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-admin-qr',
   imports: [
     AsyncPipe,
-    DatePipe
+    DatePipe,
+    TranslatePipe
   ],
   templateUrl: './admin-qr.html',
   styleUrl: './admin-qr.scss'

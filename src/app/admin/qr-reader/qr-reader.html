@@ -44,7 +44,7 @@
 
       <!-- Floating analyzing text -->
       <div class="absolute bottom-4 w-full text-center pointer-events-none">
-        <div class="text-red-400 font-semibold text-lg animate-pulse">{{ 'caning' | translate }}</div>
+        <small class="text-red-400 font-semibold  animate-pulse">{{ 'scaning' | translate }}</small>
       </div>
 
     </div>
@@ -75,7 +75,7 @@
           <!-- Conditional Header -->
           <h2 class="text-2xl font-extrabold mb-2"
               [ngClass]="successMessage ? 'text-gray-800' : 'text-red-600'">
-            {{ successMessage ? 'Congratulations!' : 'Oops!' }}
+            {{ successMessage ? ('Congratulations!' | translate) : ('Oops!' | translate) }}
           </h2>
 
           <!-- Dynamic Server Message -->
@@ -84,13 +84,15 @@
             {{ serverMessage }}
           </p>
 
-          <!-- Extra content only if discount is valid -->
-          @if (successMessage) {
+          @if (successMessage){
+          <div >
             <p class="mt-4 text-gray-600">
-              Client unlocked a special <span class="font-bold text-green-500">% discount</span>! 🛍️
+              {{ 'Client unlocked a special' | translate }}
+              <span class="font-bold text-green-500">% {{ 'discount' | translate }}</span>! 🛍️
             </p>
-          }
+          </div>
 
+          }
         </div>
 
       </div>
