@@ -12,7 +12,8 @@ import {UpperCasePipe} from '@angular/common';
     RouterLink,
     TranslatePipe,
     ToasterComponent,
-    UpperCasePipe
+    UpperCasePipe,
+    RouterLinkActive
   ],
   animations: [
     trigger('overlayAnimation', [
