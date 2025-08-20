@@ -90,7 +90,7 @@ export class Menu implements OnInit {
       this.adminService.createCategory({ name: this.newCategoryName }).subscribe({
         next: () => {
           this.loadCategories();
-          const message = this.translate.instant('toast.success.category_created');
+          const message = this.translate.instant('toast.success.operation_successful');
           this.toastService.show(message, 'success');
 
         },
@@ -150,7 +150,8 @@ export class Menu implements OnInit {
           // Reload categories/products from server to reflect changes
           this.loadCategories();
           // Reset form & state
-
+          const message = this.translate.instant('toast.success.operation_successful');
+          this.toastService.show(message, 'info');
           this.productForm.reset();
           this.showCreateProduct = false;
           this.editingProduct = null;
@@ -163,6 +164,8 @@ export class Menu implements OnInit {
         next: () => {
           // Reload categories/products from server
           this.loadCategories();
+          const message = this.translate.instant('toast.success.operation_successful');
+          this.toastService.show(message, 'success');
           // Reset form & state
           this.productForm.reset();
           this.showCreateProduct = false;

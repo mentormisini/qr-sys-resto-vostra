@@ -2,7 +2,9 @@ import {Component, inject} from '@angular/core';
 import {AsyncPipe, NgForOf} from "@angular/common";
 import {AdminService} from '../../services/admin.service';
 import { HttpEventType } from '@angular/common/http';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
+import {ToastService} from '../../shared/toast.service';
+import {ToasterComponent} from '../../shared/notify/notify';
 
 
 
@@ -12,7 +14,8 @@ import {TranslatePipe} from '@ngx-translate/core';
   imports: [
 
     AsyncPipe,
-    TranslatePipe
+    TranslatePipe,
+    ToasterComponent
   ],
   templateUrl: './gallery-admin.html',
   styleUrl: './gallery-admin.scss'
@@ -21,7 +24,8 @@ export class GalleryAdmin {
 adminService = inject(AdminService);
   uploadProgress: any;
   images = this.adminService.allImages();
-
+  translate = inject(TranslateService);
+  toaster = inject(ToastService)
   onFileSelected(event: any) {
     const files: FileList = event.target.files;
     if (files.length > 0) {
@@ -37,7 +41,9 @@ adminService = inject(AdminService);
             const percentDone = Math.round((100 * event.loaded) / event.total);
             this.uploadProgress = fileArray.map(() => percentDone);
           } else if (event.type === HttpEventType.Response) {
-            console.log('Upload complete:', event.body);
+
+            const message = this.translate.instant('toast.success.operation_successful');
+            this.toaster.show(message, 'success');
             this.uploadProgress = null;
 
             this.uploadProgress = fileArray.map(() => 100);
@@ -63,6 +69,8 @@ adminService = inject(AdminService);
 
     this.adminService.deleteImage(id).subscribe(() => {
       this.images = this.adminService.allImages();
+      const message = this.translate.instant('toast.success.operation_successful');
+      this.toaster.show(message, 'error');
     });
   }
 

@@ -81,7 +81,7 @@
           <!-- Dynamic Server Message -->
           <p class="text-lg font-semibold transition-all duration-500"
              [ngClass]="successMessage ? 'text-green-600' : 'text-red-600'">
-            {{ serverMessage }}
+            {{ serverMessage |translate }}
           </p>
 
           @if (successMessage){

@@ -2,14 +2,16 @@ import { Component, inject } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import {DatePipe, NgClass} from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {ToasterComponent} from '../../shared/notify/notify';
+import {ToastService} from '../../shared/toast.service';
 
 @Component({
   selector: 'app-daily-plate',
   templateUrl: './daily-plate.html',
   styleUrl: './daily-plate.scss',
   standalone: true,
-  imports: [ReactiveFormsModule, TranslateModule, NgClass]
+  imports: [ReactiveFormsModule, TranslateModule, NgClass, ToasterComponent]
 })
 export class DailyPlate {
   adminService = inject(AdminService);
@@ -19,6 +21,8 @@ export class DailyPlate {
   selectedPlate: any = null;
   plateForm!: FormGroup;
   today = new Date();
+  translate = inject(TranslateService);
+  toaster = inject(ToastService)
   selectedDay: any;
   constructor() {
     this.loadDailyPlate();
@@ -29,6 +33,7 @@ export class DailyPlate {
       next: (data) => {
         this.dailyPlate = data;
       },
+
       error: (error) => {
         console.error('Error fetching daily plate:', error);
       }
@@ -54,22 +59,42 @@ export class DailyPlate {
     if (this.plateForm.invalid) return;
 
     const formData = new FormData();
-
     formData.append('plate', this.plateForm.value.plate);
     formData.append('description', this.plateForm.value.description);
     formData.append('price', this.plateForm.value.price);
     formData.append('dayId', this.selectedDay?.id.toString());
 
-    // attach file if new image was chosen
     if (this.selectedPlate?.newImageFile) {
       formData.append('image', this.selectedPlate.newImageFile);
     }
 
+    const previousSelectedDayId = this.selectedDay?.id;
+
     this.adminService.createDailyPlate(formData).subscribe({
-      next: () => this.showModal = false,
-      error: (error) => console.error('Error updating plate:', error),
+      next: () => {
+        this.showModal = false;
+
+        // reload everything just like delete
+        this.adminService.getPlates().subscribe({
+          next: (data) => {
+            this.dailyPlate = data;
+            this.loadDailyPlate();
+            const message = this.translate.instant('toast.success.operation_successful');
+            this.toaster.show(message, 'success');
+            if (previousSelectedDayId) {
+              const matchedDay = this.dailyPlate.find((d: { id: any }) => d.id === previousSelectedDayId);
+              if (matchedDay) {
+                this.selectDay(matchedDay);
+              }
+            }
+          },
+          error: (err) => console.error('Error fetching daily plates:', err),
+        });
+      },
+      error: (err) => console.error('Error saving plate:', err),
     });
   }
+
 
 
   deletePlate(plate: any) {
@@ -84,12 +109,14 @@ export class DailyPlate {
         this.adminService.getPlates().subscribe({
           next: (data) => {
             this.dailyPlate = data;
-
+            this.loadDailyPlate();
             // Restore previously selected day
             if (previousSelectedDayId) {
               const matchedDay = this.dailyPlate.find((d: { id: any; }) => d.id === previousSelectedDayId);
               if (matchedDay) {
                 this.selectDay(matchedDay);
+                const message = this.translate.instant('toast.success.operation_successful');
+                this.toaster.show(message, 'error');
               } else {
                 this.selectedDay = null; // if deleted day was selected
               }
