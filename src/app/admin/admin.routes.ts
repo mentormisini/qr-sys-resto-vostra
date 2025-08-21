@@ -38,5 +38,9 @@ export default [
     path: 'qr-reader',
     loadComponent: () => import('./qr-reader/qr-reader').then(c => c.QrReader),
   },
+  {
+    path: 'reservation',
+    loadComponent: () => import('./reservations/reservations').then(c => c.Reservations),
+  },
 
 ] as Route[]

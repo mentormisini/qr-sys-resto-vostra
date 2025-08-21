@@ -10,7 +10,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
     DatePipe,
     AsyncPipe,
     TranslatePipe,
-    NgClass
+
   ],
   templateUrl: './news.html',
   styleUrl: './news.scss',

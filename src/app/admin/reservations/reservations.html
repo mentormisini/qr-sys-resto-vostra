@@ -1,0 +1,139 @@
+<div class="relative min-h-screen rounded-2xl bg-sky-50 text-gray-800 font-sans overflow-hidden">
+  <div class="absolute inset-0 z-0 opacity-40">
+    <div class="absolute inset-0 bg-no-repeat bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1577907577884-a16900f6b5b5?q=80&w=2835&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); filter: blur(10px);"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(circle at top, rgba(209, 250, 229, 0.5), transparent 70%), radial-gradient(circle at bottom, rgba(255, 240, 245, 0.5), transparent 70%);"></div>
+  </div>
+
+  <div class="relative z-10 p-6 ">
+    <div class="flex flex-col md:flex-row justify-between items-center ">
+      <nav class="flex space-x-1 p-1 rounded-full bg-white bg-opacity-70 backdrop-filter backdrop-blur-md border border-gray-200 shadow-lg w-full lg:w-auto justify-center">
+        <button class="px-5 py-3 rounded-full text-xs font-semibold text-white bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-md transition-all duration-300">
+          All
+        </button>
+        <button class="px-5 py-3 rounded-full text-xs font-semibold text-gray-600 hover:text-emerald-700 transition-all duration-300 ease-in-out hover:bg-gray-50">
+          Pending
+        </button>
+        <button class="px-5 py-3 rounded-full text-xs font-semibold text-gray-600 hover:text-emerald-700 transition-all duration-300 ease-in-out hover:bg-gray-50">
+          Confirmed
+        </button>
+        <button class="px-5 py-3 rounded-full text-xs font-semibold text-gray-600 hover:text-emerald-700 transition-all duration-300 ease-in-out hover:bg-gray-50">
+          Canceled
+        </button>
+      </nav>
+
+      <nav class="flex space-x-2 md:space-x-4 p-1 rounded-full bg-white bg-opacity-70 backdrop-filter backdrop-blur-md border border-gray-200 shadow-xl">
+        <button class="px-5 py-3 md:px-5 md:py-2.5 rounded-full text-sm font-semibold text-gray-600 hover:text-emerald-700 transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-gray-50">
+          Terrace
+        </button>
+        <button class="px-5 py-3 md:px-5 md:py-2.5 rounded-full text-sm font-bold text-white bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-xl transition-all duration-300 ease-in-out transform scale-105">
+          Balcony
+        </button>
+        <button class="px-5 py-3 md:px-5 md:py-2.5 rounded-full text-sm font-semibold text-gray-600 hover:text-emerald-700 transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-gray-50">
+          Inside
+        </button>
+      </nav>
+    </div>
+    <div class="h-px w-full bg-gray-300 my-5"></div>
+    <div class="flex flex-col lg:flex-row justify-between items-center mb-10 gap-6">
+
+
+      <div class="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
+        <div class="relative w-full sm:w-auto flex-1">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+          <input
+            type="text"
+            placeholder="Search reservations..."
+            class="w-full pl-12 pr-6 py-2.5 rounded-full bg-white bg-opacity-70 backdrop-filter backdrop-blur-md border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-lg text-gray-700 placeholder-gray-400 transition-all duration-300"
+          />
+        </div>
+
+        <button class="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-br from-emerald-400 to-emerald-600 hover:from-emerald-500 hover:to-emerald-700 text-white rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5ZM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5ZM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75ZM6.75 16.5h.75v.75h-.75v-.75ZM16.5 6.75h.75v.75h-.75v-.75ZM13.5 13.5h.75v.75h-.75v-.75ZM13.5 19.5h.75v.75h-.75v-.75ZM19.5 13.5h.75v.75h-.75v-.75ZM19.5 19.5h.75v.75h-.75v-.75ZM16.5 16.5h.75v.75h-.75v-.75Z" />
+          </svg>
+          Scan QR
+        </button>
+        <button class="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-br from-emerald-400 to-emerald-600 hover:from-emerald-500 hover:to-emerald-700 text-white rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>
+          Add new
+        </button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+      <div class="group relative bg-white rounded-3xl p-6 shadow-xl border border-gray-200 hover:border-emerald-500 transition-all duration-500 ease-in-out transform hover:-translate-y-2 cursor-pointer">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-4xl font-extrabold text-gray-800 tracking-wide">T1</span>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-green-200 text-green-700 shadow-md">Available</span>
+        </div>
+        <div class="flex items-center text-gray-500 text-sm">
+          <svg class="w-5 h-5 mr-2 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H9a6 6 0 01-6-6v-1a6 6 0 016-6h6a6 6 0 016 6v1a6 6 0 01-6 6z"></path>
+          </svg>
+          <span class="text-xl font-medium text-gray-700">4 Guests</span>
+        </div>
+      </div>
+
+      <div class="relative bg-white rounded-3xl p-6 shadow-xl border border-gray-200 hover:border-red-500 transition-all duration-300">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-4xl font-extrabold text-gray-800 tracking-wide">T2</span>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-red-200 text-red-700 shadow-md">Occupied</span>
+        </div>
+        <div class="flex items-center text-gray-500 text-sm mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+          </svg>
+          <span class="text-xl font-medium text-gray-700 ml-2">6 Guests</span>
+        </div>
+        <div class="text-gray-500 text-sm space-y-2 mb-8">
+          <p><strong class="font-bold text-gray-800">Name:</strong> Alice Johnson</p>
+          <p><strong class="font-bold text-gray-800">Phone:</strong> +123456789</p>
+          <p><strong class="font-bold text-gray-800">Time:</strong> 7:30 PM</p>
+        </div>
+        <button class="absolute bottom-6 right-6 p-3 rounded-full shadow-lg flex items-center justify-center bg-gray-50 border border-gray-200 hover:scale-110 transition-transform duration-200">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-gray-700">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="group relative bg-white rounded-3xl p-6 shadow-xl border border-gray-200 hover:border-yellow-500 transition-all duration-500 ease-in-out transform hover:-translate-y-2 cursor-pointer">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-4xl font-extrabold text-gray-800 tracking-wide">T3</span>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-yellow-200 text-yellow-700 shadow-md">Reserved</span>
+        </div>
+        <div class="flex items-center text-gray-500 text-sm mb-4">
+          <svg class="w-5 h-5 mr-2 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H9a6 6 0 01-6-6v-1a6 6 0 016-6h6a6 6 0 016 6v1a6 6 0 01-6 6z"></path>
+          </svg>
+          <span class="text-xl font-medium text-gray-700">2 Guests</span>
+        </div>
+        <div class="text-gray-500 text-sm space-y-2">
+          <p><strong class="font-bold text-gray-800">Name:</strong> Bob Smith</p>
+          <p><strong class="font-bold text-gray-800">Phone:</strong> +987654321</p>
+          <p><strong class="font-bold text-gray-800">Time:</strong> 8:00 PM</p>
+        </div>
+      </div>
+
+      <div class="group relative bg-white rounded-3xl p-6 shadow-xl border border-gray-200 hover:border-emerald-500 transition-all duration-500 ease-in-out transform hover:-translate-y-2 cursor-pointer">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-4xl font-extrabold text-gray-800 tracking-wide">T4</span>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-green-200 text-green-700 shadow-md">Available</span>
+        </div>
+        <div class="flex items-center text-gray-500 text-sm">
+          <svg class="w-5 h-5 mr-2 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H9a6 6 0 01-6-6v-1a6 6 0 016-6h6a6 6 0 016 6v1a6 6 0 01-6 6z"></path>
+          </svg>
+          <span class="text-xl font-medium text-gray-700">8 Guests</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
