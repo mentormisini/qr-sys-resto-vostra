@@ -3,7 +3,7 @@
 
     <!-- Logo -->
     <div class="w-40">
-      <img [src]="'logo.svg'" alt="Logo" class="w-full h-auto object-contain">
+      <img [src]="'logo.svg'" [routerLink]="'/'" alt="Logo" class="w-full h-auto object-contain">
     </div>
 
     <!-- Desktop Navigation -->
@@ -99,7 +99,7 @@
           </a>
           <a [routerLink]="'menu'" (click)="mobileMenuOpen = false"
              class="text-gray-800 font-semibold hover:text-indigo-600 transition-colors">
-            {{ 'menu' | translate }}
+            Menu
           </a>
           <a [routerLink]="'news'" (click)="mobileMenuOpen = false"
              class="text-gray-800 font-semibold hover:text-indigo-600 transition-colors">

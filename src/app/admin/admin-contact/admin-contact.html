@@ -40,7 +40,17 @@
         {{ 'add-phone'|translate }}
       </button>
     </div>
-
+    <!-- Whatsapp -->
+    <div class="flex flex-col">
+      <label class="text-sm font-medium text-gray-600 mb-2">Whatsapp</label>
+      <input formControlName="whatsapp" type="whatsapp"
+             placeholder="Enter your whatsapp"
+             class="rounded-2xl border border-gray-300 shadow-sm px-5 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-500 transition"/>
+      <div *ngIf="contactForm.get('whatsapp')?.invalid && contactForm.get('whatsapp')?.touched"
+           class="text-red-500 text-sm mt-1">
+        {{ 'required' |translate }}
+      </div>
+    </div>
     <!-- Address -->
     <div class="flex flex-col">
       <label class="text-sm font-medium text-gray-600 mb-2">{{ 'address'|translate }}</label>

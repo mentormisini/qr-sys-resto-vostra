@@ -1,7 +1,8 @@
-<div class="relative min-h-screen bg-white text-slate-900">
+
+<div class="relative min-h-screen bg-white text-slate-900" [@categorySwitch]="animationKey">
 
   <!-- Container -->
-  <div class="mx-auto max-w-7xl px-4 pb-24 pt-28 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-6xl px-4 pb-24 pt-28 sm:px-6 lg:px-8">
 
     <!-- Header -->
     <div class="mx-auto max-w-3xl text-center">
@@ -63,6 +64,16 @@
           </li>
           }
           <li class="flex gap-3 items-start">
+                        <span class="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-xl bg-slate-100">
+
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-whatsapp"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" /><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" /></svg>
+                        </span>
+            <div>
+              <p class="font-medium">Whatsapp</p>
+              <a href="{{(contact$ | async)?.whatsapp}}" class="text-slate-600 hover:underline">{{(contact$ | async)?.whatsapp}}</a>
+            </div>
+          </li>
+          <li class="flex gap-3 items-start">
             <span class="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-xl bg-slate-100">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -70,6 +81,8 @@
 </svg>
 
             </span>
+
+
             <div>
               <p class="font-medium">{{'address'|translate}}</p>
               <p class="text-slate-600">{{(contact$ | async)?.address}}</p>

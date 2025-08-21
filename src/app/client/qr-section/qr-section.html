@@ -1,10 +1,10 @@
 <div class="w-screen h-screen flex flex-col bg-gradient-to-br from-green-100 via-white to-green-50 relative overflow-hidden">
   <!-- Top Nav -->
   <div class="w-full flex items-center justify-between px-5 py-4 bg-white/80 backdrop-blur-md shadow-sm">
-    <img src="logo.svg" class="w-20">
-    <a href="https://yourwebsite.com" target="_blank"
+    <img src="logo.svg" [routerLink]="'/'" class="w-20">
+    <a [routerLink]="'/'"
        class="text-green-700 font-semibold text-sm px-4 py-2 rounded-full border border-green-300 hover:bg-green-600 hover:text-white transition">
-      Visit Website
+      {{ 'VISIT_WEBSITE' | translate }}
     </a>
   </div>
 
@@ -12,12 +12,12 @@
   <div class="flex-1 flex flex-col items-center justify-center px-6 text-center">
     <!-- Heading -->
     <h2 class="text-3xl font-bold mb-3 text-green-900 tracking-tight">
-       Congratulations!
+      {{ 'CONGRATS' | translate }}
     </h2>
 
     <!-- Subheading -->
     <p class="mb-6 text-gray-700 text-lg leading-relaxed max-w-xs mx-auto">
-      <span class="font-semibold text-green-700">Enjoy 20% off—just for you!</span>
+      <span class="font-semibold text-green-700">{{ 'ENJOY_DISCOUNT' | translate }}</span>
     </p>
 
     <!-- QR Voucher Card -->
@@ -29,17 +29,17 @@
 
       <!-- QR Code -->
       <img [src]="QrData?.qrImage" class="w-48 h-48 object-contain mx-auto">
-
-      <!-- Code Below -->
-      <small class="mt-4 text-green-700 tracking-wide">
-        {{QrData?.code}}
-      </small>
     </div>
 
     <!-- Info Text -->
     <p class="mt-6 text-sm text-gray-600 max-w-sm mx-auto leading-relaxed">
-      This QR code can be used <span class="font-semibold">once only</span>.<br>
-      Show it at the restaurant entrance to redeem your discount.
+      {{ 'QR_INFO' | translate }}<br>
+      {{ 'SHOW_AT_ENTRANCE' | translate }}
     </p>
+  </div>
+
+  <!-- Screenshot Info at the Bottom -->
+  <div class="w-full text-center py-4 bg-white/70 backdrop-blur-md text-gray-700 text-sm">
+   {{'screenshot-save'|translate}}
   </div>
 </div>

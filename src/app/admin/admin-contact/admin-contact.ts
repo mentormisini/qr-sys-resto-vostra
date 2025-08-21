@@ -31,13 +31,15 @@ translate = inject(TranslateService);
     this.contactForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       phones: this.fb.array([]), // start empty, will populate dynamically
-      address: ['', Validators.required]
+      address: ['', Validators.required],
+      whatsapp: ['']
     });
 
     this.adminService.getContacts().subscribe(contacts => {
       this.contactForm.patchValue({
         email: contacts.email,
-        address: contacts.address
+        address: contacts.address,
+        whatsapp: contacts.whatsapp,
       });
 
       // Clear existing phones and add from API

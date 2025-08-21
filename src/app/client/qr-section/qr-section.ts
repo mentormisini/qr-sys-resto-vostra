@@ -4,27 +4,34 @@ import html2canvas from 'html2canvas';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import confetti from 'canvas-confetti';
+import {TranslatePipe} from '@ngx-translate/core';
+import {RouterLink} from '@angular/router';
+import {animate, group, query, stagger, style, transition, trigger} from '@angular/animations';
+import {AdminService} from '../../services/admin.service';
 
 @Component({
   selector: 'app-qr-section',
   imports: [
+    TranslatePipe,
+    RouterLink
   ],
   templateUrl: './qr-section.html',
-  styleUrl: './qr-section.scss'
+  styleUrl: './qr-section.scss',
+
 })
 export class QrSection {
   qrData = 'DISCOUNT-20%-ONCE-ONLY';
   @ViewChild('qrContainer', { static: false }) qrContainer!: ElementRef;
   http= inject(HttpClient)
   QrData:any;
-  getQR():Observable<any>{
-    return this.http.post(`http://localhost:3000/api/discount-qrcode`,{})
-  }
+
+adminService = inject(AdminService);
 
   ngOnInit(){
-    this.getQR().subscribe(resp=>{
+    this.adminService.getQRDiscount().subscribe(resp=>{
       this.QrData = resp;
       this.triggerConfetti()
+
     })
   }
 

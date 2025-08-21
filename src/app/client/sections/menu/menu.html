@@ -1,46 +1,50 @@
-<section class="py-20 px-6 min-h-screen bg-gradient-to-b from-white via-emerald-50 to-white">
-  <div class="max-w-6xl mx-auto text-center">
-    <h2 class="text-5xl md:text-6xl font-extralight tracking-tight text-emerald-700 mb-8">
+<section #menu class="relative py-20 px-6 min-h-screen bg-gradient-to-b from-white via-emerald-50 to-white overflow-hidden">
+  <!-- Floating particles background -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute w-72 h-72 bg-emerald-200/30 rounded-full blur-3xl top-10 left-20 animate-pulse"></div>
+    <div class="absolute w-96 h-96 bg-yellow-100/30 rounded-full blur-3xl bottom-10 right-10 animate-[float_8s_ease-in-out_infinite]"></div>
+  </div>
+
+  <div class="max-w-6xl mx-auto text-center relative z-10">
+    <h2 class="text-5xl md:text-6xl font-light tracking-tight text-emerald-900 mb-14 animate-fade-in">
       Il Nostro Menu
     </h2>
 
-    @if (showHint) {
-      <div [@fadeInOut] class="text-center mb-10 sm:hidden">
-        <p class="text-sm text-gray-500 font-semibold tracking-wide mb-2">
-          Swipe to see other categories
-        </p>
-        <img src="swipe-left.gif" alt="Swipe to scroll" class="w-12 mx-auto pointer-events-none animate-bounce" />
-      </div>
-    }
+
 
     <!-- Tabs -->
-    <div #tabsSection class="overflow-x-auto mb-10 py-2">
-      <div class="flex gap-4 min-w-max px-4 sm:px-0">
+    <div class="overflow-x-auto mb-14 py-3">
+      <div class="flex gap-6 min-w-max px-4 sm:px-0 justify-center">
         @for (cat of categories$; track cat) {
           <button
             (click)="setCategory(cat)"
-            class="px-5 py-3 rounded-full text-base sm:text-lg font-medium uppercase tracking-wider transition-all duration-300 transform hover:scale-105 border-2
-              border-transparent hover:border-emerald-500 shadow-md hover:shadow-lg"
-            [class.bg-emerald-100]="cat.name === selectedCategory?.name"
-            [class.text-emerald-700]="cat.name === selectedCategory?.name"
+            class="relative px-6 py-3 rounded-full text-lg font-semibold uppercase tracking-wide transition-all duration-500 transform hover:scale-110 focus:outline-none"
+            [class.text-emerald-800]="cat.name === selectedCategory?.name"
           >
             {{ cat?.name }}
+            <span
+              class="absolute left-0 bottom-0 h-[3px] w-full bg-gradient-to-r from-emerald-400 via-yellow-400 to-emerald-400 scale-x-0 origin-left transition-transform duration-500"
+              [class.scale-x-100]="cat.name === selectedCategory?.name"
+            ></span>
           </button>
         }
       </div>
     </div>
 
     <!-- Menu Items -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 text-left">
+    <div
+      class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 text-left perspective-1000"
+      [@categorySwitch]="animationKey"
+    >
       @for (item of selectedCategory?.products; track item.name) {
         <div
-          class="bg-white/60 backdrop-blur-md rounded-3xl p-6 shadow-lg hover:shadow-2xl border border-gray-200 transition-all duration-500 cursor-pointer"
+             class="bg-white/80 backdrop-blur-xl rounded-3xl p-8 shadow-xl border border-emerald-100 transition-all duration-700 cursor-pointer transform hover:rotate-1 hover:-translate-y-3 hover:scale-[1.05] hover:shadow-[0_10px_40px_rgba(16,185,129,0.3)]"
         >
           <div class="flex justify-between items-center mb-4">
-            <h3 class="text-2xl font-semibold text-emerald-700">{{ item.name }}</h3>
-            <span class="font-semibold text-lg text-red-500">{{ item.price }}</span>
+            <h3 class="text-2xl font-bold text-emerald-800 tracking-wide">{{ item.name }}</h3>
+            <span class="font-semibold text-lg text-yellow-600">{{ item.price }}</span>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed">{{ item.description }}</p>
+          <p class="text-gray-600 text-md leading-relaxed">{{ item.description }}</p>
         </div>
       }
     </div>

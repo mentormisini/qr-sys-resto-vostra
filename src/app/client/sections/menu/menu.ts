@@ -1,7 +1,8 @@
 import {Component, ElementRef, inject, ViewChild} from '@angular/core';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import {animate, group, query, stagger, state, style, transition, trigger} from '@angular/animations';
 import {AdminService} from '../../../services/admin.service';
 import {take} from 'rxjs';
+
 
 @Component({
   selector: 'app-menu',
@@ -13,24 +14,45 @@ import {take} from 'rxjs';
   styleUrl: './menu.scss',
   standalone:true,
   animations: [
-    trigger('fadeInOut', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(10px)' }),
-        animate('400ms ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
-      ]),
-      transition(':leave', [
-        animate('400ms ease-in', style({ opacity: 0, transform: 'translateY(10px)' })),
-      ]),
-    ]),
-  ],
+    trigger('categorySwitch', [
+      transition('* => *', [
+        group([
+          // Animate old items out
+          query(':leave', [
+            stagger(-80, [
+              animate(
+                '400ms ease-in-out',
+                style({ opacity: 0, transform: 'rotateY(45deg) translateY(-20px) scale(0.9)' })
+              )
+            ])
+          ], { optional: true }),
+
+          // Animate new items in
+          query(':enter', [
+            style({ opacity: 0, transform: 'rotateY(-45deg) translateY(20px) scale(0.9)' }),
+            stagger(120, [
+              animate(
+                '500ms ease-out',
+                style({ opacity: 1, transform: 'rotateY(0) translateY(0) scale(1)' })
+              )
+            ])
+          ], { optional: true })
+        ])
+      ])
+    ])
+  ]
+
+
 
 
 })
 export class Menu {
   adminService = inject(AdminService);
+  @ViewChild('menu') menu!: ElementRef;
   categories$:any;
   selectedCategory:any;
   @ViewChild('tabsSection') tabsSection!: ElementRef;
+  animationKey =0;
 
   ngOnInit(): void {
     this.adminService.getCategories().pipe(take(1)).subscribe(resp=> {
@@ -40,21 +62,10 @@ export class Menu {
   }
   showHint = false;
   private hintShown = false;
-  ngAfterViewInit() {
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting && !this.hintShown) {
-            this.showSwipeHint();
-          }
-        },
-        { root: null, threshold: 0.5 }
-      );
-      observer.observe(this.tabsSection.nativeElement);
-    } else {
-      this.showSwipeHint();
-    }
-  }
+
+
+
+
 
   showSwipeHint() {
     this.showHint = true;
@@ -67,5 +78,6 @@ export class Menu {
 
   setCategory(cat: any) {
     this.selectedCategory = cat;
+    this.animationKey++;
   }
 }

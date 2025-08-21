@@ -104,8 +104,8 @@
               class="flex flex-col sm:flex-row flex-wrap gap-3 mt-2 items-center">
           <input type="text" [placeholder]="'menu.products.placeholder.name' | translate"
                  formControlName="name" class="border rounded-lg px-3 sm:px-4 py-2 focus:ring-2 focus:ring-gray-500 flex-1 min-w-[150px]" />
-          <input type="text" [placeholder]="'menu.products.placeholder.description' | translate"
-                 formControlName="description" class="border rounded-lg px-3 sm:px-4 py-2 focus:ring-2 focus:ring-gray-500 flex-1 min-w-[150px]" />
+          <textarea cols="2" rows="2" [placeholder]="'menu.products.placeholder.description' | translate"
+                 formControlName="description" class="border rounded-lg px-3 sm:px-4 py-2 focus:ring-2 focus:ring-gray-500 flex-1 min-w-[150px]" ></textarea>
           <input type="number" [placeholder]="'menu.products.placeholder.price' | translate"
                  formControlName="price" class="border rounded-lg px-3 sm:px-4 py-2 focus:ring-2 focus:ring-gray-500 w-full sm:w-28" />
           <button type="submit" [disabled]="productForm.invalid"

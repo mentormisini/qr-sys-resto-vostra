@@ -103,5 +103,8 @@ export class AdminService {
   login(creds:any):Observable<any>{
       return this.httpClient.post(`${environment.apiUrl}/auth/login`,creds);
   }
+  getQRDiscount(){
+      return this.httpClient.post(`${environment.apiUrl}/discount-qrcode`,{});
+  }
 
 }

@@ -137,5 +137,24 @@
   "scan-again": "Scan Again",
   "today-special": "Today's Special",
   "CHEFS_DAILY_SPECIALS": "Chef's Daily Specials",
-  "MENU_DESCRIPTION": "Curated dishes made fresh every day — discover what’s on the menu today."
+  "MENU_DESCRIPTION": "Curated dishes made fresh every day — discover what’s on the menu today.",
+  "get-in-touch": "Get In Touch",
+  "NEWS": {
+    "HEADER": "Here are the news of what will come soon",
+    "SUBHEADER": "Stay tuned for the latest updates and upcoming highlights",
+    "READ_MORE": "Read More",
+    "READ_LESS": "Read Less"
+  },
+  "VISIT_WEBSITE": "Visit Website",
+  "CONGRATS": "Congratulations!",
+  "ENJOY_DISCOUNT": "Enjoy 20% off—just for you!",
+  "QR_INFO": "This QR code can be used once only.",
+  "SHOW_AT_ENTRANCE": "Show it at the restaurant entrance to redeem your discount.",
+  "CLICK_TO_GET_DISCOUNT": "Click here and get a discount on our restaurant!",
+  "SAVE_QR_SHOW_RESTAURANT": "Save the QR and show it at the restaurant to redeem your discount.",
+  "GO_TO_RESTAURANT": "Go to Restaurant",
+  "GENERATE-QR": "Generate QR",
+  "screenshot-save": "Screenshot or save this image"
+
+
 }

@@ -9,7 +9,7 @@
     "test": "ng test",
     "deploy": "node scripts/deploy.js",
     "install-nginx": "node scripts/install-nginx.js",
-    "update-nginx-config" : "node scripts/update-nginx-config.js"
+    "update-nginx-config": "node scripts/update-nginx-config.js"
   },
   "prettier": {
     "overrides": [
@@ -33,8 +33,10 @@
     "@ngx-translate/core": "^17.0.0",
     "@ngx-translate/http-loader": "^17.0.0",
     "@tailwindcss/postcss": "^4.1.11",
+    "@types/gsap": "^1.20.2",
     "@zxing/ngx-scanner": "^20.0.0",
     "angularx-qrcode": "^20.0.0",
+    "aos": "^2.3.4",
     "canvas-confetti": "^1.9.3",
     "html2canvas": "^1.4.1",
     "node-ssh": "^13.2.1",

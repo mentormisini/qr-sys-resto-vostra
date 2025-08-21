@@ -1,41 +1,77 @@
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
-  <div *ngFor="let image of images; let i = index" class="group relative cursor-pointer overflow-hidden rounded-xl shadow-md">
+<section class="bg-gray-100 dark:bg-gray-900 py-16 px-4   flex items-center justify-center">
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-6xl  lg:grid-cols-4 gap-6 "    [@categorySwitch]="animationKey">
+
+  <div
+    *ngFor="let image of images; let i = index"
+    class="group relative cursor-pointer overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+    (click)="openModal(i)"
+  >
+    <!-- Image -->
     <img
       [src]="image?.imagePath"
-      class="w-full h-60 object-cover rounded-xl transition-transform duration-300 ease-in-out group-hover:scale-105"
-      (click)="openModal(i)"
+      class="w-full h-60 object-cover rounded-xl transition-transform duration-500 ease-in-out group-hover:scale-110 group-hover:rotate-1"
     />
-    <!-- Optional overlay on hover -->
-    <div  (click)="openModal(i)" class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white text-lg font-semibold">
-      View
+
+    <!-- Overlay on hover -->
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4 rounded-xl"
+    >
+      <h3 class="text-white text-lg font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+        {{'view-image'|translate}}
+      </h3>
     </div>
   </div>
 </div>
 
 <!-- Modal -->
 <div
-  class="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+  class="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
   *ngIf="selectedImage"
   (click)="closeModal()"
 >
-  <!-- Previous Button -->
-  <button
-    class="absolute left-4 text-white text-3xl font-bold p-2 bg-black/50 rounded hover:bg-opacity-70"
-    (click)="prevImage($event)"
-  >‹
-  </button>
-
-  <img
-    [src]="selectedImage"
-    class="max-w-full max-h-full rounded shadow-lg"
+  <div
+    class="relative max-w-4xl w-full max-h-[90vh] flex items-center justify-center"
     (click)="$event.stopPropagation()"
-  />
+  >
+    <!-- Close Button -->
+    <button
+      class="absolute top-4 right-4 text-white text-3xl p-2 bg-black/50 rounded-full hover:bg-black/70 transition duration-300"
+      (click)="closeModal()"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
 
+    </button>
 
-  <!-- Next Button -->
-  <button
-    class="absolute right-4 text-white text-3xl font-bold p-2 bg-black/50 rounded hover:bg-opacity-70"
-    (click)="nextImage($event)"
-  >›
-  </button>
+    <!-- Prev Button -->
+    <button
+      class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl p-3 bg-black/50 rounded-full hover:bg-black/70 transition duration-300 flex items-center justify-center"
+      (click)="prevImage($event)"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+      </svg>
+
+    </button>
+
+    <!-- Image -->
+    <img
+      [src]="selectedImage"
+      class="max-w-full max-h-full rounded-xl shadow-2xl transition-all duration-500 transform scale-95 animate-modalZoom"
+    />
+
+    <!-- Next Button -->
+    <button
+      class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl p-3 bg-black/50 rounded-full hover:bg-black/70 transition duration-300 flex items-center justify-center"
+      (click)="nextImage($event)"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+      </svg>
+
+    </button>
+  </div>
 </div>
+</section>

@@ -6,6 +6,7 @@ import {AsyncPipe, NgClass} from '@angular/common';
 import {AdminService} from '../../../services/admin.service';
 import {take} from 'rxjs';
 import {TranslatePipe} from '@ngx-translate/core';
+import {Discount} from '../discount/discount';
 
 @Component({
   selector: 'app-carousel',
@@ -14,6 +15,7 @@ import {TranslatePipe} from '@ngx-translate/core';
     Menu,
     NgClass,
     TranslatePipe,
+    Discount,
 
   ],
   templateUrl: './carousel.html',

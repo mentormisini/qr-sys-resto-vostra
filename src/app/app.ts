@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { firstValueFrom } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -20,6 +20,7 @@ export class App {
         this.translate.use('en')
         localStorage.setItem('language', 'en')
       }
+
   }
 
   switchLanguage(lang: string) {
