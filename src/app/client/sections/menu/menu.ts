@@ -7,8 +7,6 @@ import {take} from 'rxjs';
 @Component({
   selector: 'app-menu',
   imports: [
-
-
   ],
   templateUrl: './menu.html',
   styleUrl: './menu.scss',
@@ -41,9 +39,6 @@ import {take} from 'rxjs';
       ])
     ])
   ]
-
-
-
 
 })
 export class Menu {

@@ -132,5 +132,25 @@
   "Oops!": "Oups!",
   "Client unlocked a special": "Le client a déverrouillé un spécial",
   "discount": "rabais",
-  "scan-again": "Scanner à nouveau"
+  "scan-again": "Scanner à nouveau",
+  "today-special": "Spécial d'aujourd'hui",
+  "CHEFS_DAILY_SPECIALS": "Plat du jour",
+  "MENU_DESCRIPTION": "Les plats organisés fabriqués frais tous les jours - découvrez ce qui se trouve au menu aujourd'hui.",
+  "get-in-touch": "Entrer en contact",
+  "NEWS": {
+    "HEADER": "Voici les nouvelles de ce qui viendra bientôt",
+    "SUBHEADER": "Restez à l'écoute pour les dernières mises à jour et les points forts à venir",
+    "READ_MORE": "En savoir plus",
+    "READ_LESS": "Lire moins"
+  },
+  "VISIT_WEBSITE": "Visiter le site Web",
+  "CONGRATS": "Félicitations!",
+  "ENJOY_DISCOUNT": "Profitez de 20% de réduction - juste pour vous!",
+  "QR_INFO": "Ce code QR peut être utilisé une seule fois.",
+  "SHOW_AT_ENTRANCE": "Montrez-le à l'entrée du restaurant pour racheter votre remise.",
+  "CLICK_TO_GET_DISCOUNT": "Cliquez ici et obtenez une remise sur notre restaurant!",
+  "SAVE_QR_SHOW_RESTAURANT": "Économisez le QR et montrez-le au restaurant pour échanger votre remise.",
+  "GO_TO_RESTAURANT": "Aller au restaurant",
+  "GENERATE-QR": "Générer QR",
+  "screenshot-save": "Capture d'écran ou enregistrer cette image"
 }

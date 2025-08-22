@@ -22,5 +22,9 @@ export default [
     path:'gallery',
     loadComponent: ()=> import('./gallery/gallery').then(c=>c.Gallery),
   },
+  {
+    path:'book',
+    loadComponent: ()=> import('./booking/booking').then(c=>c.BookingComponent),
+  },
 
 ] as Route[]

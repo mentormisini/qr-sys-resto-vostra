@@ -82,27 +82,71 @@
       </div>
 
       <div class="relative bg-white rounded-3xl p-6 shadow-xl border border-gray-200 hover:border-red-500 transition-all duration-300">
+        <!-- Table Header -->
         <div class="flex items-center justify-between mb-4">
           <span class="text-4xl font-extrabold text-gray-800 tracking-wide">T2</span>
-          <span class="px-3 py-1 rounded-full text-xs font-bold bg-red-200 text-red-700 shadow-md">Occupied</span>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-yellow-200 text-yellow-700 shadow-md">
+      Partially Occupied
+    </span>
         </div>
-        <div class="flex items-center text-gray-500 text-sm mb-4">
+
+        <!-- Capacity -->
+        <div class="flex items-center text-gray-500 text-sm mb-6">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-500">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
           </svg>
           <span class="text-xl font-medium text-gray-700 ml-2">6 Guests</span>
         </div>
-        <div class="text-gray-500 text-sm space-y-2 mb-8">
-          <p><strong class="font-bold text-gray-800">Name:</strong> Alice Johnson</p>
-          <p><strong class="font-bold text-gray-800">Phone:</strong> +123456789</p>
-          <p><strong class="font-bold text-gray-800">Time:</strong> 7:30 PM</p>
+
+        <!-- Timeline: Busy & Free slots -->
+        <div class="space-y-3 text-sm">
+          <!-- Free slot -->
+          <div class="p-3 rounded-lg bg-green-100 text-green-700">
+            Free: 5:00 PM – 5:30 PM
+          </div>
+
+          <!-- Reservation 1 -->
+          <div class="p-3 rounded-lg bg-red-100 text-red-700">
+            Reserved: 5:30 PM – 6:30 PM <br />
+            <span class="font-bold">John Doe</span> (+123456789)
+          </div>
+
+          <!-- Free slot -->
+          <div class="p-3 rounded-lg bg-green-100 text-green-700">
+            Free: 6:30 PM – 7:00 PM
+          </div>
+
+          <!-- Reservation 2 -->
+          <div class="p-3 rounded-lg bg-red-100 text-red-700">
+            Reserved: 7:00 PM – 8:30 PM <br />
+            <span class="font-bold">Alice Johnson</span> (+987654321)
+          </div>
+
+          <!-- Free slot -->
+          <div class="p-3 rounded-lg bg-green-100 text-green-700">
+            Free: 8:30 PM – 9:00 PM
+          </div>
+
+          <!-- Reservation 3 -->
+          <div class="p-3 rounded-lg bg-red-100 text-red-700">
+            Reserved: 9:00 PM – 10:00 PM <br />
+            <span class="font-bold">Mark Smith</span> (+555666777)
+          </div>
+
+          <!-- Free slot -->
+          <div class="p-3 rounded-lg bg-green-100 text-green-700">
+            Free: 10:00 PM – 11:00 PM
+          </div>
         </div>
+
+        <!-- Reserve Button -->
         <button class="absolute bottom-6 right-6 p-3 rounded-full shadow-lg flex items-center justify-center bg-gray-50 border border-gray-200 hover:scale-110 transition-transform duration-200">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-gray-700">
             <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
           </svg>
         </button>
       </div>
+
 
       <div class="group relative bg-white rounded-3xl p-6 shadow-xl border border-gray-200 hover:border-yellow-500 transition-all duration-500 ease-in-out transform hover:-translate-y-2 cursor-pointer">
         <div class="flex items-center justify-between mb-4">
