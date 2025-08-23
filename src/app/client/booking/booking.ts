@@ -1,6 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {AsyncPipe, DatePipe, JsonPipe, NgForOf, NgIf, SlicePipe} from '@angular/common';
+import {AsyncPipe, DatePipe, JsonPipe, NgClass, NgForOf, NgIf, SlicePipe} from '@angular/common';
 import {BookingsService} from '../../services/bookings.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
@@ -14,6 +14,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
     DatePipe,
     SlicePipe,
     ReactiveFormsModule,
+    NgClass,
 
 
   ],
