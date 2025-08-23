@@ -13,12 +13,27 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule
   ],
   templateUrl: './admin-layout.html',
+  standalone: true,
   styleUrl: './admin-layout.scss'
 })
 export class AdminLayout {
-  sidebarOpen = false;
+  sidebarOpen = true;
+  sidebarCollapsed = false;
 
+  // Toggle Sidebar (Open/Close)
   toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
   }
+
+  // Toggle Sidebar Collapse (Full/Collapsed)
+  toggleSidebarCollapse() {
+    this.sidebarCollapsed = !this.sidebarCollapsed;
+  }
+
+  // Close Sidebar when clicking a menu item
+  closeSidebar() {
+    this.sidebarOpen = false;
+  }
+
+
 }

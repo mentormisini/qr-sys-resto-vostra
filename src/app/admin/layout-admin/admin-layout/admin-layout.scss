@@ -31,3 +31,13 @@
     border-radius: 9999px;
     background: #CD212A;
 }
+
+/* Add transition for width and left property */
+.transition-sidebar {
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+/* Apply transition to the collapse button */
+.transition-button {
+  transition: left 0.3s ease-in-out;
+}

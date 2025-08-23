@@ -29,4 +29,7 @@ export class BookingsService {
     return this.http.post(`${environment.apiUrl}/reservations`,payload);
   }
 
+  findAllTablesByAreaID(areaId:number,date:string):Observable<any> {
+    return this.http.get(`${environment.apiUrl}/reservations/men/${areaId}/${date}`);
+  }
 }

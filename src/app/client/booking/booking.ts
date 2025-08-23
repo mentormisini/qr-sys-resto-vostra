@@ -17,9 +17,6 @@ import {Router} from '@angular/router';
     SlicePipe,
     ReactiveFormsModule,
     NgClass,
-
-
-
   ],
   templateUrl: './booking.html',
   styleUrl: './booking.scss',

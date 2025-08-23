@@ -1,7 +1,12 @@
-<div class="flex min-h-screen text-gray-900">
+<div class="flex min-h-screen text-gray-900 ">
   <!-- Sidebar -->
-  <div [ngClass]="{'-translate-x-full': !sidebarOpen, 'translate-x-0': sidebarOpen}"
-    class="fixed inset-y-0 left-0 z-30 w-64 bg-white/90 text-gray-900 shadow rounded-r-3xl transform md:translate-x-0 transition-transform duration-500 ease-in-out border-r border-[#e0eafc]">
+  <div [ngClass]="{
+        '-translate-x-full': !sidebarOpen,
+        'translate-x-0': sidebarOpen,
+        'hidden': sidebarCollapsed,
+        'w-64': !sidebarCollapsed
+      }"
+    class="fixed  inset-y-0 left-0 z-30 w-64 bg-white/90 text-gray-900 shadow rounded-r-3xl transform md:translate-x-0 transition-transform duration-500 ease-in-out border-r border-[#e0eafc]">
 
     <!-- Logo & Toggle -->
     <div class="p-6 flex items-center justify-between border-b border-[#e0eafc]">
@@ -63,13 +68,40 @@
   </button>
 
   <!-- Main Content -->
-  <div class="flex-1 pt-1 pr-2 pl-2 ml-0 md:ml-64 h-screen flex flex-col">
-    <div class="flex-1 flex items-center justify-center">
-      <div
-        class="bg-white/80 rounded-2xl border border-[#e0eafc] shadow-lg backdrop-blur-lg w-full h-full flex flex-col">
+  <div class="flex-1 pt-1 pr-2 pl-2 ml-0 h-screen flex flex-col transition-sidebar"
+       [ngClass]="{
+    'w-20': sidebarCollapsed,
+    'md:ml-64': !sidebarCollapsed
+  }">
+
+    <div class="relative flex-1 flex items-center justify-center">
+      <!-- Collapse Button (absolute position at top-left) -->
+      <button (click)="toggleSidebarCollapse()"
+              [ngClass]="{
+        '-left-5' : !sidebarCollapsed,
+        '-left-1' : sidebarCollapsed
+      }"
+              class="z-50 border-emerald-800 border cursor-pointer absolute top-0.5 p-1 rounded-full shadow-lg bg-white transition-button">
+
+        <!-- Collapse Icons -->
+        @if(!sidebarCollapsed){
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-emerald-800  w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+          </svg>
+        } @else {
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-emerald-800 size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          </svg>
+        }
+
+      </button>
+
+      <!-- Main Content -->
+      <div class="bg-white/80 rounded-2xl border border-[#e0eafc] shadow-lg backdrop-blur-lg w-full h-full flex flex-col">
         <router-outlet></router-outlet>
       </div>
     </div>
   </div>
+
 
 </div>
