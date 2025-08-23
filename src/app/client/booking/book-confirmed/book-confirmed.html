@@ -1,0 +1,74 @@
+<div *ngIf="response" class="min-h-screen flex items-center justify-center bg-gray-100 bg-gradient-to-br from-green-100 via-white to-green-50 p-6">
+
+  <div class="relative w-full max-w-md mx-auto">
+
+    <div
+      class="absolute inset-0 rounded-xl transition-all duration-500
+      bg-gradient-to-br from-indigo-500 to-purple-500
+      blur-xl opacity-0 group-hover:opacity-100 group-hover:scale-110"
+    ></div>
+
+    <div
+      class="reservation-success-card bg-white rounded-xl shadow-xl p-6 sm:p-8
+      w-full text-center border border-gray-200 z-10 relative
+      transition-transform duration-300 hover:scale-105 group"
+    >
+
+      <p class="text-green-600  text-3xl mb-4 leading-tight">
+        {{ response.message || 'Booking Confirmed!' }}
+      </p>
+
+      <div *ngIf="response.qrCode" class="mt-6 flex justify-center">
+        <img
+          [src]="response.qrCode"
+          alt="Booking QR Code"
+          class="max-w-[180px] sm:max-w-[220px] border-4 border-green-500 rounded-xl shadow-md transition-transform duration-300 hover:scale-105"
+        />
+      </div>
+
+      <div class="mt-8 text-left text-gray-700">
+        <p class="font-bold text-xl mb-4 text-gray-800 border-b border-gray-200 pb-2">Reservation Details</p>
+        <div *ngIf="response.reservation" class="space-y-4 text-base">
+
+          <div class="flex items-center space-x-3">
+            <span class="text-gray-500"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" fill-rule="evenodd"></path></svg></span>
+            <p>
+              <strong class="text-gray-900">Customer:</strong> <span class="text-gray-700 font-medium">{{ response.reservation.customerName }}</span>
+            </p>
+          </div>
+
+          <div class="flex items-center space-x-3">
+            <span class="text-gray-500"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zm-3 8a6 6 0 00-6 6v1h12v-1a6 6 0 00-6-6z" clip-rule="evenodd" fill-rule="evenodd"></path></svg></span>
+            <p>
+              <strong class="text-gray-900">Guests:</strong> <span class="text-gray-700 font-medium">{{ response.reservation.guests }}</span>
+            </p>
+          </div>
+
+          <div class="flex items-center space-x-3">
+            <span class="text-gray-500"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.774a11.087 11.087 0 006.103 6.103l.774-1.548a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg></span>
+            <p>
+              <strong class="text-gray-900">Phone:</strong> <span class="text-gray-700 font-medium">{{ response.reservation.phone }}</span>
+            </p>
+          </div>
+
+          <div class="flex items-center space-x-3">
+            <span class="text-gray-500"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" fill-rule="evenodd"></path></svg></span>
+            <p>
+              <strong class="text-gray-900">Time:</strong> <span class="text-gray-700 font-medium">{{ response.reservation.startTime | date:'shortTime' }} - {{ response.reservation.endTime | date:'shortTime' }}</span>
+            </p>
+          </div>
+
+        </div>
+        <div *ngIf="!response.reservation" class="text-gray-500 italic">
+          No reservation details available.
+        </div>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-gray-200 text-gray-600 text-sm">
+        <p>We look forward to seeing you!</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+

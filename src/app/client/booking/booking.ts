@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {AsyncPipe, DatePipe, JsonPipe, NgClass, NgForOf, NgIf, SlicePipe} from '@angular/common';
 import {BookingsService} from '../../services/bookings.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {BookConfirmed} from './book-confirmed/book-confirmed';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-booking',
@@ -11,10 +13,11 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
     NgForOf,
     NgIf,
     AsyncPipe,
-    DatePipe,
+
     SlicePipe,
     ReactiveFormsModule,
     NgClass,
+
 
 
   ],
@@ -54,6 +57,8 @@ export class BookingComponent implements OnInit {
   selectedTable: any;
   durations = [30, 60, 90, 120];
   selectedDuration: number = 30;
+  router = inject(Router)
+
 
   constructor(private fb: FormBuilder) {
     this.bookingForm = this.fb.group({
@@ -127,8 +132,8 @@ export class BookingComponent implements OnInit {
   submitBooking() {
     if (this.bookingForm.invalid) return;
 
-    console.log('Booking submitted', this.bookingForm.value);
-    this.bookingService.book(this.bookingForm.value).subscribe(()=>{
+
+    this.bookingService.book(this.bookingForm.value).subscribe((response)=>{
       this.bookingForm.reset();
       this.bookingDate = '';
       this.tableAvailable = null;
@@ -136,6 +141,12 @@ export class BookingComponent implements OnInit {
       this.selectedArea = null;
       this.selectedTable = null;
       this.selectedDuration = 30;
+      // Navigate and pass full object
+      this.router.navigate(['book-confirmed'], {
+        state: { response: response }
+      });
+
+
     })
 
 

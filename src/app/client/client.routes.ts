@@ -26,5 +26,9 @@ export default [
     path:'book',
     loadComponent: ()=> import('./booking/booking').then(c=>c.BookingComponent),
   },
+  {
+    path:'book-confirmed',
+    loadComponent: ()=> import('./booking/book-confirmed/book-confirmed').then(c=>c.BookConfirmed),
+  },
 
 ] as Route[]
