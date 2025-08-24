@@ -154,7 +154,8 @@
   "SAVE_QR_SHOW_RESTAURANT": "Save the QR and show it at the restaurant to redeem your discount.",
   "GO_TO_RESTAURANT": "Go to Restaurant",
   "GENERATE-QR": "Generate QR",
-  "screenshot-save": "Screenshot or save this image"
+  "screenshot-save": "Screenshot or save this image",
+  "qr-not-found": "QR Not Found "
 
 
 }

@@ -3,7 +3,7 @@
     align-items: center;
     padding: 0.75rem 1.25rem;
     border-radius: 0.75rem;
-    font-weight: 600;
+
     font-size: 1.125rem;
     position: relative;
     transition: all 0.2s;
@@ -18,7 +18,7 @@
 .active-link {
     background: rgba(67, 206, 162, 0.2); // #43cea2/20
     color: #05241a;
-    font-weight: 700;
+
 }
 
 .active-link::before {

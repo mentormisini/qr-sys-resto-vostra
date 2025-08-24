@@ -2,6 +2,7 @@ import { Component,Input } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {DatePipe, NgIf} from '@angular/common';
 import {Router} from '@angular/router';
+import {TranslatePipe} from '@ngx-translate/core';
 
 
 @Component({
@@ -9,7 +10,8 @@ import {Router} from '@angular/router';
   imports: [
     FormsModule,
     NgIf,
-    DatePipe
+    DatePipe,
+    TranslatePipe
   ],
   templateUrl: './book-confirmed.html',
   styleUrl: './book-confirmed.scss'

@@ -1,11 +1,6 @@
-<div class="relative min-h-screen rounded-2xl bg-sky-50 text-gray-800 font-sans overflow-hidden">
-  <div class="absolute inset-0 z-0 opacity-40">
-    <div class="absolute inset-0 bg-no-repeat bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1577907577884-a16900f6b5b5?q=80&w=2835&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); filter: blur(10px);"></div>
-    <div class="absolute inset-0" style="background: radial-gradient(circle at top, rgba(209, 250, 229, 0.5), transparent 70%), radial-gradient(circle at bottom, rgba(255, 240, 245, 0.5), transparent 70%);"></div>
-  </div>
-
-  <div class="relative z-10 p-6 ">
-    <div class="flex flex-col md:flex-row justify-between items-center ">
+<div class="relative min-h-screen rounded-2xl bg-sky-50 text-gray-800 font-sans">
+  <div class="relative z-10 p-6">
+    <div class="flex flex-col md:flex-row justify-between items-center sticky top-2 z-50 ">
       <nav class="flex space-x-1 p-1 rounded-full bg-white bg-opacity-70 backdrop-filter backdrop-blur-md border border-gray-200 shadow-lg w-full lg:w-auto justify-center">
 
         <input type="date" class="p-2 custom-datepicker " [(ngModel)]="selectedDate"  (ngModelChange)="dateChanged($event)">
@@ -23,26 +18,10 @@
           {{area?.name}}
         </button>}
       </nav>
-    </div>
-    <div class="h-px w-full bg-gray-300 my-5"></div>
-    <div class="flex flex-col lg:flex-row justify-between items-center mb-10 gap-6">
-
-
       <div class="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
-        <div class="relative w-full sm:w-auto flex-1">
-          <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
-          </div>
-          <input
-            type="text"
-            placeholder="Search reservations..."
-            class="w-full pl-12 pr-6 py-2.5 rounded-full bg-white bg-opacity-70 backdrop-filter backdrop-blur-md border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-lg text-gray-700 placeholder-gray-400 transition-all duration-300"
-          />
-        </div>
 
-        <button class="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-br from-emerald-400 to-emerald-600 hover:from-emerald-500 hover:to-emerald-700 text-white rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+
+        <button  (click)="showScanModal = true;startCamera()" class="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-br from-emerald-400 to-emerald-600 hover:from-emerald-500 hover:to-emerald-700 text-white rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5ZM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5ZM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5Z" />
             <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75ZM6.75 16.5h.75v.75h-.75v-.75ZM16.5 6.75h.75v.75h-.75v-.75ZM13.5 13.5h.75v.75h-.75v-.75ZM13.5 19.5h.75v.75h-.75v-.75ZM19.5 13.5h.75v.75h-.75v-.75ZM19.5 19.5h.75v.75h-.75v-.75ZM16.5 16.5h.75v.75h-.75v-.75Z" />
@@ -57,10 +36,11 @@
         </button>
       </div>
     </div>
+    <div class="h-px w-full bg-white my-5"></div>
+
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"      [@categorySwitch]="animationKey">
       @for(table of tablesOfArea; track $index){
-
 
         <div class="group relative bg-white rounded-2xl p-6 shadow-md border border-gray-200 transition-all duration-300 ease-in-out transform hover:-translate-y-2 cursor-pointer">
 
@@ -68,26 +48,63 @@
             <div class="flex items-start justify-between mb-4">
               <div class="flex flex-col">
                 <h3 class="text-3xl font-bold text-gray-800 tracking-tight leading-none max-w-[calc(100%-80px)]"> {{table?.name}}</h3>
-                <p class="text-base font-medium text-gray-500 mt-1">{{table?.capacity}} Capacity</p>
+
               </div>
               <div class="flex-shrink-0">
-                <span class="px-3 py-1 rounded-full text-xs font-bold bg-green-500 text-white">Available</span>
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-gray-100 shadow ">{{'capacity'|translate}} {{table?.capacity}}
+                </span>
               </div>
             </div>
 
             <div class="space-y-3 text-sm">
               @for(reservation of table?.reservations; track $index){
-                <div class="flex items-center justify-between p-3 rounded-xl bg-gray-50 shadow-sm text-gray-800 transition-all duration-300 ease-in-out group-hover:bg-gray-100">
-                  <div class="flex flex-col">
-                    <p class="font-semibold text-gray-900">{{ reservation?.customerName }}</p>
-                    <p class="text-xs text-gray-500">{{ reservation?.phone }}</p>
+                <div class="flex flex-col p-3 rounded-xl bg-gray-50 shadow-sm text-gray-800 transition-all duration-300 ease-in-out" (click)="assignFooter(reservation.confirmedCode)">
+
+                  <!-- Top content -->
+                  <div class="flex items-center justify-between">
+                    <!-- Left side -->
+                    <div class="flex flex-col">
+                      <p class="font-semibold text-gray-900">{{ reservation?.customerName }}</p>
+                      <p class="text-xs text-gray-500">{{ reservation?.phone }}</p>
+                    </div>
+
+                    <!-- Right side -->
+                    <div class="flex items-center gap-2">
+                      <p class="text-xs font-semibold text-emerald-600">
+                        {{ reservation?.startTime | utcTime }} - {{ reservation?.endTime | utcTime }}
+                      </p>
+                    </div>
                   </div>
-                  <div class="flex-shrink-0 text-right">
-                    <p class="font-mono text-xs text-emerald-600">{{ reservation?.startTime | utcTime }} - {{ reservation?.endTime | utcTime }}</p>
+                  @if (clickToShowFooter === reservation?.confirmedCode){
+                  <div class="border-t border-gray-200 my-2"></div>
+                  <!-- Footer inside card -->
+                  <div class="mt-2 flex justify-between w-full gap-2">
+                    <button class="w-full flex  justify-center bg-red-500 hover:bg-red-700 text-white text-xs py-1 rounded-lg shadow-sm transition">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                      </svg>
+                      {{ 'delete' |translate }}
+                    </button>
+                    <button   (click)="$event.stopPropagation(); assignFooter('')"  class="w-full flex justify-center  bg-gray-200 hover:bg-gray-300 text-gray-800 text-xs py-1 rounded-lg shadow-sm transition">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                      </svg>
+                      {{'cancel'|translate}}
+                    </button>
+
                   </div>
+                  }
                 </div>
               }
+
+              @if (table?.reservations.length === 0) {
+                <span class="block w-full bg-gray-50 text-cyan-950 rounded-full text-center shadow p-1">
+      {{ 'free-table' | translate }}
+    </span>
+              }
             </div>
+
+
           </div>
         </div>
       }
@@ -95,3 +112,114 @@
     </div>
   </div>
 </div>
+
+<!-- Modal Background -->
+@if (showScanModal){
+<div class="fixed inset-0 bg-gray-900/80 flex items-center justify-center z-50 p-4">
+  <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden max-w-lg w-full transform transition-all duration-300">
+
+    <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+      <h2 class="text-2xl  text-gray-900 dark:text-white">Reservation Details</h2>
+      <button (click)="showScanModal = false" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors" aria-label="Close modal">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="p-6 space-y-6">
+
+      @if (!scanned) {
+        <div class="bg-gray-950 rounded-2xl shadow-xl overflow-hidden border border-gray-700 aspect-video relative flex justify-center items-center">
+          <zxing-scanner
+            #scanner
+            [device]="currentDevice"
+            (scanSuccess)="onCodeResult($event)"
+            class="absolute inset-0 w-full h-full object-cover rounded-2xl">
+          </zxing-scanner>
+
+          <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-4 left-4 w-12 h-12 border-t-4 border-l-4 border-cyan-500 rounded-tl-lg"></div>
+            <div class="absolute top-4 right-4 w-12 h-12 border-t-4 border-r-4 border-cyan-500 rounded-tr-lg"></div>
+            <div class="absolute bottom-4 left-4 w-12 h-12 border-b-4 border-l-4 border-cyan-500 rounded-bl-lg"></div>
+            <div class="absolute bottom-4 right-4 w-12 h-12 border-b-4 border-r-4 border-cyan-500 rounded-br-lg"></div>
+          </div>
+
+          <div class="absolute inset-0 flex justify-center items-center pointer-events-none  animate-pulse">
+            <div class="w-4/5 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full animate-pulse-slow"></div>
+          </div>
+
+          <div class="absolute bottom-4 w-full text-center pointer-events-none">
+            <small class="text-cyan-400 font-semibold animate-pulse-slow tracking-wider">{{ 'scaning' | translate }}</small>
+          </div>
+        </div>
+      }
+    @if(successMessage){
+      <div class="space-y-3">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+          <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+            <p class="text-xs uppercase tracking-wider font-medium text-gray-400 dark:text-gray-500">Customer</p>
+            <p class="mt-1 text-sm font-medium text-gray-900 dark:text-gray-200">{{ successMessage?.customerName }}</p>
+          </div>
+          <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+            <p class="text-xs uppercase tracking-wider font-medium text-gray-400 dark:text-gray-500">Phone</p>
+            <p class="mt-1 text-sm font-medium text-gray-900 dark:text-gray-200">{{ successMessage?.phone }}</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+          <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+            <p class="text-xs uppercase tracking-wider font-medium text-gray-400 dark:text-gray-500">Start Time</p>
+            <p class="mt-1 text-sm font-medium text-gray-900 dark:text-gray-200">{{ successMessage?.startTime | date:'short' }}</p>
+          </div>
+          <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+            <p class="text-xs uppercase tracking-wider font-medium text-gray-400 dark:text-gray-500">End Time</p>
+            <p class="mt-1 text-sm font-medium text-gray-900 dark:text-gray-200">{{ successMessage?.endTime | date:'short' }}</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+          <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+            <p class="text-xs uppercase tracking-wider font-medium text-gray-400 dark:text-gray-500">Table & Area</p>
+            <div class="flex items-center gap-4 mt-1 text-sm font-medium text-gray-900 dark:text-gray-200">
+              <span>Table: {{ successMessage?.table?.name }}</span>
+              <span class="w-px h-4 bg-gray-400"></span>
+              <span>Area: {{ successMessage?.table?.area?.name }}</span>
+            </div>
+
+
+          </div>
+          <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+            <p class="text-xs uppercase tracking-wider font-medium text-gray-400 dark:text-gray-500">Capacity & Guests</p>
+            <p class="mt-1 text-sm font-medium text-gray-900 dark:text-gray-200">{{ successMessage?.guests }}</p>
+          </div>
+        </div>
+
+        <div class="bg-indigo-50 dark:bg-gray-700 p-4 rounded-lg shadow-sm text-center">
+          <p class="text-xs uppercase tracking-wider font-medium text-indigo-700 dark:text-indigo-400">Confirmation Code</p>
+          <p class="mt-1 text-sm font-mono font-medium text-indigo-900 dark:text-indigo-300 break-words">{{ successMessage?.confirmedCode }}</p>
+        </div>
+      </div>
+    } @if(serverMessage) {
+      <div class="flex items-center justify-center rounded-xl  bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white p-4">
+        <div class="text-center space-y-6">
+          <div class="flex flex-col items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-20 animate-pulse">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+            </svg>
+
+            <h1 class="mt-4 text-2xl tracking-tight text-gray-900 dark:text-white ">  {{serverMessage |translate}}</h1>
+          </div>
+
+        </div>
+      </div>
+    }
+    </div>
+
+    <div class="p-6 bg-gray-50 dark:bg-gray-700 border-t border-gray-200 dark:border-gray-600 flex justify-end gap-3">
+      <button class="px-6 py-3 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full shadow-sm hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-200 font-semibold text-sm" (click)="showScanModal = false">Cancel</button>
+      <button class="px-6 py-3 bg-cyan-600 text-white rounded-full shadow-md hover:bg-cyan-700 transition-colors duration-200 font-semibold text-sm" (click)="startCamera()">{{'scan-again'|translate}}</button>
+    </div>
+  </div>
+</div>
+}

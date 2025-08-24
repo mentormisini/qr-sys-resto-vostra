@@ -32,4 +32,7 @@ export class BookingsService {
   findAllTablesByAreaID(areaId:number,date:string):Observable<any> {
     return this.http.get(`${environment.apiUrl}/reservations/men/${areaId}/${date}`);
   }
+  getReservationByQR(code:string):Observable<any>{
+    return this.http.get(`${environment.apiUrl}/reservations/${code}`);
+  }
 }
