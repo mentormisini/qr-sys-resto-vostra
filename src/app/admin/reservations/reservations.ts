@@ -1,12 +1,14 @@
 import {Component, inject, ViewChild} from '@angular/core';
 import {BookingsService} from '../../services/bookings.service';
-import {AsyncPipe, DatePipe, NgClass} from '@angular/common';
+import {AsyncPipe, DatePipe, NgClass, UpperCasePipe} from '@angular/common';
 import {UtcTimePipe} from '../../pipe/utc.pipe';
 import {FormsModule} from '@angular/forms';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {animate, group, query, stagger, style, transition, trigger} from '@angular/animations';
 import {ZXingScannerComponent, ZXingScannerModule} from '@zxing/ngx-scanner';
-
+import { DatePickerModule } from 'primeng/datepicker';
+import {ToastService} from '../../shared/toast.service';
+import {ToasterComponent} from '../../shared/notify/notify';
 
 @Component({
   selector: 'app-reservations',
@@ -18,6 +20,9 @@ import {ZXingScannerComponent, ZXingScannerModule} from '@zxing/ngx-scanner';
     TranslatePipe,
     NgClass,
     ZXingScannerModule,
+    DatePickerModule,
+    ToasterComponent,
+    UpperCasePipe
 
   ],
   templateUrl: './reservations.html',
@@ -67,7 +72,10 @@ export class Reservations {
 bookingService = inject(BookingsService);
 area$ = this.bookingService.getAreas();
 tablesOfArea:any;
-  selectedDate: string = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+  translate = inject(TranslateService);
+  toastService = inject(ToastService);
+  selectedDate: Date = new Date();
+
   selectedArea:any;
   animationKey=0;
   clickToShowFooter!:any;
@@ -80,14 +88,24 @@ tablesOfArea:any;
   currentDevice: MediaDeviceInfo | undefined;
   showScanModal =false;
 
-  getTablesByArea(area:any){
+  getTablesByArea(area: any) {
     this.selectedArea = area;
-    this.bookingService.findAllTablesByAreaID(area?.id, this.selectedDate).subscribe(resp=> {
-        this.tablesOfArea = resp;
-        this.animationKey++;
-      }
-    )
+
+    // Format as yyyy-MM-dd safely in local Europe time
+    const date = this.selectedDate;
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+    const formatted = `${year}-${month}-${day}`;
+
+
+
+    this.bookingService.findAllTablesByAreaID(area?.id, formatted).subscribe(resp => {
+      this.tablesOfArea = resp;
+      this.animationKey++;
+    });
   }
+
   dateChanged(event:any){
     this.selectedArea = null;
     this.tablesOfArea =null;
@@ -141,4 +159,25 @@ tablesOfArea:any;
       this.scanner.scanStart();
     }
   }
+  deleteReservation(reservation: any) {
+    const confirmDelete = window.confirm(
+      this.translate.instant('toast.confirm.delete_area')
+    );
+
+    if (confirmDelete) {
+      this.bookingService.deleteReservation(reservation.id).subscribe({
+        next: () => {
+          const message = this.translate.instant('toast.success.operation_successful');
+          this.toastService.show(message, 'error');
+          this.getTablesByArea(this.selectedArea)
+        },
+        error: (err) => {
+          const message = this.translate.instant('toast.error.operation_failed');
+          this.toastService.show(message, 'error');
+
+        }
+      });
+    }
+  }
+
 }

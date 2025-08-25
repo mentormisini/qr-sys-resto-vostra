@@ -16,3 +16,9 @@
 .animate-fade-in {
   animation: fade-in 0.3s ease-out forwards;
 }
+:host ::ng-deep .p-datepicker .p-inputtext {
+  border: none;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}

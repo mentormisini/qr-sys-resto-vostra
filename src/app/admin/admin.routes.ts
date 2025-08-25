@@ -42,5 +42,9 @@ export default [
     path: 'reservation',
     loadComponent: () => import('./reservations/reservations').then(c => c.Reservations),
   },
+  {
+    path: 'reservation-config',
+    loadComponent: () => import('./reservation-config/reservation-config').then(c => c.ReservationConfig),
+  },
 
 ] as Route[]

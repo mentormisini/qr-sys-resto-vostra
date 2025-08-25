@@ -7,6 +7,7 @@ import {AdminService} from '../../../services/admin.service';
 import {take} from 'rxjs';
 import {TranslatePipe} from '@ngx-translate/core';
 import {Discount} from '../discount/discount';
+import {BookingComponent} from '../../booking/booking';
 
 @Component({
   selector: 'app-carousel',
@@ -16,6 +17,7 @@ import {Discount} from '../discount/discount';
     NgClass,
     TranslatePipe,
     Discount,
+    BookingComponent,
 
   ],
   templateUrl: './carousel.html',

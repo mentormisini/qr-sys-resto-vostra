@@ -1,4 +1,4 @@
-<div class="flex min-h-screen text-gray-900 ">
+<div class="flex min-h-screen text-gray-900  ">
   <!-- Sidebar -->
   <div [ngClass]="{
         '-translate-x-full': !sidebarOpen,
@@ -17,7 +17,7 @@
     </div>
 
     <!-- Menu Items -->
-    <nav class="mt-8 space-y-2">
+    <nav class="mt-8 space-y-2 overflow-auto  scroll-smooth" style="max-height: calc(100vh - 9rem);">
       <a routerLink="dashboard" (click)="sidebarOpen =false" routerLinkActive=" active-link" class="sidebar-link">
         <span class="mr-1"><svg  xmlns="http://www.w3.org/2000/svg"  width="28"  height="28"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-smart-home"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 8.71l-5.333 -4.148a2.666 2.666 0 0 0 -3.274 0l-5.334 4.148a2.665 2.665 0 0 0 -1.029 2.105v7.2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-7.2c0 -.823 -.38 -1.6 -1.03 -2.105" /><path d="M16 15c-2.21 1.333 -5.792 1.333 -8 0" /></svg>
 </span> {{'dashboard'|translate}}
@@ -54,10 +54,20 @@
         </svg>
             </span> {{'read-qr'|translate}}
       </a>
+
       <a routerLink="reservation" (click)="sidebarOpen =false"  routerLinkActive="active-link" class="sidebar-link">
         <span class="mr-2">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-icon lucide-calendar"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
             </span> {{'reservations'|translate}}
+      </a>
+
+      <a routerLink="reservation-config" (click)="sidebarOpen =false"  routerLinkActive="active-link" class="sidebar-link">
+        <span class="mr-2">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+</svg>
+
+            </span> {{'configuration'|translate}}
       </a>
     </nav>
   </div>

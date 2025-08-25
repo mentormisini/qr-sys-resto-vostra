@@ -8,11 +8,12 @@ import {provideRouter, withInMemoryScrolling} from '@angular/router';
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
-
+import Aura from '@primeuix/themes/aura';
 // Add this import for HttpClientModule
 import { HttpClient } from '@angular/common/http';
 import { TRANSLATE_HTTP_LOADER_CONFIG, TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import {providePrimeNG} from 'primeng/config';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader();
@@ -22,6 +23,11 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
+    providePrimeNG({
+      theme: {
+        preset: Aura
+      }
+    }),
     provideRouter(
       routes,
       withInMemoryScrolling({

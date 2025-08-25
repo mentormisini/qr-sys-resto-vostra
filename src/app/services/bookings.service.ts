@@ -35,4 +35,34 @@ export class BookingsService {
   getReservationByQR(code:string):Observable<any>{
     return this.http.get(`${environment.apiUrl}/reservations/${code}`);
   }
+  getSchedule():Observable<any> {
+    return this.http.get(`${environment.apiUrl}/restaurant-schedules`);
+  }
+  editSchedule(payload:any,id:number):Observable<any> {
+    return this.http.put(`${environment.apiUrl}/restaurant-schedules/${id}`,payload);
+  }
+  createArea(payload:any):Observable<any> {
+    return this.http.post(`${environment.apiUrl}/area`,payload);
+  }
+  editArea(payload:any,id:number):Observable<any> {
+    return this.http.put(`${environment.apiUrl}/area/${id}`,payload);
+  }
+  deleteArea(id:number):Observable<any> {
+    return this.http.delete(`${environment.apiUrl}/area/${id}`);
+  }
+  getTablesByArea(id:number):Observable<any> {
+    return this.http.get(`${environment.apiUrl}/tables/area/${id}`);
+  }
+  createTableOnArea(payload:any):Observable<any> {
+    return this.http.post(`${environment.apiUrl}/tables`,payload);
+  }
+  deleteReservation(id:number):Observable<any> {
+    return this.http.delete(`${environment.apiUrl}/reservations/delete/${id}`);
+  }
+  editTable(payload:any,id:number):Observable<any> {
+    return this.http.patch(`${environment.apiUrl}/tables/${id}`,payload);
+  }
+  deleteTable(id:number):Observable<any> {
+    return this.http.delete(`${environment.apiUrl}/tables/${id}`);
+  }
 }

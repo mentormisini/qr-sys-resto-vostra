@@ -4,14 +4,15 @@
             "operation_successful": "Operation successful!"
         },
         "info": {
-            "some_info": "Here is some information."
+            "some_info": "Data changed successful."
         },
         "error": {
             "operation_failed": "Operation failed!"
         },
         "warning": {
             "check_input": "Please check your input."
-        }
+        },
+      "confirm.delete_area": "Are you sure for deleting this"
     },
   "password": "Password",
   "choose-language": "Choose Language",
@@ -155,7 +156,20 @@
   "GO_TO_RESTAURANT": "Go to Restaurant",
   "GENERATE-QR": "Generate QR",
   "screenshot-save": "Screenshot or save this image",
-  "qr-not-found": "QR Not Found "
+  "qr-not-found": "QR Not Found",
+  "reservations": "Reservations",
+  "configuration": "Configuration",
+  "configure-area-tables": "Configure Area Tables",
+  "configure-schedule": "Configure Schedule (working-hours)",
+  "table-name": "Table Name",
+  "add-new-table": "Add New Table",
+  "capacity": "Capacity",
+  "free-table": "Free Table",
+  "create": "Create",
+  "add-capacity": "Add Capacity",
+  "book-table": "Book a Table",
+  "delete": "Delete",
+  "cancel": "Cancel"
 
 
 }
