@@ -1,0 +1,12 @@
+@keyframes walk {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+.animate-leg {
+  animation: walk 0.4s infinite;
+}
+
+.animate-leg-delay {
+  animation: walk 0.4s infinite 0.2s;
+}

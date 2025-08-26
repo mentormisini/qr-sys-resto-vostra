@@ -1,35 +1,75 @@
 <div class="flex flex-col lg:flex-row gap-6 bg-gradient-to-b from-white via-emerald-50 p-6 lg:p-6">
 
   <!-- Left side: Scan QR Code -->
-  <div class="w-full lg:w-1/2 bg-gray-50 shadow-lg rounded-2xl p-4 lg:p-6 flex flex-col items-center justify-center transition-transform transform hover:-translate-y-1 hover:shadow-2xl">
-    <div class="bg-white rounded-xl p-4 mb-4 flex items-center justify-center">
-      <!-- Camera icon -->
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-        <path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2"/>
-        <path d="M9 13a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/>
-      </svg>
+  <div class="w-full max-w-xl mx-auto flex flex-col gap-6">
+
+    <!-- Scan for Discount -->
+    <div class="w-full lg:w-2/2 grid grid-cols-2 sm:grid-cols-2 gap-4 h-full bg-white shadow-xl rounded-2xl p-6 flex flex-col items-center text-center transition-transform transform hover:-translate-y-1 hover:shadow-2xl">
+      <div class="bg-white shadow-md rounded-full p-4 mb-4 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5ZM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5ZM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5Z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75ZM6.75 16.5h.75v.75h-.75v-.75ZM16.5 6.75h.75v.75h-.75v-.75ZM13.5 13.5h.75v.75h-.75v-.75ZM13.5 19.5h.75v.75h-.75v-.75ZM19.5 13.5h.75v.75h-.75v-.75ZM19.5 19.5h.75v.75h-.75v-.75ZM16.5 16.5h.75v.75h-.75v-.75Z" />
+        </svg>
+      </div>
+      <h2 class="text-xl font-semibold text-gray-800 mb-2">
+        {{ 'scan_qr.title' | translate }} {{ 'discount' | translate }}
+      </h2>
+      <p class="text-sm text-gray-600 mb-4">
+        {{ 'scan_qr.description' | translate }}
+      </p>
+      <button [routerLink]="'../qr-reader'"
+              class="w-full bg-gray-800 text-white py-2 rounded-xl font-medium hover:bg-gray-900 transition">
+        {{ 'scan_qr.button' | translate }}
+      </button>
     </div>
-    <h2 class="text-lg lg:text-xl font-semibold mb-2 text-gray-800">
-      {{ 'scan_qr.title' | translate }}
-    </h2>
 
-    <p class="text-sm text-gray-500 text-center mb-4">
-      {{ 'scan_qr.description' | translate }}
-    </p>
+    <!-- Scan for Reservation -->
+    <div class="w-full lg:w-2/2 grid grid-cols-2 sm:grid-cols-2 gap-4  h-full bg-gradient-to-br from-gray-50 to-gray-100 shadow-xl rounded-2xl p-6 flex flex-col items-center text-center transition-transform transform hover:-translate-y-1 hover:shadow-2xl">
+      <div class="bg-white shadow-md rounded-full p-4 mb-4 flex items-center justify-center">
+        <!-- Calendar/reservation icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5ZM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5ZM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5Z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75ZM6.75 16.5h.75v.75h-.75v-.75ZM16.5 6.75h.75v.75h-.75v-.75ZM13.5 13.5h.75v.75h-.75v-.75ZM13.5 19.5h.75v.75h-.75v-.75ZM19.5 13.5h.75v.75h-.75v-.75ZM19.5 19.5h.75v.75h-.75v-.75ZM16.5 16.5h.75v.75h-.75v-.75Z" />
+        </svg>
 
-    <button [routerLink]="'../qr-reader'"
-            class="bg-gray-800 text-white px-4 py-2 rounded-xl hover:bg-gray-900 transition">
-      {{ 'scan_qr.button' | translate }}
-    </button>
+      </div>
+      <h2 class="text-xl font-semibold text-gray-800 mb-2">
+        {{ 'scan_qr.title' | translate }} {{ 'reservation' | translate }}
+      </h2>
+      <p class="text-sm text-gray-600 mb-4">
+        {{ 'scan_qr.description' | translate }}
+      </p>
+      <button [routerLink]="'../qr-reader'"
+              class="w-full bg-gray-800 text-white py-2 rounded-xl font-medium hover:bg-gray-900 transition">
+        {{ 'scan_qr.button' | translate }}
+      </button>
+    </div>
 
   </div>
 
+
   <!-- Right side: Cards as grid -->
-  <div class="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <div class="w-full  lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
     <!-- Language card -->
     <div class="bg-white/80 backdrop-blur-md shadow-xl rounded-3xl p-6 sm:p-8 text-center col-span-1 sm:col-span-2 border border-gray-200">
-      <div class="flex flex-wrap justify-center gap-4">
+
+      <div class="flex w-full gap-6 block justify-between">
+
+
+        <span class="w-full flex justify-center p-3 text-sm font-semibold text-blue-800 bg-blue-200 rounded-full shadow-sm">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+</svg>
+          {{user?.email | uppercase}}
+  </span>
+        <span class="w-full flex justify-center p-3 text-sm font-semibold text-green-800 bg-green-200 rounded-full shadow-sm">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+</svg>
+          {{user?.role | uppercase}}
+  </span>
+      </div>
+
         <!-- Modern Logout Button -->
         <button (click)="logOut()"
           class="mt-4 flex items-center justify-center gap-3 w-full bg-gradient-to-r from-red-500 to-rose-500 text-white font-semibold py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
@@ -39,7 +79,7 @@
           </svg>
    {{'logout'|translate}}
         </button>
-      </div>
+
     </div>
 
 
@@ -106,3 +146,73 @@
   </div>
 </div>
 <app-toaster/>
+<!-- room.component.html -->
+<!--<div class="relative w-[600px] h-[600px] mx-auto mt-10 border-2 border-gray-200 shadow  rounded-lg shadow-lg">-->
+
+<!--  <div-->
+<!--    *ngFor="let box of boxes; let i = index"-->
+<!--    #boxEl-->
+<!--    tabindex="0"-->
+<!--    class="absolute w-20 h-20 rounded-3xl shadow-lg flex items-center justify-center text-sm font-bold text-gray-700 transition-all duration-300 ease-out cursor-pointer transform hover:scale-125 hover:shadow-2xl focus:ring-2 focus:ring-emerald-400"-->
+<!--    [ngStyle]="{'top.px': box.y, 'left.px': box.x}"-->
+<!--    [ngClass]="{-->
+<!--    'bg-gradient-to-b from-white via-emerald-50 ring-4 ring-emerald-300 scale-110': currentBox === box.id,-->
+<!--    'bg-gradient-to-b from-white via-emerald-50 opacity-90 hover:opacity-100': currentBox !== box.id-->
+<!--  }"-->
+
+<!--  >-->
+<!--    {{ box.label }}-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash; Popover &ndash;&gt;-->
+
+
+<!--  &lt;!&ndash; Movable character &ndash;&gt;-->
+<!--  <div-->
+<!--    class="absolute w-12 h-20 flex flex-col items-center justify-start"-->
+<!--    [ngStyle]="{'top.px': posY, 'left.px': posX}">-->
+
+<!--    &lt;!&ndash; Head with slim cap &ndash;&gt;-->
+<!--    <div class="w-12 h-12 bg-red-500 rounded-full shadow relative z-50">-->
+
+<!--      <div class="w-2 h-3 bg-white rounded-full absolute -left-1 top-5 z-50"></div>-->
+<!--      <div class="w-2 h-3 bg-white rounded-full absolute -right-1 top-5 z-50"></div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Legs &ndash;&gt;-->
+<!--    <div class="w-12 flex justify-between mt-1">-->
+<!--      <div [ngClass]="{'animate-leg': isMoving()}" class="w-2 h-6 bg-gray-700 rounded-full -mt-10"></div>-->
+<!--      <div [ngClass]="{'animate-leg-delay': isMoving()}" class="w-2 h-6 bg-gray-700 rounded-full -mt-10"></div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  @if(currentBox){-->
+
+
+<!--  <div class="absolute ml-40 max-h-[800px] overflow-y-auto p-4 bg-white rounded-xl shadow-lg">-->
+<!--    @if (currentBox == 1) {-->
+<!--      <app-admin-contact />-->
+<!--    }-->
+<!--    @if (currentBox == 2) {-->
+<!--      <app-qr-reader />-->
+<!--    }-->
+<!--    @if (currentBox == 3) {-->
+<!--      <app-reservations />-->
+<!--    }-->
+<!--  </div>-->
+<!--  }-->
+
+
+  <!-- Popup -->
+
+<!--  <div *ngIf="showPopup && currentBox"-->
+<!--       tabindex="0"-->
+<!--       (click)="op.toggle($event)"-->
+<!--       (keydown.enter)="op.toggle($event)"-->
+<!--       class="absolute bg-white border shadow-lg p-2 rounded text-sm cursor-pointer focus:ring-2 focus:ring-emerald-400 rounded"-->
+<!--       [ngStyle]="{'top.px': boxes[currentBox-1].y - 30, 'left.px': boxes[currentBox-1].x + 60}">-->
+<!--    Open Contact-->
+<!--  </div>-->
+<!--</div>-->
+
+
+

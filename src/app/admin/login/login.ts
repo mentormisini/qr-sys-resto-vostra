@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {ToastService} from '../../shared/toast.service';
 import {ToasterComponent} from '../../shared/notify/notify';
+import {Role} from '../../enum/roles.enum';
 
 @Component({
   selector: 'app-login',
@@ -39,8 +40,13 @@ router= inject(Router)
         next: (response: any) => {
           // Assuming your API returns a token in response.token
           if (response.accessToken) {
-            localStorage.setItem('authToken', response.accessToken); // Store token in localStorage
-            this.router.navigate(['auth/admin/dashboard']); // Navigate to dashboard
+            localStorage.setItem('authToken', JSON.stringify(response));
+            if(response?.role === Role.chef){
+              this.router.navigate(['auth/admin/daily-plate']);
+            }else{
+              this.router.navigate(['auth/admin/dashboard']); // Navigate to dashboard
+            }
+
             const message = this.translate.instant('toast.success.operation_successful');
             this.toastService.show(message, 'success');
           }

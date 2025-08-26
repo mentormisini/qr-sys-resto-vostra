@@ -1,0 +1,93 @@
+<div class=" flex items-center justify-center bg-gradient-to-b from-white via-emerald-50 p-6 font-sans">
+  <div class="relative w-full max-w-5xl overflow-hidden rounded-3xl shadow transition-all duration-300 ">
+
+    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 bg-white dark:bg-gray-800 backdrop-blur-md bg-opacity-90 dark:bg-opacity-80">
+
+      <div class="p-8 lg:p-12 border-b lg:border-r border-gray-200 dark:border-gray-700">
+        <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-5 leading-tight">{{ 'add-new-user' |translate }}</h2>
+
+
+        <form (ngSubmit)="onSubmit()" class="space-y-6">
+
+          <div>
+            <label for="email" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Email</label>
+            <div class="relative">
+              <input id="email" type="email" [(ngModel)]="form.email" name="email"
+                     class="w-full px-4 py-3 pl-12 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-700 focus:border-blue-500 dark:focus:border-blue-500 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
+           />
+
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute left-4 top-1/2 transform -translate-y-1/2 size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z" />
+              </svg>
+
+            </div>
+          </div>
+
+          <div>
+            <label for="password" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">{{ 'password' |translate }}</label>
+            <div class="relative">
+              <input id="password" type="password" [(ngModel)]="form.password" name="password"
+                     class="w-full px-4 py-3 pl-12 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-700 focus:border-blue-500 dark:focus:border-blue-500 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
+                  />
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  class="absolute left-4 top-1/2 transform -translate-y-1/2 size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" />
+              </svg>
+
+            </div>
+          </div>
+
+          <div>
+            <label for="role" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">{{'role'|translate}}</label>
+            <div class="relative">
+              <select id="role" [(ngModel)]="form.role" name="role"
+                      class="w-full px-4 py-3 pl-12 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-700 focus:border-blue-500 dark:focus:border-blue-500 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white appearance-none transition-colors">
+                <option value="admin">Admin</option>
+                <option value="chef">{{'chef'|translate}}</option>
+                <option value="reservation-manager">{{ 'reservation-manager' | translate }}</option>
+              </select>
+
+              <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="absolute left-4 top-1/2 transform -translate-y-1/2  icon icon-tabler icons-tabler-outline icon-tabler-fingerprint"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18.9 7a8 8 0 0 1 1.1 5v1a6 6 0 0 0 .8 3" /><path d="M8 11a4 4 0 0 1 8 0v1a10 10 0 0 0 2 6" /><path d="M12 11v2a14 14 0 0 0 2.5 8" /><path d="M8 15a18 18 0 0 0 1.8 6" /><path d="M4.9 19a22 22 0 0 1 -.9 -7v-1a8 8 0 0 1 12 -6.95" /></svg>
+              <svg class="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+          </div>
+
+          <button type="submit"
+                  class="w-full block  sm:w-auto bg-gradient-to-r from-emerald-600 to-emerald-900 text-white px-4 sm:px-6 py-2 rounded-xl font-semibold shadow-lg transition duration-200 tracking-wide hover:scale-105 ">
+            {{'add-user'|translate}}
+          </button>
+        </form>
+      </div>
+
+      <div class="p-8 lg:p-12 overflow-hidden">
+        <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-5 leading-tight">{{'current-users'|translate}}</h2>
+        <div class="overflow-auto max-h-[300px]">
+          <table class="w-full text-left border-collapse">
+            <thead>
+            <tr class="bg-gray-100 dark:bg-gray-700">
+              <th class="p-4 rounded-tl-xl font-semibold text-gray-700 dark:text-gray-200">Email</th>
+              <th class="p-4 rounded-tr-xl font-semibold text-gray-700 dark:text-gray-200" colspan="2">{{'role'|translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+              @for (user of users$|async; track $index){
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+              <td class="p-4 border-b border-gray-200 dark:border-gray-700">{{ user.email }}</td>
+              <td class="p-4 border-b border-gray-200 dark:border-gray-700">{{ user.role }}</td>
+              <td class="p-4 border-b border-gray-200 dark:border-gray-700 " (click)="deleteUser(user)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                     class="g-white shadow text-red-800 cursor-pointer rounded-full size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+              </svg>
+              </td>
+            </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-toaster/>

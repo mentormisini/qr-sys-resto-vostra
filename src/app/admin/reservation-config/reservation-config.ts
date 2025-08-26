@@ -10,6 +10,10 @@ import {ToasterComponent} from '../../shared/notify/notify';
 import {switchMap, tap} from 'rxjs';
 import {Button} from 'primeng/button';
 import {Tab, TabList, TabPanel, TabPanels, Tabs} from 'primeng/tabs';
+import {Schedule} from './schedule/schedule';
+import {DailyPlateDays} from './daily-plate-days/daily-plate-days';
+import {Users} from './users/users';
+import {Role} from '../../enum/roles.enum';
 @Component({
   selector: 'app-reservation-config',
   imports: [
@@ -19,91 +23,38 @@ import {Tab, TabList, TabPanel, TabPanels, Tabs} from 'primeng/tabs';
 
     ReactiveFormsModule,
     ToasterComponent,
-    TitleCasePipe,
+
     AsyncPipe,
     TranslatePipe,
     NgClass,
-    Button,
+
     Tabs,
     TabList,
     Tab,
     TabPanels,
-    TabPanel
+    TabPanel,
+    Schedule,
+    DailyPlateDays,
+    Users
   ],
   templateUrl: './reservation-config.html',
   styleUrl: './reservation-config.scss'
 })
 export class ReservationConfig {
   bookingService = inject(BookingsService)
-  scheduleForm!: FormGroup;
-  fb =inject(FormBuilder)
+  user = JSON.parse(<string>localStorage.getItem('authToken')) || null;
+
   translate = inject(TranslateService);
   toastService = inject(ToastService);
   area$ = this.bookingService.getAreas();
   areaInput:any;
-  schedule: any;
+
    allTablesOfArea: any;
    selectedTable:any;
   value: number = 0;
    newTableName!:string;
    newTableCapacity!:number;
-  ngOnInit() {
-    this.scheduleForm = this.fb.group({
-      schedules: this.fb.array([])  // FormArray to hold multiple rows
-    });
 
-    this.bookingService.getSchedule().subscribe((res: any) => {
-      this.schedule = res;
-     this.loadSchedule(res)
-    });
-  }
-  get schedules(): FormArray {
-    return this.scheduleForm.get('schedules') as FormArray;
-  }
-
-  loadSchedule(data: any[]) {
-    data.forEach(item => {
-      // convert "08:00:00" to Date object
-      const start = this.parseTime(item.openTime);
-      const end = this.parseTime(item.closeTime);
-
-      this.schedules.push(this.fb.group({
-        id: [item.id],
-        dayOfWeek: [item.dayOfWeek, Validators.required],
-        openTime: [start, Validators.required],
-        closeTime: [end, Validators.required]
-      }));
-    });
-  }
-
-// helper function to parse "HH:mm:ss" into a Date object
-  parseTime(timeStr: string): Date {
-    const [hours, minutes, seconds] = timeStr.split(':').map(Number);
-    const date = new Date();
-    date.setHours(hours, minutes, seconds, 0);
-    return date;
-  }
-  save(index: number) {
-    const schedule = this.schedules.at(index).value;
-
-    const startTimeStr = this.formatTime(schedule.openTime);
-    const endTimeStr = this.formatTime(schedule.closeTime);
-    const payload ={      ...schedule,
-      openTime: startTimeStr,
-      closeTime: endTimeStr}
-
-    this.bookingService.editSchedule(payload, schedule?.id).subscribe(()=>{
-      const message = this.translate.instant('toast.success.operation_successful');
-      this.toastService.show(message, 'success');
-    })
-  }
-
-  formatTime(date: Date): string {
-    const h = String(date.getHours()).padStart(2, '0');
-    const m = String(date.getMinutes()).padStart(2, '0');
-    const s = String(date.getSeconds()).padStart(2, '0');
-    return `${h}:${m}:${s}`;
-  }
 
   createArea(){
     this.bookingService.createArea({name: this.areaInput}).subscribe(()=>{
@@ -135,7 +86,7 @@ export class ReservationConfig {
   }
   deleteArea(area: any) {
     const confirmed = window.confirm(
-      this.translate.instant('toast.confirm.delete_area') // e.g. "Are you sure you want to delete this area?"
+      this.translate.instant('toast.confirm.delete_area')
     );
 
     if (confirmed) {
@@ -190,4 +141,5 @@ export class ReservationConfig {
     });
   }
 
+  protected readonly Role = Role;
 }

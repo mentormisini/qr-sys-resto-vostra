@@ -134,7 +134,7 @@
   "Congratulations!": "Congratulations!",
   "Oops!": "Oops!",
   "Client unlocked a special": "Client unlocked a special",
-  "discount": "discount",
+  "discount": "Discount",
   "scan-again": "Scan Again",
   "today-special": "Today's Special",
   "CHEFS_DAILY_SPECIALS": "Chef's Daily Specials",
@@ -160,7 +160,7 @@
   "reservations": "Reservations",
   "configuration": "Configuration",
   "configure-area-tables": "Configure Area Tables",
-  "configure-schedule": "Configure Schedule (working-hours)",
+  "configure-schedule": "Configure Schedule ",
   "table-name": "Table Name",
   "add-new-table": "Add New Table",
   "capacity": "Capacity",
@@ -169,7 +169,18 @@
   "add-capacity": "Add Capacity",
   "book-table": "Book a Table",
   "delete": "Delete",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "enter-day-name": "Enter day name",
+  "days-of-daily-plate": "Days of daily plate",
+  "reservation": "Reservation",
+  "user-management": "User Management",
+  "add-new-user": "Add new user",
+  "role": "Role",
+  "add-user": "Add User",
+  "current-users": "Current Users",
+  "chef": "Chef",
+  "reservation-manager": "Reservation Manager"
+
 
 
 }

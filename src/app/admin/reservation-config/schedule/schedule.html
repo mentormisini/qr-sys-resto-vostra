@@ -1,0 +1,42 @@
+<div class="bg-gradient-to-b from-white via-emerald-50 p-6">
+  <div class="p-4 max-w-2xl mx-auto">
+
+
+    <div class="space-y-2 ">
+      <form [formGroup]="scheduleForm">
+        <div formArrayName="schedules">
+          @for (schedule of schedules.controls; track schedule; let i = $index) {
+            <div [formGroupName]="i"
+                 class="flex items-center gap-2 mt-2 p-2 bg-white rounded-md shadow-sm hover:shadow-md transition">
+
+              <span class="w-20 text-sm font-medium text-gray-700">{{ schedule.get('dayOfWeek')?.value |titlecase }}</span>
+
+              <p-datepicker
+                [timeOnly]="true"
+                formControlName="openTime"
+                placeholder="Start"
+                inputStyleClass="border border-gray-300 rounded px-2 py-1 w-full text-sm focus:outline-none focus:ring-1 focus:ring-blue-400 transition">
+              </p-datepicker>
+
+              <p-datepicker
+                [timeOnly]="true"
+                hourFormat="24"
+                formControlName="closeTime"
+                placeholder="End"
+                inputStyleClass="border border-gray-300 rounded px-2 py-1 w-full text-sm focus:outline-none focus:ring-1 focus:ring-blue-400 transition">
+              </p-datepicker>
+
+              <button type="button"
+                      (click)="save(i)"
+                      class="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-emerald-900 text-white px-4 sm:px-6 py-2 rounded-xl font-semibold shadow-lg transition duration-200 tracking-wide hover:scale-105 ">
+                {{'save'|translate}}
+              </button>
+
+            </div>
+          }
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

@@ -106,5 +106,26 @@ export class AdminService {
   getQRDiscount(){
       return this.httpClient.post(`${environment.apiUrl}/discount-qrcode`,{});
   }
+  createDay(payload:{name:string}):Observable<any>{
+      return this.httpClient.post(`${environment.apiUrl}/daily-plate/day`, payload);
+  }
+  getAllDays():Observable<any>{
+      return this.httpClient.get(`${environment.apiUrl}/daily-plate/alldays`);
+  }
+  deleteDay(id:number):Observable<any>{
+      return this.httpClient.delete(`${environment.apiUrl}/daily-plate/day/${id}`);
+  }
+
+  createUser(payload:any){
+      return this.httpClient.post(`${environment.apiUrl}/auth/register`, payload);
+  }
+  getAllUsers():Observable<any>{
+    return this.httpClient.get(`${environment.apiUrl}/auth/users`);
+  }
+
+  deleteUser(userId: string) {
+    return this.httpClient.delete(`${environment.apiUrl}/auth/user/${userId}`);
+  }
+
 
 }

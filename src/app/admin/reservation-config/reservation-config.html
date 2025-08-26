@@ -1,12 +1,16 @@
-<div class="flex mb-2 gap-2 justify-end">
-  <p-button (onClick)="value = 0" rounded="true" styleClass="w-8 h-8 p-0" [outlined]="value !== 0" label="1" />
-  <p-button (onClick)="value = 1" rounded="true" styleClass="w-8 h-8 p-0" [outlined]="value !== 1" label="2" />
-  <p-button (onClick)="value = 2" rounded="true" styleClass="w-8 h-8 p-0" [outlined]="value !== 2" label="3" />
-</div>
+
 <p-tabs [value]="value">
   <p-tablist>
+    @if([Role.admin, Role.reservationManager].includes(user.role)){
     <p-tab [value]="0">{{ 'configure-area-tables' |translate }}</p-tab>
     <p-tab [value]="1">{{'configure-schedule'|translate}}</p-tab>
+    }
+    @if([Role.admin, Role.chef].includes(user.role)){
+    <p-tab [value]="2">{{'days-of-daily-plate'|translate}}</p-tab>
+    }
+    @if([Role.admin].includes(user.role)){
+    <p-tab [value]="3">{{'user-management'|translate}}</p-tab>
+    }
 
   </p-tablist>
   <p-tabpanels>
@@ -137,48 +141,15 @@
     </p-tabpanel>
     <p-tabpanel [value]="1">
 
-      <div class="bg-gradient-to-b from-white via-emerald-50 p-6">
-        <div class="p-4 max-w-2xl mx-auto">
+      <app-schedule/>
+    </p-tabpanel>
 
+    <p-tabpanel [value]="2">
+      <app-daily-plate-days/>
+    </p-tabpanel>
 
-          <div class="space-y-2 ">
-            <form [formGroup]="scheduleForm">
-              <div formArrayName="schedules">
-                @for (schedule of schedules.controls; track schedule; let i = $index) {
-                  <div [formGroupName]="i"
-                       class="flex items-center gap-2 mt-2 p-2 bg-gray-50 rounded-md shadow-sm hover:shadow-md transition">
-
-                    <span class="w-20 text-sm font-medium text-gray-700">{{ schedule.get('dayOfWeek')?.value |titlecase }}</span>
-
-                    <p-datepicker
-                      [timeOnly]="true"
-                      formControlName="openTime"
-                      placeholder="Start"
-                      inputStyleClass="border border-gray-300 rounded px-2 py-1 w-full text-sm focus:outline-none focus:ring-1 focus:ring-blue-400 transition">
-                    </p-datepicker>
-
-                    <p-datepicker
-                      [timeOnly]="true"
-                      hourFormat="24"
-                      formControlName="closeTime"
-                      placeholder="End"
-                      inputStyleClass="border border-gray-300 rounded px-2 py-1 w-full text-sm focus:outline-none focus:ring-1 focus:ring-blue-400 transition">
-                    </p-datepicker>
-
-                    <button type="button"
-                            (click)="save(i)"
-                            class="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-emerald-900 text-white px-4 sm:px-6 py-2 rounded-xl font-semibold shadow-lg transition duration-200 tracking-wide hover:scale-105 ">
-                      {{'save'|translate}}
-                    </button>
-
-                  </div>
-                }
-              </div>
-            </form>
-          </div>
-        </div>
-
-      </div>
+    <p-tabpanel [value]="3">
+      <app-users/>
     </p-tabpanel>
 
   </p-tabpanels>
