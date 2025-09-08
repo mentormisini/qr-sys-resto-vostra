@@ -29,16 +29,7 @@ import {Reservations} from '../reservations/reservations';
     ToasterComponent,
     FormsModule,
     UpperCasePipe,
-    NgStyle,
-    NgClass,
-    NgForOf,
-    NgIf,
-    Popover,
-    Gallery,
-    Contact,
-    AdminContact,
-    QrReader,
-    Reservations
+
   ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss'

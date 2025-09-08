@@ -131,6 +131,42 @@
 
       <!-- Main Content -->
       <div class="bg-white/80 rounded-2xl border border-[#e0eafc] shadow-lg backdrop-blur-lg w-full h-full flex flex-col">
+        <!-- reservation-banner.component.html -->
+        @if(newReservation){
+          <div class="fixed top-5 right-5 w-96 bg-gradient-to-b from-white via-emerald-50 to-emerald-100 border border-emerald-200 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out p-5 z-50 animate-slide-in group">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center space-x-3 text-gray-800">
+                <span class="text-xl text-emerald-600 animate-fade-in-up">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0M3.124 7.5A8.969 8.969 0 0 1 5.292 3m13.416 0a8.969 8.969 0 0 1 2.168 4.5" />
+</svg>
+
+                </span> <strong class="text-lg font-semibold text-gray-900 animate-fade-in-up delay-100">New Reservation!</strong>
+              </div>
+              <button class="text-gray-400 hover:text-gray-700 transition-colors duration-200" (click)="closeNotification()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="mt-4 text-base space-y-2 text-gray-700 animate-fade-in-up delay-200">
+              <p class="leading-tight"><strong class="font-medium">Customer:</strong> {{ newReservation?.customerName }}</p>
+              <p class="leading-tight"><strong class="font-medium">Guests:</strong> {{ newReservation?.guests }}</p>
+              <p class="leading-tight">
+                <strong class="font-medium">Time:</strong>
+                {{ newReservation?.startTime | date: 'EEEE dd, HH:mm' }} -
+                {{ newReservation?.endTime | date: 'HH:mm' }}
+              </p>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-emerald-100 flex justify-end">
+              <button class="px-6 py-2 bg-emerald-500 text-white font-medium rounded-full shadow-md hover:bg-emerald-600 hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-75" (click)="viewReservation(newReservation)">
+                View Details
+              </button>
+            </div>
+          </div>
+        }
         <router-outlet></router-outlet>
       </div>
     </div>
@@ -138,3 +174,4 @@
 
 
 </div>
+
