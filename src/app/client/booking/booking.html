@@ -1,13 +1,16 @@
+<div class="bg-gradient-to-br from-green-100 via-white to-green-50 min-h-screen p-4 sm:p-6">
+  <div class="max-w-3xl mx-auto p-6 sm:p-12 mt-8 sm:mt-16 mb-8 sm:mb-16 bg-white shadow-3xl rounded-3xl space-y-8 sm:space-y-10 border border-gray-400">
 
-<div class="bg-gradient-to-br from-green-100 via-white to-green-50 min-h-screen p-6">
-  <div class="max-w-3xl mx-auto p-12 mt-16 mb-16 bg-white shadow-3xl  rounded-3xl space-y-10 border border-gray-400">
+    <!-- Title -->
+    <h2 class="text-3xl sm:text-4xl text-gray-800 text-center mb-2 sm:mb-4">Reserve Your Table</h2>
+    <p class="text-center text-gray-500 max-w-lg mx-auto text-sm sm:text-base">
+      Select a date, area, time, and duration that works best for you and your guests. We can't wait to host you!
+    </p>
 
-    <h2 class="text-4xl  text-gray-800 text-center mb-4">Reserve Your Table</h2>
-    <p class="text-center text-gray-500 max-w-lg mx-auto">Select a date, area, time, and duration that works best for you and your guests. We can't wait to host you!</p>
-
+    <!-- Date Selection -->
     <div class="space-y-4">
-      <label class="block text-gray-700 font-semibold mb-3">Choose a Date</label>
-      <div class="grid grid-cols-7 gap-4">
+      <label class="block text-gray-700 font-semibold mb-2">Choose a Date</label>
+      <div class="flex gap-2 overflow-x-auto pb-2">
         <button
           *ngFor="let day of weekDates"
           (click)="selectDate(day)"
@@ -15,14 +18,14 @@
           [class.text-white]="bookingDate === day.dateString && !day.isDisabled"
           [class.opacity-40]="day.isDisabled"
           [disabled]="day.isDisabled"
-          class="py-4 rounded-xl border border-gray-300 hover:bg-emerald-500 hover:text-white transition-all duration-200 flex flex-col items-center justify-center cursor-pointer relative overflow-hidden group">
+          class="min-w-[60px] sm:min-w-[70px] py-3 sm:py-4 rounded-xl border border-gray-300 hover:bg-emerald-500 hover:text-white transition-all duration-200 flex flex-col items-center justify-center cursor-pointer relative overflow-hidden group">
           <span
             class="absolute inset-0 z-0 bg-gradient-to-br from-emerald-400 via-emerald-600 to-emerald-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl blur-2xl"></span>
           <div class="relative z-10">
-            <div class="text-sm font-medium group-hover:text-white transition-colors duration-200" [class.text-white]="bookingDate === day.dateString && !day.isDisabled">
+            <div class="text-xs sm:text-sm font-medium group-hover:text-white transition-colors duration-200" [class.text-white]="bookingDate === day.dateString && !day.isDisabled">
               {{ day.dayShort }}
             </div>
-            <div class="text-lg font-bold group-hover:text-white transition-colors duration-200" [class.text-white]="bookingDate === day.dateString && !day.isDisabled">
+            <div class="text-lg sm:text-xl font-bold group-hover:text-white transition-colors duration-200" [class.text-white]="bookingDate === day.dateString && !day.isDisabled">
               {{ day.dayNumber }}
             </div>
           </div>
@@ -30,14 +33,15 @@
       </div>
     </div>
 
+    <!-- Area Selection -->
     <div *ngIf="bookingDate" @fadeInOut class="space-y-4">
-      <label class="block text-gray-700 font-semibold mb-3">Choose Area</label>
-      <div class="flex flex-wrap gap-3">
+      <label class="block text-gray-700 font-semibold mb-2">Choose Area</label>
+      <div class="flex flex-wrap gap-2 sm:gap-3">
         <button *ngFor="let area of area$ | async"
                 (click)="getTablesOfArea(area)"
                 [class.bg-emerald-600]="selectedArea?.id === area.id"
                 [class.text-white]="selectedArea?.id === area.id"
-                class="px-5 py-3 rounded-2xl border border-gray-300 hover:bg-emerald-500 hover:text-white transition-all duration-200 relative overflow-hidden group">
+                class="px-3 sm:px-5 py-2 sm:py-3 rounded-2xl border border-gray-300 hover:bg-emerald-500 hover:text-white transition-all duration-200 relative overflow-hidden group text-sm sm:text-base">
           <span
             class="absolute inset-0 z-0 bg-gradient-to-br from-emerald-400 via-emerald-600 to-emerald-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl blur-2xl"></span>
           <span class="relative z-10 group-hover:text-white transition-colors duration-200" [class.text-white]="selectedArea?.id === area.id">
@@ -47,106 +51,94 @@
       </div>
     </div>
 
+    <!-- Table Selection -->
     <div *ngIf="tableAvailable?.length" class="space-y-4 animate-fadeIn">
-      <label class="block text-gray-700 font-semibold ">Select a Table</label>
-      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+      <label class="block text-gray-700 font-semibold text-sm sm:text-base">Select a Table</label>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-3">
         <button *ngFor="let table of tableAvailable"
                 (click)="getSlotsOfTable(table)"
                 [class.bg-emerald-600]="selectedTable?.id === table.id"
                 [class.text-white]="selectedTable?.id === table.id"
-                class="relative overflow-hidden rounded-2xl shadow-md hover:shadow-lg transition-all duration-200 group border border-gray-200">
-          <div class="p-3 text-center space-y-1 relative z-10 group-hover:text-emerald-800 transition-colors duration-200">
-            <h3 class="text-base font-semibold" [class.text-white]="selectedTable?.id === table.id">{{ table?.name }}</h3>
-            <div class="flex items-center justify-center text-gray-500 group-hover:text-emerald-800  transition-colors duration-200" [class.text-white]="selectedTable?.id === table.id">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                class="relative overflow-hidden rounded-2xl shadow-md hover:shadow-lg transition-all duration-200 group border border-gray-200 p-2 sm:p-3">
+          <div class="text-center space-y-1 relative z-10">
+            <h3 class="text-sm sm:text-base font-semibold" [class.text-white]="selectedTable?.id === table.id">{{ table?.name }}</h3>
+            <div class="flex items-center justify-center text-xs sm:text-sm text-gray-500 group-hover:text-emerald-800 transition-colors duration-200" [class.text-white]="selectedTable?.id === table.id">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 sm:w-6 sm:h-6 mr-1">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
               </svg>
-
-              <span class="text-sm font-medium">{{ table?.capacity }}</span>
+              <span class="text-xs sm:text-sm font-medium">{{ table?.capacity }}</span>
             </div>
           </div>
         </button>
       </div>
     </div>
 
+    <!-- Duration Selection -->
     <div *ngIf="selectedTable" @fadeInOut class="space-y-4">
-      <label class="block text-gray-700 font-semibold mb-3">Select Duration</label>
-      <div class="flex gap-3 text-center relative z-10">
+      <label class="block text-gray-700 font-semibold mb-2">Select Duration</label>
+      <div class="flex flex-wrap gap-2 sm:gap-3 text-center relative z-10">
         <button *ngFor="let d of durations"
                 (click)="selectDuration(d)"
                 [ngClass]="{
-              'bg-emerald-600 text-white shadow-lg': selectedDuration === d,
-              'bg-white text-gray-700 border border-gray-300 hover:bg-emerald-500 hover:text-white': selectedDuration !== d
-            }"
-                class="relative px-5 py-3 rounded-2xl transition-all duration-300 overflow-hidden flex items-center gap-2">
+                  'bg-emerald-600 text-white shadow-lg': selectedDuration === d,
+                  'bg-white text-gray-700 border border-gray-300 hover:bg-emerald-500 hover:text-white': selectedDuration !== d
+                }"
+                class="relative px-4 sm:px-5 py-2 sm:py-3 rounded-2xl transition-all duration-300 overflow-hidden flex items-center gap-2 text-sm sm:text-base">
 
-          <!-- gradient glow effect (always consistent, just opacity changes) -->
-          <span
-            class="absolute inset-0 bg-gradient-to-br from-emerald-400 via-emerald-600 to-emerald-800 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-2xl blur-xl">
-      </span>
+          <span class="absolute inset-0 bg-gradient-to-br from-emerald-400 via-emerald-600 to-emerald-800 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-2xl blur-xl"></span>
 
-          <!-- icon + text -->
           <span class="relative z-10 flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             width="22" height="22" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="1.5"
-             stroke-linecap="round" stroke-linejoin="round"
-             class="icon-tabler-hourglass">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-          <path d="M6.5 7h11" />
-          <path d="M6.5 17h11" />
-          <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z" />
-          <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z" />
-        </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-hourglass">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M6.5 7h11" />
+              <path d="M6.5 17h11" />
+              <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z" />
+              <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z" />
+            </svg>
             {{ formatDuration(d) }}
-      </span>
+          </span>
         </button>
       </div>
     </div>
 
-
+    <!-- Time Selection -->
     <div *ngIf="availableSlots?.length" @fadeInOut class="space-y-4">
-      <label class="block text-gray-700 font-semibold mb-3">Select a Time</label>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <button
-          *ngFor="let slot of availableSlots"
-          (click)="selectTime(slot)"
-          [class.bg-emerald-600]="bookingForm.value.startTime === slot.start"
-          [class.text-white]="bookingForm.value.startTime === slot.start"
-          class="py-3 rounded-2xl border border-gray-300 hover:bg-emerald-500 hover:text-white transition-all duration-200 text-center relative overflow-hidden group">
-          <span
-            class="absolute inset-0 z-0 bg-gradient-to-br from-emerald-400 via-emerald-600 to-emerald-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl blur-2xl"></span>
-          <span class="relative  flex justify-center z-10 group-hover:text-white transition-colors duration-200" [class.text-white]="bookingForm.value.startTime === slot.start">
-           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 mt-1 mr-1">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-</svg>
+      <label class="block text-gray-700 font-semibold mb-2">Select a Time</label>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-4">
+        <button *ngFor="let slot of availableSlots"
+                (click)="selectTime(slot)"
+                [class.bg-emerald-600]="bookingForm.value.startTime === slot.start"
+                [class.text-white]="bookingForm.value.startTime === slot.start"
+                class="py-2 sm:py-3 rounded-2xl border border-gray-300 hover:bg-emerald-500 hover:text-white transition-all duration-200 text-center relative overflow-hidden group text-sm sm:text-base">
+          <span class="absolute inset-0 z-0 bg-gradient-to-br from-emerald-400 via-emerald-600 to-emerald-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl blur-2xl"></span>
+          <span class="relative flex justify-center z-10 group-hover:text-white transition-colors duration-200" [class.text-white]="bookingForm.value.startTime === slot.start">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 sm:w-5 sm:h-5 mt-1 mr-1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
             {{ slot.start | slice:11:16 }} - {{ slot.end | slice:11:16 }}
           </span>
         </button>
       </div>
     </div>
 
-    <form [formGroup]="bookingForm" (ngSubmit)="submitBooking()" *ngIf="bookingForm.value.startTime" @fadeInOut class="space-y-6">
+    <!-- Booking Form -->
+    <form [formGroup]="bookingForm" (ngSubmit)="submitBooking()" *ngIf="bookingForm.value.startTime" @fadeInOut class="space-y-4 sm:space-y-6">
       <div>
-        <label class="block text-gray-700 font-medium mb-2">Name</label>
+        <label class="block text-gray-700 font-medium mb-1 sm:mb-2">Name</label>
         <input type="text" formControlName="customerName" required
-               class="w-full border border-gray-300 rounded-2xl p-4 focus:outline-none focus:ring-2 focus:ring-emerald-400 shadow-sm transition">
+               class="w-full border border-gray-300 rounded-2xl p-3 sm:p-4 focus:outline-none focus:ring-2 focus:ring-emerald-400 shadow-sm transition text-sm sm:text-base">
       </div>
       <div>
-        <label class="block text-gray-700 font-medium mb-2">Phone</label>
+        <label class="block text-gray-700 font-medium mb-1 sm:mb-2">Phone</label>
         <input type="tel" formControlName="phone" required
-               class="w-full border border-gray-300 rounded-2xl p-4 focus:outline-none focus:ring-2 focus:ring-emerald-400 shadow-sm transition">
+               class="w-full border border-gray-300 rounded-2xl p-3 sm:p-4 focus:outline-none focus:ring-2 focus:ring-emerald-400 shadow-sm transition text-sm sm:text-base">
       </div>
       <button type="submit"
-              class="w-full bg-emerald-600 text-white py-4 rounded-2xl hover:bg-emerald-700 transition-all duration-200 font-semibold shadow-md mt-6 relative overflow-hidden group">
-        <span
-          class="absolute inset-0 z-0 bg-gradient-to-br from-emerald-400 via-emerald-600 to-emerald-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl blur-2xl"></span>
-        <span class="relative z-10 group-hover:text-white transition-colors duration-200">
-          Book Now
-        </span>
+              class="w-full bg-emerald-600 text-white py-3 sm:py-4 rounded-2xl hover:bg-emerald-700 transition-all duration-200 font-semibold shadow-md relative overflow-hidden group mt-4 sm:mt-6">
+        <span class="absolute inset-0 z-0 bg-gradient-to-br from-emerald-400 via-emerald-600 to-emerald-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl blur-2xl"></span>
+        <span class="relative z-10 group-hover:text-white transition-colors duration-200">Book Now</span>
       </button>
     </form>
+
   </div>
 </div>
-
-

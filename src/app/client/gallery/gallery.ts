@@ -7,8 +7,7 @@ import {animate, group, query, stagger, style, transition, trigger} from '@angul
 @Component({
   selector: 'app-gallery',
   imports: [
-    NgForOf,
-    NgIf,
+
     TranslatePipe
   ],
   templateUrl: './gallery.html',

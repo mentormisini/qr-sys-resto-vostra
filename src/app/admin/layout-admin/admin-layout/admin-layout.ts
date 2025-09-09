@@ -15,7 +15,7 @@ import {ToastService} from '../../../shared/toast.service';
     RouterLink,
     RouterLinkActive,
     TranslateModule,
-    ToasterComponent,
+
     DatePipe
   ],
   templateUrl: './admin-layout.html',

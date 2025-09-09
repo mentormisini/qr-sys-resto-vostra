@@ -1,15 +1,16 @@
 <section class="bg-gray-100 dark:bg-gray-900 py-16 px-4   flex items-center justify-center">
 
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-6xl  lg:grid-cols-4 gap-6 "    [@categorySwitch]="animationKey">
-
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-6xl  lg:grid-cols-4 gap-6" [@categorySwitch]="animationKey">
+  @for(image of images; track image; let i = $index){
   <div
-    *ngFor="let image of images; let i = index"
     class="group relative cursor-pointer overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:scale-105 hover:shadow-2xl"
     (click)="openModal(i)"
   >
     <!-- Image -->
     <img
-      [src]="image?.imagePath"
+
+      [src]="image?.thumbnailPath"
+      loading="lazy"
       class="w-full h-60 object-cover rounded-xl transition-transform duration-500 ease-in-out group-hover:scale-110 group-hover:rotate-1"
     />
 
@@ -22,56 +23,62 @@
       </h3>
     </div>
   </div>
+  }
 </div>
 
 <!-- Modal -->
-<div
-  class="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
-  *ngIf="selectedImage"
-  (click)="closeModal()"
->
+  @if (selectedImage){
   <div
-    class="relative max-w-4xl w-full max-h-[90vh] flex items-center justify-center"
-    (click)="$event.stopPropagation()"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
+    (click)="closeModal()"
   >
-    <!-- Close Button -->
-    <button
-      class="absolute top-4 right-4 text-white text-3xl p-2 bg-black/50 rounded-full hover:bg-black/70 transition duration-300"
-      (click)="closeModal()"
+    <!-- Modal Container -->
+    <div
+      class="relative w-full h-full flex items-center justify-center"
+      (click)="$event.stopPropagation()"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-      </svg>
+      <!-- Close Button (Always Top Right) -->
+      <button
+        class="absolute top-4 right-4 z-50 text-white text-3xl p-3 bg-black/60 rounded-full hover:bg-black/80 transition duration-300"
+        (click)="closeModal()"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+             stroke-width="2" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
 
-    </button>
+      <!-- Previous Arrow -->
+      <button
+        class="absolute left-4 top-1/2 -translate-y-1/2 z-50 text-white p-3 bg-black/50 rounded-full hover:bg-black/70 transition duration-300 flex items-center justify-center scale-100 hover:scale-110"
+        (click)="prevImage($event)"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+             stroke-width="2" stroke="currentColor" class="w-8 h-8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        </svg>
+      </button>
 
-    <!-- Prev Button -->
-    <button
-      class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl p-3 bg-black/50 rounded-full hover:bg-black/70 transition duration-300 flex items-center justify-center"
-      (click)="prevImage($event)"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-      </svg>
+      <!-- Image -->
+      <img
+        [src]="selectedImage"
+        loading="lazy"
+        class="max-w-full max-h-full object-contain rounded-xl shadow-2xl transition-transform duration-500 transform scale-95 hover:scale-100"
+      />
 
-    </button>
-
-    <!-- Image -->
-    <img
-      [src]="selectedImage"
-      class="max-w-full max-h-full rounded-xl shadow-2xl transition-all duration-500 transform scale-95 animate-modalZoom"
-    />
-
-    <!-- Next Button -->
-    <button
-      class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl p-3 bg-black/50 rounded-full hover:bg-black/70 transition duration-300 flex items-center justify-center"
-      (click)="nextImage($event)"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-      </svg>
-
-    </button>
+      <!-- Next Arrow -->
+      <button
+        class="absolute right-4 top-1/2 -translate-y-1/2 z-50 text-white p-3 bg-black/50 rounded-full hover:bg-black/70 transition duration-300 flex items-center justify-center scale-100 hover:scale-110"
+        (click)="nextImage($event)"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+             stroke-width="2" stroke="currentColor" class="w-8 h-8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+      </button>
+    </div>
   </div>
-</div>
+  }
+
+
 </section>

@@ -18,7 +18,7 @@
     @for (image of images | async; track $index) {
       <div class="group relative cursor-pointer overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-shadow">
         <img
-          [src]="image?.imagePath"
+          [src]="image?.thumbnailPath"
           class="w-full h-60 object-cover rounded-xl transition-transform duration-300 ease-in-out group-hover:scale-105"
           alt="image"
         />
