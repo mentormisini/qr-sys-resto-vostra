@@ -10,7 +10,7 @@ export class ReservationSocketService {
   private reservationCreated$: Observable<any>;
 
   constructor() {
-    this.socket = io('http://localhost:3000', {
+    this.socket = io('wss://nostraitalia.ch', {
       transports: ['websocket'],
       autoConnect: false,
     });

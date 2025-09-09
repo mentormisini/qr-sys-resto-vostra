@@ -17,8 +17,8 @@ export class App {
       if(this.language){
         this.translate.use(this.language)
       }else{
-        this.translate.use('en')
-        localStorage.setItem('language', 'en')
+        this.translate.use('fr')
+        localStorage.setItem('language', 'fr')
       }
 
   }
