@@ -5,6 +5,7 @@ import {BookingsService} from '../../services/bookings.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {BookConfirmed} from './book-confirmed/book-confirmed';
 import {Router} from '@angular/router';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-booking',
@@ -17,6 +18,7 @@ import {Router} from '@angular/router';
     SlicePipe,
     ReactiveFormsModule,
     NgClass,
+    TranslatePipe,
   ],
   templateUrl: './booking.html',
   styleUrl: './booking.scss',

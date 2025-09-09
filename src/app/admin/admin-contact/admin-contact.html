@@ -43,7 +43,7 @@
     <!-- Whatsapp -->
     <div class="flex flex-col">
       <label class="text-sm font-medium text-gray-600 mb-2">Whatsapp</label>
-      <input formControlName="whatsapp" type="whatsapp"
+      <input formControlName="whatsapp" type="text"
              placeholder="Enter your whatsapp"
              class="rounded-2xl border border-gray-300 shadow-sm px-5 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-500 transition"/>
       <div *ngIf="contactForm.get('whatsapp')?.invalid && contactForm.get('whatsapp')?.touched"
@@ -51,6 +51,34 @@
         {{ 'required' |translate }}
       </div>
     </div>
+    <div class="flex flex-col mt-4">
+      <label class="text-sm font-medium text-gray-600 mb-2">Facebook</label>
+      <input formControlName="facebook" type="text"
+             placeholder="Enter your facebook"
+             class="rounded-2xl border border-gray-300 shadow-sm px-5 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-500 transition"/>
+    </div>
+
+    <div class="flex flex-col mt-4">
+      <label class="text-sm font-medium text-gray-600 mb-2">Instagram</label>
+      <input formControlName="instagram" type="text"
+             placeholder="Enter your instagram"
+             class="rounded-2xl border border-gray-300 shadow-sm px-5 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-500 transition"/>
+    </div>
+
+    <div class="flex flex-col mt-4">
+      <label class="text-sm font-medium text-gray-600 mb-2">YouTube</label>
+      <input formControlName="youtube" type="text"
+             placeholder="Enter your youtube"
+             class="rounded-2xl border border-gray-300 shadow-sm px-5 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-500 transition"/>
+    </div>
+
+    <div class="flex flex-col mt-4">
+      <label class="text-sm font-medium text-gray-600 mb-2">LinkedIn</label>
+      <input formControlName="linkedin" type="text"
+             placeholder="Enter your linkedin"
+             class="rounded-2xl border border-gray-300 shadow-sm px-5 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-500 transition"/>
+    </div>
+
     <!-- Address -->
     <div class="flex flex-col">
       <label class="text-sm font-medium text-gray-600 mb-2">{{ 'address'|translate }}</label>

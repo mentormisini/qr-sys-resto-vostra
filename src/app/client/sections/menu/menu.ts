@@ -2,11 +2,15 @@ import {Component, ElementRef, inject, ViewChild} from '@angular/core';
 import {animate, group, query, stagger, state, style, transition, trigger} from '@angular/animations';
 import {AdminService} from '../../../services/admin.service';
 import {take} from 'rxjs';
+import {TitleCasePipe} from '@angular/common';
+import {TranslatePipe} from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-menu',
   imports: [
+    TitleCasePipe,
+    TranslatePipe
   ],
   templateUrl: './menu.html',
   styleUrl: './menu.scss',

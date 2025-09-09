@@ -32,7 +32,11 @@ translate = inject(TranslateService);
       email: ['', [Validators.required, Validators.email]],
       phones: this.fb.array([]), // start empty, will populate dynamically
       address: ['', Validators.required],
-      whatsapp: ['']
+      whatsapp: [''],
+      facebook: [''],
+      instagram: [''],
+      youtube: [''],
+      linkedin: [''],
     });
 
     this.adminService.getContacts().subscribe(contacts => {
@@ -40,6 +44,10 @@ translate = inject(TranslateService);
         email: contacts.email,
         address: contacts.address,
         whatsapp: contacts.whatsapp,
+        facebook: contacts.facebook,
+        instagram: contacts.instagram,
+        youtube: contacts.youtube,
+        linkedin: contacts.linkedin,
       });
 
       // Clear existing phones and add from API

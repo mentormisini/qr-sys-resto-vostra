@@ -110,6 +110,12 @@
              class="text-gray-800 font-semibold hover:text-indigo-600 transition-colors">
             {{ 'news' | translate }}
           </a>
+
+          <a [routerLink]="'book'" (click)="mobileMenuOpen = false"
+             class="text-gray-800 font-semibold hover:text-indigo-600 transition-colors">
+            {{ 'book-table' | translate }}
+          </a>
+
           <a [routerLink]="'gallery'" (click)="mobileMenuOpen = false"
              class="text-gray-800 font-semibold hover:text-indigo-600 transition-colors">
             {{ 'gallery' | translate }}
