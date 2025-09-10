@@ -341,5 +341,7 @@
   "choose_area_label": "Scegli un'area",
   "select_table_label": "Seleziona un tavolo",
   "select_duration_label": "Seleziona la durata",
-  "select_time_label": "Scegli un orario"
+  "select_time_label": "Scegli un orario",
+  "name": "Nome e cognome",
+  "book-now": "Salva il tuo posto"
 }

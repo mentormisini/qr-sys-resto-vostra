@@ -340,5 +340,7 @@
   "choose_area_label": "Choisir une zone",
   "select_table_label": "Sélectionner une table",
   "select_duration_label": "Sélectionner la durée",
-  "select_time_label": "Choisir une heure"
+  "select_time_label": "Choisir une heure",
+  "name": "Nom et prénom",
+  "book-now": "Réservez votre place"
 }

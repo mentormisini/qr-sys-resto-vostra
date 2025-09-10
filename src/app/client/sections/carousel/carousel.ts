@@ -48,8 +48,8 @@ import {BookingComponent} from '../../booking/booking';
 })
 export class Carousel {
   adminService = inject(AdminService);
-  slides:any;
-
+  //slides= [{image:'slider_2_nostra.webp',title:'asdfasdfsadf',description:'asdfasdf'},{image:'slider_3_nostra.webp',title:'asdf',description:''}]
+slides:any;
   constructor() {
     this.adminService.getSliders().pipe(take(1)).subscribe(resp=> this.slides = resp);
   }

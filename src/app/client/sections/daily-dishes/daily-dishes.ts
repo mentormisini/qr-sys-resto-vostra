@@ -17,7 +17,7 @@ import {animate, query, stagger, style, transition, trigger} from '@angular/anim
   styleUrl: './daily-dishes.scss',
   animations: [
     trigger('listAnimation', [
-      transition('* => *', [
+      transition(':enter', [
         query(
           ':enter',
           [
@@ -44,6 +44,7 @@ import {animate, query, stagger, style, transition, trigger} from '@angular/anim
       ]),
     ]),
   ],
+
 })
 export class DailyDishes {
   @ViewChild('box') box!: ElementRef;

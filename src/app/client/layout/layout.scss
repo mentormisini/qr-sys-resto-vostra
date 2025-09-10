@@ -1,0 +1,4 @@
+main {
+  min-height: 100vh; /* adjust based on your header+footer size */
+  position: relative; /* needed for absolute children from animation */
+}

@@ -366,6 +366,8 @@
   "choose_area_label": "Choose Area",
   "select_table_label": "Select a Table",
   "select_duration_label": "Select Duration",
-  "select_time_label": "Select a Time"
+  "select_time_label": "Select a Time",
+  "name": "Name & Surname",
+  "book-now": "Save your seat"
 
 }
