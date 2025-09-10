@@ -9,7 +9,7 @@
                       [readonlyInput]="true"
                       [appendTo]="'body'"
                       [showButtonBar]="true"
-                      [disabledDays]="[0,6]"
+                      [disabledDays]="[0,5]"
                       [(ngModel)]="selectedDate"
                       (ngModelChange)="dateChanged($event)">
         </p-datepicker>
@@ -127,7 +127,7 @@
     <div class="p-6 space-y-6">
 
       @if (!scanned) {
-        <div class="bg-gray-950 rounded-2xl shadow-xl overflow-hidden border border-gray-700 aspect-video relative flex justify-center items-center">
+        <div class="bg-gray-950 rounded-2xl shadow-xl overflow-hidden border border-gray-700 w-full max-w-4xl h-[250px] relative flex justify-center items-center">
           <zxing-scanner
             #scanner
             [device]="currentDevice"
@@ -135,23 +135,27 @@
             class="absolute inset-0 w-full h-full object-cover rounded-2xl">
           </zxing-scanner>
 
+          <!-- Corner indicators -->
           <div class="absolute inset-0 pointer-events-none">
-            <div class="absolute top-4 left-4 w-12 h-12 border-t-4 border-l-4 border-cyan-500 rounded-tl-lg"></div>
-            <div class="absolute top-4 right-4 w-12 h-12 border-t-4 border-r-4 border-cyan-500 rounded-tr-lg"></div>
-            <div class="absolute bottom-4 left-4 w-12 h-12 border-b-4 border-l-4 border-cyan-500 rounded-bl-lg"></div>
-            <div class="absolute bottom-4 right-4 w-12 h-12 border-b-4 border-r-4 border-cyan-500 rounded-br-lg"></div>
+            <div class="absolute top-6 left-6 w-16 h-16 border-t-4 border-l-4 border-red-500 rounded-tl-lg"></div>
+            <div class="absolute top-6 right-6 w-16 h-16 border-t-4 border-r-4 border-red-500 rounded-tr-lg"></div>
+            <div class="absolute bottom-6 left-6 w-16 h-16 border-b-4 border-l-4 border-red-500 rounded-bl-lg"></div>
+            <div class="absolute bottom-6 right-6 w-16 h-16 border-b-4 border-r-4 border-red-500 rounded-br-lg"></div>
           </div>
 
-          <div class="absolute inset-0 flex justify-center items-center pointer-events-none  animate-pulse">
-            <div class="w-4/5 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full animate-pulse-slow"></div>
+          <!-- Scan line -->
+          <div class="absolute inset-0 flex justify-center items-center pointer-events-none">
+            <div class="w-4/5 h-2 bg-gradient-to-r from-transparent via-red-800 to-transparent rounded-full animate-pulse-slow"></div>
           </div>
 
+          <!-- Bottom label -->
           <div class="absolute bottom-4 w-full text-center pointer-events-none">
-            <small class="text-cyan-400 font-semibold animate-pulse-slow tracking-wider">{{ 'scaning' | translate }}</small>
+            <small class="text-red-400 font-semibold animate-pulse-slow tracking-wider">{{ 'scaning' | translate }}</small>
           </div>
         </div>
       }
-    @if(successMessage){
+
+      @if(successMessage){
       <div class="space-y-3">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
           <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
@@ -208,10 +212,22 @@
     }
     </div>
 
-    <div class="p-6 bg-gray-50 dark:bg-gray-700 border-t border-gray-200 dark:border-gray-600 flex justify-end gap-3">
-      <button class="px-6 py-3 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full shadow-sm hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-200 font-semibold text-sm" (click)="showScanModal = false">Cancel</button>
-      <button class="px-6 py-3 bg-cyan-600 text-white rounded-full shadow-md hover:bg-cyan-700 transition-colors duration-200 font-semibold text-sm" (click)="startCamera()">{{'scan-again'|translate}}</button>
+    <div class="p-6 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-600 flex justify-between items-center gap-4">
+      <!-- Cancel button on the left -->
+      <button
+        class="flex gap-2  items-center px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full shadow-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200 font-semibold text-sm"
+        (click)="showScanModal = false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>  {{ 'cancel' | translate }}
+      </button>
+
+      <!-- Scan Again button slightly larger to take more space -->
+      <button
+        class="flex gap-2 items-center py-3 px-6 bg-emerald-600 text-white rounded-full shadow-md hover:bg-cyan-700 transition-colors duration-200 font-semibold text-sm ml-3"
+        (click)="startCamera()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scan-line-icon lucide-scan-line"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></svg>   {{ 'scan-again' | translate }}
+      </button>
     </div>
+
   </div>
 </div>
 }

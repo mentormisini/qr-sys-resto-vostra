@@ -14,31 +14,31 @@
   }
 
   @if (!scanned) {
-    <div class="w-100 h-70 rounded-2xl shadow-2xl overflow-hidden border border-gray-700 relative bg-gray-900 flex justify-center items-center">
-
-      <!-- ZXing Camera: fills entire container -->
+    <div class="bg-gray-950 rounded-2xl shadow-xl overflow-hidden border border-gray-700 w-full max-w-4xl h-[250px] relative flex justify-center items-center">
       <zxing-scanner
         #scanner
         [device]="currentDevice"
         (scanSuccess)="onCodeResult($event)"
-        class="absolute inset-0 w-full h-full object-cover">
+        class="absolute inset-0 w-full h-full object-cover rounded-2xl">
       </zxing-scanner>
 
+      <!-- Corner indicators -->
       <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute top-4 left-4 w-12 h-12 border-t-4 border-l-4 border-cyan-500 rounded-tl-lg"></div>
-        <div class="absolute top-4 right-4 w-12 h-12 border-t-4 border-r-4 border-cyan-500 rounded-tr-lg"></div>
-        <div class="absolute bottom-4 left-4 w-12 h-12 border-b-4 border-l-4 border-cyan-500 rounded-bl-lg"></div>
-        <div class="absolute bottom-4 right-4 w-12 h-12 border-b-4 border-r-4 border-cyan-500 rounded-br-lg"></div>
+        <div class="absolute top-6 left-6 w-16 h-16 border-t-4 border-l-4 border-red-500 rounded-tl-lg"></div>
+        <div class="absolute top-6 right-6 w-16 h-16 border-t-4 border-r-4 border-red-500 rounded-tr-lg"></div>
+        <div class="absolute bottom-6 left-6 w-16 h-16 border-b-4 border-l-4 border-red-500 rounded-bl-lg"></div>
+        <div class="absolute bottom-6 right-6 w-16 h-16 border-b-4 border-r-4 border-red-500 rounded-br-lg"></div>
       </div>
 
-      <div class="absolute inset-0 flex justify-center items-center pointer-events-none animate-pulse">
-        <div class="w-4/5 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full animate-pulse-slow"></div>
+      <!-- Scan line -->
+      <div class="absolute inset-0 flex justify-center items-center pointer-events-none">
+        <div class="w-4/5 h-2 bg-gradient-to-r from-transparent via-red-800 to-transparent rounded-full animate-pulse-slow"></div>
       </div>
 
+      <!-- Bottom label -->
       <div class="absolute bottom-4 w-full text-center pointer-events-none">
-        <small class="text-cyan-400 font-semibold animate-pulse-slow tracking-wider">{{ 'scaning' | translate }}</small>
+        <small class="text-red-400 font-semibold animate-pulse-slow tracking-wider">{{ 'scaning' | translate }}</small>
       </div>
-
     </div>
   }
 
