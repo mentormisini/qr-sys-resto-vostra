@@ -25,7 +25,7 @@
             class="absolute inset-0 z-0 bg-gradient-to-br from-emerald-400 via-emerald-600 to-emerald-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl blur-2xl"></span>
           <div class="relative z-10">
             <div class="text-xs sm:text-sm font-medium group-hover:text-white transition-colors duration-200" [class.text-white]="bookingDate === day.dateString && !day.isDisabled">
-              {{ day.dayShort }}
+              {{ day.dayShort | translate }}
             </div>
             <div class="text-lg sm:text-xl font-bold group-hover:text-white transition-colors duration-200" [class.text-white]="bookingDate === day.dateString && !day.isDisabled">
               {{ day.dayNumber }}
@@ -50,7 +50,7 @@
           <span
             class="absolute inset-0 z-0 bg-gradient-to-br from-emerald-400 via-emerald-600 to-emerald-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl blur-2xl"></span>
           <span class="relative z-10 group-hover:text-white transition-colors duration-200" [class.text-white]="selectedArea?.id === area.id">
-            {{ area.name }}
+            {{ area.name | translate }}
           </span>
         </button>
       </div>

@@ -39,7 +39,7 @@
       <p class="text-sm text-gray-600 mb-4">
         {{ 'scan_qr.description' | translate }}
       </p>
-      <button [routerLink]="'../qr-reader'"
+      <button [routerLink]="'../reservation'"
               class="w-full bg-gray-800 text-white py-2 rounded-xl font-medium hover:bg-gray-900 transition">
         {{ 'scan_qr.button' | translate }}
       </button>
@@ -62,14 +62,14 @@
 </svg>
           {{user?.email | uppercase}}
   </span>
-        <span class="w-full flex justify-center p-3 text-sm font-semibold text-green-800 bg-green-200 rounded-full shadow-sm">
+
+      </div>
+      <span class="w-full mt-2 flex justify-center p-3 text-sm font-semibold text-green-800 bg-green-200 rounded-full shadow-sm">
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
 </svg>
-          {{user?.role | uppercase}}
+        {{user?.role | uppercase}}
   </span>
-      </div>
-
         <!-- Modern Logout Button -->
         <button (click)="logOut()"
           class="mt-4 flex items-center justify-center gap-3 w-full bg-gradient-to-r from-red-500 to-rose-500 text-white font-semibold py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">

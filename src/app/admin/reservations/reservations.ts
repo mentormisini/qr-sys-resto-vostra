@@ -31,37 +31,8 @@ import {ToasterComponent} from '../../shared/notify/notify';
   animations: [
     trigger('categorySwitch', [
       transition('* => *', [
-        group([
-          // Old items exit: super quick
-          query(':leave', [
-            stagger(-20, [
-              animate(
-                '120ms ease-in',
-                style({
-                  opacity: 0,
-                  transform: 'translateY(-40px) scale(0.7)'
-                })
-              )
-            ])
-          ], { optional: true }),
-
-          // New items enter: almost all together, slight stagger for energy
-          query(':enter', [
-            style({
-              opacity: 0,
-              transform: 'translateY(-40px) scale(1.1)'
-            }),
-            stagger(40, [ // tighter stagger
-              animate(
-                '180ms cubic-bezier(0.25, 1.25, 0.5, 1)', // quick bounce ease
-                style({
-                  opacity: 1,
-                  transform: 'translateY(0) scale(1)'
-                })
-              )
-            ])
-          ], { optional: true })
-        ])
+        style({ opacity: 0, transform: 'translateY(20px)' }),
+        animate('0.5s ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
       ])
     ])
   ]
@@ -161,7 +132,7 @@ tablesOfArea:any;
   }
   deleteReservation(reservation: any) {
     const confirmDelete = window.confirm(
-      this.translate.instant('toast.confirm.delete_area')
+      this.translate.instant('delete_area')
     );
 
     if (confirmDelete) {
