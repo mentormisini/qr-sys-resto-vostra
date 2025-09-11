@@ -5,13 +5,14 @@ import {DatePipe, NgClass} from '@angular/common';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {ToasterComponent} from '../../shared/notify/notify';
 import {ToastService} from '../../shared/toast.service';
+import {Translations} from '../reservation-config/translations/translations';
 
 @Component({
   selector: 'app-daily-plate',
   templateUrl: './daily-plate.html',
   styleUrl: './daily-plate.scss',
   standalone: true,
-  imports: [ReactiveFormsModule, TranslateModule, NgClass, ToasterComponent]
+  imports: [ReactiveFormsModule, TranslateModule, NgClass, ToasterComponent, Translations]
 })
 export class DailyPlate {
   adminService = inject(AdminService);
@@ -24,6 +25,7 @@ export class DailyPlate {
   translate = inject(TranslateService);
   toaster = inject(ToastService)
   selectedDay: any;
+  showTranslations!: boolean;
   constructor() {
     this.loadDailyPlate();
   }
