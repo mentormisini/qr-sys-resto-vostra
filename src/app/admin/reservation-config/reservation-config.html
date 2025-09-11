@@ -11,6 +11,9 @@
     @if([Role.admin].includes(user.role)){
     <p-tab [value]="3">{{'user-management'|translate}}</p-tab>
     }
+    @if([Role.admin].includes(user.role)){
+      <p-tab [value]="4">{{'translations'|translate}}</p-tab>
+    }
 
   </p-tablist>
   <p-tabpanels>
@@ -150,6 +153,10 @@
 
     <p-tabpanel [value]="3">
       <app-users/>
+    </p-tabpanel>
+
+    <p-tabpanel [value]="4">
+      <app-translations/>
     </p-tabpanel>
 
   </p-tabpanels>

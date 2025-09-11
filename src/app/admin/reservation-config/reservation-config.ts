@@ -14,6 +14,7 @@ import {Schedule} from './schedule/schedule';
 import {DailyPlateDays} from './daily-plate-days/daily-plate-days';
 import {Users} from './users/users';
 import {Role} from '../../enum/roles.enum';
+import {Translations} from './translations/translations';
 @Component({
   selector: 'app-reservation-config',
   imports: [
@@ -35,7 +36,8 @@ import {Role} from '../../enum/roles.enum';
     TabPanel,
     Schedule,
     DailyPlateDays,
-    Users
+    Users,
+    Translations
   ],
   templateUrl: './reservation-config.html',
   styleUrl: './reservation-config.scss'

@@ -388,5 +388,13 @@
   "Sat": "Sam",
   "Sun": "Dim",
   "Inside": "Salle",
-  "Terrace": "Terrase"
+  "Terrace": "Terrase",
+  "welcome" : "Bienvenue",
+  "language-configuration": "Configuration de la langue",
+  "enter-new-value": "Saisir une nouvelle valeur",
+  "add": "Ajouter",
+  "translations": "Traductions",
+  "update": "Mettre à jour",
+  "show-translation-manager": "Afficher le gestionnaire de traduction",
+  "hide-translation-manager": "Masquer le gestionnaire de traduction"
 }

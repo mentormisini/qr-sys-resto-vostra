@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {DailyDishes} from '../daily-dishes/daily-dishes';
 import {Menu} from '../menu/menu';
 import {animate, style, transition, trigger} from '@angular/animations';
-import {AsyncPipe, NgClass} from '@angular/common';
+import {AsyncPipe, LowerCasePipe, NgClass} from '@angular/common';
 import {AdminService} from '../../../services/admin.service';
 import {take} from 'rxjs';
 import {TranslatePipe} from '@ngx-translate/core';
@@ -18,6 +18,7 @@ import {BookingComponent} from '../../booking/booking';
     TranslatePipe,
     Discount,
     BookingComponent,
+    LowerCasePipe,
 
   ],
   templateUrl: './carousel.html',

@@ -127,5 +127,15 @@ export class AdminService {
     return this.httpClient.delete(`${environment.apiUrl}/auth/user/${userId}`);
   }
 
+  getTranslations(lang:string):Observable<any>{
+      return this.httpClient.get(`${environment.apiUrl}/images/${lang}`);
+  }
+ addTranslations(lang:string, payload:any):Observable<any>{
+    return this.httpClient.post(`${environment.apiUrl}/images/${lang}`,payload);
+  }
+  editTranslations(lang:string, payload:any):Observable<any>{
+    return this.httpClient.put(`${environment.apiUrl}/images/${lang}`,payload);
+  }
+
 
 }

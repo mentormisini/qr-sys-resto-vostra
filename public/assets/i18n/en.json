@@ -392,5 +392,13 @@
   "Sat": "Sat",
   "Sun": "Sun",
   "Inside": "Inside",
-  "Terrace": "Terrace"
+  "Terrace": "Terrace",
+  "welcome": "Welcome",
+  "language-configuration": "Language Configuration",
+  "enter-new-value": "Enter new value",
+  "add": "Add",
+  "translations": "Translations",
+  "update": "Update",
+  "show-translation-manager": "Show translation manager",
+  "hide-translation-manager": "Hide translation manager"
 }

@@ -1,0 +1,83 @@
+<div class="min-h-screen flex items-center justify-center  p-4">
+  <div class="bg-white shadow-2xl rounded-2xl p-8 max-w-8xl w-full flex flex-col items-center space-y-8">
+    <h1 class="text-4xl  text-center text-gray-800 tracking-wide">{{'language-configuration'|translate}} </h1>
+
+    <div class="flex flex-wrap gap-3 justify-center">
+      @for(lang of languages(); track $index){
+        <button
+          (click)="selectLanguage(lang)"
+          [ngClass]="selectedLanguage() == lang?.key ? 'bg-gradient-to-r from-emerald-600 to-emerald-900 text-white shadow-lg' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'"
+          class="py-2 px-8 rounded-full font-semibold text-sm transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-indigo-500">
+          {{ lang?.value }}
+        </button>
+      }
+    </div>
+    <hr class="w-full border-t-2 border-gray-200">
+
+    <table class="w-full text-left">
+      <thead>
+      <tr class="text-xs uppercase text-gray-500 border-b border-gray-300">
+        <th class="py-4 px-2 font-bold w-1/3">{{ 'key'|translate }}</th>
+        <th class="py-4 px-2 font-bold w-1/3">{{ 'value'|translate }}</th>
+        <th class="py-4 px-2 font-bold w-1/3">{{ 'action' |translate }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="bg-white my-4 transition-all duration-300">
+        <td colspan="3" class="pt-6 pb-2 px-3">
+          <label for="new-value-input" class="text-sm font-semibold text-gray-700 block mb-2">
+            {{ 'enter-new-value'|translate }}
+          </label>
+          <div class="flex gap-4">
+            <input
+              id="new-key-input"
+              [(ngModel)]="newTranslation.key"
+              placeholder="New key"
+              class="flex-1 p-3 text-sm border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+            />
+            <input
+              id="new-value-input"
+              [(ngModel)]="newTranslation.value"
+              placeholder="New value"
+              class="flex-1 p-3 text-sm border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+            />
+            <button
+              (click)="addTranslation()"
+              class="w-auto py-3 px-6 text-white font-bold text-sm rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 bg-gradient-to-r from-green-500 to-lime-600"
+            >
+              {{ 'add' |translate }}
+            </button>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="h-4"></tr>
+
+        @for(t of allTranslations$; track $index){
+          <tr class="bg-white border-b border-gray-200 transition-all duration-300 ease-in-out hover:bg-gray-50">
+            <td class="py-4 px-2 w-2/4">
+              <input
+                [(ngModel)]="t.key"
+                class="w-full p-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+              />
+            </td>
+            <td class="py-4 px-2 w-2/4">
+              <input
+                [(ngModel)]="t.value"
+                class="w-full p-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+              />
+            </td>
+            <td class="py-4 px-2 w-3/4">
+              <button
+                (click)="updateTranslation(t)"
+                class="w-full py-2 px-4 bg-gradient-to-r from-emerald-600 to-emerald-900 text-white font-semibold text-xs rounded-md shadow-sm hover:bg-gradient-to-r from-emerald-400 to-emerald-800 transition"
+              >
+                {{ 'update'|translate }}
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

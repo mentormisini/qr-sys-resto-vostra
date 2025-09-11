@@ -389,5 +389,14 @@
   "Sat": "Sab",
   "Sun": "Dom",
   "Inside": "Interno",
-  "Terrace": "Terrazza"
+  "Terrace": "Terrazza",
+  "welcome": "Benvenuto",
+  "language-configuration": "Configurazione lingua",
+  "enter-new-value": "Inserisci nuovo valore",
+  "add": "Aggiungi",
+  "translations": "Traduzioni",
+  "update": "Aggiorna",
+  "show-translation-manager": "Mostra gestore traduzioni",
+  "hide-translation-manager": "Nascondi gestore traduzioni"
+
 }
