@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
     TranslatePipe
   ],
   templateUrl: './discount.html',
+  standalone: true,
   styleUrl: './discount.scss'
 })
 export class Discount {

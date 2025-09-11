@@ -22,6 +22,7 @@ import {TranslatePipe} from '@ngx-translate/core';
   ],
   templateUrl: './booking.html',
   styleUrl: './booking.scss',
+  standalone: true,
   animations: [
     trigger('fadeInOut', [
       state('void', style({

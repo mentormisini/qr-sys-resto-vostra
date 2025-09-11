@@ -1,64 +1,53 @@
-<section class="bg-gray-50 py-16 px-4 min-h-screen flex items-center justify-center">
-  <div class="max-w-6xl w-full mx-auto text-center" #box>
-    <h2
-      class="text-5xl md:text-6xl font-extralight tracking-tight text-emerald-700 mb-8"
-      @fadeInUp
-    >
-      {{ 'CHEFS_DAILY_SPECIALS' | translate }}
-    </h2>
-    <p
-      class="text-gray-600 mb-12 text-lg md:text-xl font-light"
-      @fadeInUp
-    >
-      {{ 'MENU_DESCRIPTION' | translate }}
-    </p>
+<section class="bg-gray-50 py-20 px-4 min-h-screen flex items-center justify-center">
+  <div class="max-w-4xl w-full mx-auto" #box>
+    <div class="text-center mb-16">
+      <h2
+        class="text-6xl md:text-7xl font-extralight tracking-tighter text-emerald-800 mb-6 font-serif leading-tight"
+      >
+        {{ 'CHEFS_DAILY_SPECIALS' | translate }}
+      </h2>
+      <p
+        class="text-gray-600 text-lg md:text-xl font-light font-sans max-w-2xl mx-auto"
+      >
+        {{ 'MENU_DESCRIPTION' | translate }}
+      </p>
+    </div>
 
-    <div
-      class="flex flex-wrap justify-center gap-10"
-      @listAnimation
-    >
+    <div class="flex flex-col space-y-24" @listAnimation>
       @for (dish of dishes$?.plates; track $index) {
         <div
-          class="relative rounded-3xl overflow-hidden shadow-2xl bg-white group transform transition-transform duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-red-400/50"
-          style="min-width: 300px; max-width: 350px;"
+          class="flex flex-col md:flex-row items-center gap-10 md:gap-16 relative group"
         >
           <div
-            class="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-radial from-emerald-500/30 to-transparent blur-3xl opacity-30 group-hover:opacity-50 pointer-events-none z-0"
-          ></div>
-
-          <div class="relative z-10">
+            class="relative w-full md:w-1/2 aspect-square rounded-2xl overflow-hidden shadow-2xl z-10 transform transition-transform duration-500 group-hover:scale-[1.03] group-hover:shadow-3xl"
+          >
             <img
               [src]="dish.imagePath"
               alt="{{ dish.dish }}"
-              class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-105 rounded-t-3xl"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
-            <div class="absolute inset-0 bg-black/20 rounded-t-3xl"></div>
-
             <span
-              class="absolute top-4 right-4 bg-white/20 backdrop-blur-md text-white text-xs font-semibold uppercase tracking-wider px-4 py-1 rounded-full shadow-lg"
+              class="absolute top-5 left-5 bg-white/30 backdrop-blur-md text-white text-xs font-semibold uppercase tracking-wider px-4 py-1 rounded-full shadow-lg border border-white/40"
             >
               {{ 'today-special' | translate }}
             </span>
           </div>
 
-          <div class="p-6 relative z-20">
-            <h3 class="text-lg text-emerald-600 font-semibold tracking-wide">
+          <div class="w-full md:w-1/2 text-left relative z-20">
+            <h3 class="text-xl text-emerald-600 font-semibold tracking-wide font-sans mb-1">
               {{ dish.day }}
             </h3>
-            <p class="text-2xl font-serif text-gray-900 mt-1">
+            <p class="text-5xl font-serif text-gray-900 mt-2 leading-tight">
               {{ dish.plate | translate }}
             </p>
-            <p class="text-sm text-gray-500 mt-2 leading-relaxed">
-              {{ dish.description |translate }}
+            <p class="text-base text-gray-600 mt-4 leading-relaxed">
+              {{ dish.description | translate }}
             </p>
-            <p class="text-right mt-5 text-xl font-bold text-red-500">
+            <p class="mt-8 text-4xl font-bold text-emerald-800 tracking-wide">
               {{ dish.price }}
             </p>
-          </div>
 
-          <div
-            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-2 bg-gradient-to-r from-green-600 via-white to-red-600 rounded-full blur-sm opacity-70"
-          ></div>
+          </div>
         </div>
       }
     </div>

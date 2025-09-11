@@ -21,30 +21,31 @@ import {animate, query, stagger, style, transition, trigger} from '@angular/anim
         query(
           ':enter',
           [
-            style({ opacity: 0, transform: 'translateY(20px)' }),
+            style({opacity: 0, transform: 'translateY(20px)'}),
             stagger(
               '100ms',
               animate(
                 '0.6s ease-out',
-                style({ opacity: 1, transform: 'translateY(0)' })
+                style({opacity: 1, transform: 'translateY(0)'})
               )
             ),
           ],
-          { optional: true }
+          {optional: true}
         ),
       ]),
     ]),
     trigger('fadeInUp', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(20px)' }),
+        style({opacity: 0, transform: 'translateY(20px)'}),
         animate(
           '0.6s 0.2s ease-out',
-          style({ opacity: 1, transform: 'translateY(0)' })
+          style({opacity: 1, transform: 'translateY(0)'})
         ),
       ]),
     ]),
   ],
 
+  standalone: true
 })
 export class DailyDishes {
   @ViewChild('box') box!: ElementRef;
