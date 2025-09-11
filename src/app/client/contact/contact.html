@@ -43,13 +43,10 @@
             </span>
             <div>
               <p class="font-medium">Email</p>
-              <a href="{{(contact$ | async)?.email}}" class="text-slate-600 hover:underline">{{(contact$ | async)?.email}}</a>
+              <a href="mailto:{{(contact$ | async)?.email}}" class="text-slate-600 hover:underline">{{(contact$ | async)?.email}}</a>
             </div>
           </li>
-
           @for(phones of (contact$ | async)?.phones; track $index){
-
-
           <li class="flex gap-3 items-start">
             <span class="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-xl bg-slate-100">
            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -59,7 +56,8 @@
             </span>
             <div>
               <p class="font-medium">{{'phone'|translate}}</p>
-              <a href="#" class="text-slate-600 hover:underline">{{phones}}</a>
+              <a href="tel:{{phones}}" class="text-slate-600 hover:underline">{{phones}}</a>
+
             </div>
           </li>
           }
@@ -70,7 +68,12 @@
                         </span>
             <div>
               <p class="font-medium">Whatsapp</p>
-              <a href="{{(contact$ | async)?.whatsapp}}" class="text-slate-600 hover:underline">{{(contact$ | async)?.whatsapp}}</a>
+              <a
+                href="https://wa.me/{{(contact$ | async)?.whatsapp}}?text=Bonjour%2C%20je%20vous%20écris%20depuis%20la%20page%20de%20contact%20de%20notraitalia.ch"
+                class="text-slate-600 hover:underline"
+              >
+                {{(contact$ | async)?.whatsapp}}
+              </a>
             </div>
           </li>
           <li class="flex gap-3 items-start">

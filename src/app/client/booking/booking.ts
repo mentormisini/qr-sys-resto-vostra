@@ -81,17 +81,20 @@ export class BookingComponent implements OnInit {
       const date = new Date(today);
       date.setDate(today.getDate() + i);
       const dayOfWeek = date.getDay();
-      const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+
+      // Only disable Sunday
+      const isDisabled = dayOfWeek === 0;
 
       this.weekDates.push({
         date,
         dayNumber: date.getDate(),
-        dayShort: date.toLocaleDateString('en-US', {weekday: 'short'}),
+        dayShort: date.toLocaleDateString('en-US', { weekday: 'short' }),
         dateString: date.toISOString().split('T')[0],
-        isDisabled: isWeekend
+        isDisabled
       });
     }
   }
+
 
   selectDate(day: any) {
     if (day.isDisabled) return;
