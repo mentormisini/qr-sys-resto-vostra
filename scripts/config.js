@@ -3,5 +3,5 @@ module.exports = {
   VPS_PORT: 22,
   VPS_USER: 'root',
   LOCAL_DIST_DIR: './dist/qr-sys-resto/browser',
-  REMOTE_DIR: '/var/www/site1/frontend',
+  REMOTE_DIR: '/var/www/site2/frontend',
 };

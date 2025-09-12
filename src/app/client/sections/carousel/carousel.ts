@@ -16,7 +16,7 @@ import {BookingComponent} from '../../booking/booking';
     Menu,
     NgClass,
     TranslatePipe,
-    Discount,
+
     BookingComponent,
     LowerCasePipe,
 

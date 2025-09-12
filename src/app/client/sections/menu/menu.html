@@ -6,29 +6,30 @@
   </div>
 
   <div class="max-w-7xl mx-auto text-center relative z-10">
-    <h2 class="text-6xl md:text-7xl font-light tracking-tight text-gray-800 mb-8 font-serif">
-      Our Menu
+    <h2 class="text-6xl text-center font-light tracking-tight text-gray-800 mb-8">
+      Menu
     </h2>
     <p class="text-gray-500 max-w-2xl mx-auto mb-16 text-lg">Discover our curated selection of dishes, crafted with the freshest ingredients and a passion for flavor.</p>
 
     <div class="overflow-x-auto mb-14 py-3 px-4 sm:px-0">
-      <div class="flex flex-nowrap gap-4 justify-center">
+      <div class="flex gap-4 min-w-max whitespace-nowrap">
         @for (cat of categories$; track cat.name) {
           <button
             (click)="setCategory(cat)"
-            class="relative flex-shrink-0 px-6 py-3 rounded-full text-base font-medium tracking-wide transition-all duration-300 transform hover:scale-105 hover:bg-gray-200/50 focus:outline-none"
+            class="relative inline-flex items-center px-6 py-3 rounded-full text-base font-medium tracking-wide transition-all duration-300 transform hover:scale-105 hover:bg-gray-200/50 focus:outline-none whitespace-nowrap"
             [class.text-gray-800]="cat.name === selectedCategory?.name"
             [class.text-gray-500]="cat.name !== selectedCategory?.name"
           >
             {{ cat?.name | translate }}
             <span
-              class="absolute bottom-0 left-0 h-0.5 w-full bg-gradient-to-r from-teal-400 to-cyan-500 origin-center transition-transform duration-500 ease-in-out transform scale-x-0"
+              class="absolute bottom-0 left-0 h-0.5 w-full bg-gradient-to-r from-emerald-400 to-emerald-800 origin-center transition-transform duration-500 ease-in-out transform scale-x-0"
               [class.scale-x-100]="cat.name === selectedCategory?.name"
             ></span>
           </button>
         }
       </div>
     </div>
+
 
     <div
       class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left"
@@ -40,7 +41,7 @@
         >
           <div class="flex justify-between items-center mb-3">
             <h3 class="text-2xl font-semibold text-gray-800 tracking-wide">{{ item?.name | translate | titlecase }}</h3>
-            <span class="font-bold text-xl text-teal-600">{{ item.price }}</span>
+            <span class="font-bold text-xl text-emerald-800">{{ item.price }}</span>
           </div>
           <p class="text-gray-600 text-base leading-relaxed line-clamp-3">{{ item.description | translate }}</p>
         </div>

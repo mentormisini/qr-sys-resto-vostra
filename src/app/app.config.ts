@@ -55,7 +55,7 @@ export const appConfig: ApplicationConfig = {
     ),
     {
       provide: TRANSLATE_HTTP_LOADER_CONFIG,
-      useValue: { prefix: 'https://nostraitalia.ch/api/images/', suffix: '' }// optional, defaults
+      useValue: { prefix: 'https://vostraitalia.ch/api/images/', suffix: '' }// optional, defaults
     }
   ]
 };
