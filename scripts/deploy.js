@@ -72,7 +72,13 @@ askHiddenQuestion('Enter VPS password: ', async (password) => {
         concurrency: 5,
         validate: function(itemPath) {
           const baseName = path.basename(itemPath);
-          return baseName !== 'node_modules'; // ignore node_modules if exists
+          const relativePath = path.relative(localPath, itemPath);
+
+          // Ignore node_modules and assets/i18n
+          if (baseName === 'node_modules') return false;
+          if (relativePath.startsWith(path.join('assets', 'i18n'))) return false;
+
+          return true;
         },
         tick: function(localPath, remotePath, error) {
           if (error) {
