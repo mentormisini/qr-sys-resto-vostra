@@ -51,7 +51,7 @@
           </svg>
 
           <span class="font-medium text-gray-900">Time:</span>
-          <span class="flex-1 min-w-0 truncate"> {{ response.reservation.startTime | date: 'dd.MM.yyyy' |translate}} ({{ response.reservation.startTime | date: 'EEEE' |translate}}) {{ response.reservation.startTime | date:'shortTime' }} - {{ response.reservation.endTime | date:'shortTime' }}</span>
+          <span class="flex-1 min-w-0 truncate"> {{ response.reservation.startTime | date: 'dd.MM.yyyy' |translate}} ({{ response.reservation.startTime | date: 'EEEE' |translate}}) {{ response.reservation.startTime | date:'HH:mm':'UTC' }} - {{ response.reservation.endTime | date:'HH:mm':'UTC' }}</span>
         </div>
 
       </div>
